@@ -1,34 +1,38 @@
 package com.community.client.services;
 
 import com.community.client.models.UserObject;
-import com.community.client.repositories.UserRepository;
+import com.community.client.repositories.UserObjectRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 import java.util.Set;
 
-public class UserService {
 
+@Service
+public class UserObjectService {
 
-    public UserRepository userRepository;
+    public UserObjectRepository userObjectRepository;
 
-    public UserService(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public UserObjectService(UserObjectRepository userObjectRepository) {
+        this.userObjectRepository = userObjectRepository;
     }
 
     //Implement the methods from repository
     //1. To save a User
     public UserObject saveUser(UserObject userObject) {
-        return userRepository.save(userObject);
+
+        return userObjectRepository.save(userObject);
     }
 
     //2. To get all users
     public Set<UserObject> getAllUsers() {
-        return userRepository.findAll();
+        return userObjectRepository.findAll();
     }
 
     //3. To get user by id
     public UserObject getUserById(Long id) {
-        Optional<UserObject> userObjectOptional = userRepository.findById(id);
+        Optional<UserObject> userObjectOptional = userObjectRepository.findById(id);
         if (userObjectOptional.isPresent()) {
             return userObjectOptional.get();
         } else {
@@ -38,7 +42,7 @@ public class UserService {
 
     //4. To get user by email
     public UserObject getUserByEmail(String email) {
-        Optional<UserObject> userObjectOptional = userRepository.findUserObjectByEmail(email);
+        Optional<UserObject> userObjectOptional = userObjectRepository.findUserObjectByEmail(email);
         if (userObjectOptional.isPresent()) {
             return userObjectOptional.get();
         } else {

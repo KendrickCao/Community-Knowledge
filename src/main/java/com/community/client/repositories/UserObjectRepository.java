@@ -1,11 +1,14 @@
 package com.community.client.repositories;
 
 import com.community.client.models.UserObject;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 import java.util.Set;
 
-public interface UserRepository {
+@Repository
+public interface UserObjectRepository extends CrudRepository<UserObject, Long> {
     //We override the methods here
     //1. Save the user
     UserObject save(UserObject userObject);
@@ -18,4 +21,6 @@ public interface UserRepository {
 
     //4. Get a User by Email
     Optional<UserObject> findUserObjectByEmail(String email);
+
+
 }
