@@ -3,7 +3,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "user_table")
-public class User {
+public class UserObject {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -54,6 +54,6 @@ public class User {
 
     //No Args Contructor
 
-    public User() {
+    public UserObject() {
     }
 }
