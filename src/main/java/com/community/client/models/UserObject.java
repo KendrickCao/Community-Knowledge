@@ -19,6 +19,9 @@ public class UserObject {
     @Column(name = "user_password")
     private String password;
 
+    @OneToOne(mappedBy = "userObject", cascade = CascadeType.ALL)
+    private UserProfile userProfile;
+
     //Getters and Setters
     public Long getId() {
         return id;
@@ -52,6 +55,14 @@ public class UserObject {
         this.password = password;
     }
 
+    public UserProfile getUserProfile() {
+        return userProfile;
+    }
+
+    public void setUserProfile(UserProfile userProfile) {
+        this.userProfile = userProfile;
+    }
+
     //No Args Contructor
 
     public UserObject() {
@@ -71,6 +82,7 @@ public class UserObject {
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
+                ", userProfile=" + userProfile +
                 '}';
     }
 }
