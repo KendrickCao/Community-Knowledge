@@ -5,7 +5,9 @@ var userEmail = null;
 var userPassword = null;
 var userConfirmPassword = null;
 
-// Function to validate the userInputs
+//Define Functions
+
+//Function to validate the userInputs
 const validate = function (elementName, userInput) {
     let validated = false;
     if (elementName === "email") {
@@ -31,11 +33,12 @@ const validate = function (elementName, userInput) {
     return validated;
 };
 
-// Function to Capture user Inputs in input boxes
+//Function to capture user Inputs in input boxes
 const captureUserInput = function (e) {
 
     const userInput = e.target.value;
     const elementName = e.target.name;
+
     //Based on name, assign values and do validation
     if(elementName ==="name"){
         userName = userInput;
@@ -58,7 +61,7 @@ const captureUserInput = function (e) {
     }
 };
 
-// Function to assess if userPassword and userConfirmPassword match
+// Validate if password and confirmPassword match
 const matchCheck = function (userPassword, userConfirmPassword){
     let matching = false;
     if (userPassword === userConfirmPassword){
@@ -69,12 +72,12 @@ const matchCheck = function (userPassword, userConfirmPassword){
     return matching;
 }
 
-// Function to create userObject and send to user_table database if user credentials are valid.
-const createUser = async function  (e) {
-    e.preventDefault();
+// Create User Object
+const createUser = function () {
     const matching = matchCheck(userPassword, userConfirmPassword);
-    if (matching && userName != null && userEmail !=null && userPassword !=null) {
-        window.alert("User has been successfully created.");
+    //const validated = captureUserInput();
+    if (matching) {
+        window.alert("User has been successfully created");
         createUserButton.disabled = true;
         //Create User Object
         const userObject = {
@@ -82,27 +85,9 @@ const createUser = async function  (e) {
             email:userEmail,
             password:userPassword
         }
-
-        const response = await fetch("http://localhost:8081/api/add-user",{
-            method:"POST",
-            headers:{
-                "Content-type":"application/json"
-            },
-            body:JSON.stringify(userObject)
-
-        })
-       if(response.status =="200"){
-           const data = await response.json()
-           console.log(data);
-       }else{
-           window.alert("A problem has occurred. Please try again later.")
-       }
-
-        // Redirect user to login page
-        window.location.href="http://localhost:8081/Login"
-
-    } else {
-        window.alert("Invalid user credentials - Please try again.")
+        localStorage.setItem("createUser", JSON.stringify(userObject))
+        //Redirect user to login page
+        window.location.href="http://localhost:8080/Login"
     }
 };
 
@@ -113,7 +98,7 @@ const passwordInput = document.getElementById("password");
 const confirmPasswordInput = document.getElementById("confirmPassword");
 const createUserButton = document.getElementById("createUser-button");
 
-// Event Listeners
+// Add Event Listeners
 nameInput.addEventListener("change", captureUserInput);
 emailInput.addEventListener("change", captureUserInput);
 passwordInput.addEventListener("change", captureUserInput);
