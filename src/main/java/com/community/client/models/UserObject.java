@@ -1,5 +1,6 @@
 package com.community.client.models;
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "user_table")
@@ -21,6 +22,14 @@ public class UserObject {
 
     @OneToOne(mappedBy = "userObject", cascade = CascadeType.ALL)
     private UserProfile userProfile;
+
+    //create a join table to implement the ManyToMany relations between user and community
+    @ManyToMany
+    @JoinTable(
+            name = "user_relates_community",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "community_id"))
+    private Set<UserObject> userObjectSet;
 
     //Getters and Setters
     public Long getId() {
@@ -63,7 +72,7 @@ public class UserObject {
         this.userProfile = userProfile;
     }
 
-    //No Args Contructor
+    //No Args Constructor
 
     public UserObject() {
     }

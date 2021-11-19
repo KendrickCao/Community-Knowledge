@@ -13,7 +13,7 @@ public interface UserObjectRepository extends CrudRepository<UserObject, Long> {
     //1. Save the user
     UserObject save(UserObject userObject);
 
-    //2. Retreive all Users
+    //2. Retrieve all Users
     Set<UserObject> findAll();
 
     //3. Get a user by ID
