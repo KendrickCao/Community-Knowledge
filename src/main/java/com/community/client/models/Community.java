@@ -52,6 +52,10 @@ public class Community {
         this.communitySet = communitySet;
     }
 
+    //No Args Constructor
+    public Community() {
+    }
+
     @Override
     public String toString() {
         return "Community{" +
