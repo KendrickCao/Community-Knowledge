@@ -1,5 +1,8 @@
 package com.community.client.models;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -7,7 +10,7 @@ import java.util.Set;
 public class Community {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "community_id")
+    @Column(name = "community_id",updatable = false)
     private Long id;
 
     @Column(name = "community_name")
@@ -16,9 +19,9 @@ public class Community {
     @Column(name = "description")
     private String description;
 
-    @ManyToMany(mappedBy = "userObjectSet", cascade = CascadeType.ALL)
-    private Set<Community> communitySet;
-
+    @JsonIgnore
+    @ManyToMany(mappedBy = "communitySet", fetch = FetchType.EAGER)
+    private Set<UserObject> userObjectSet = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -44,12 +47,12 @@ public class Community {
         this.description = description;
     }
 
-    public Set<Community> getCommunitySet() {
-        return communitySet;
+    public Set<UserObject> getUserObjectSet() {
+        return userObjectSet;
     }
 
-    public void setCommunitySet(Set<Community> communitySet) {
-        this.communitySet = communitySet;
+    public void setUserObjectSet(Set<UserObject> userObjectSet) {
+        this.userObjectSet = userObjectSet;
     }
 
     //No Args Constructor
@@ -62,7 +65,11 @@ public class Community {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
-                ", communitySet=" + communitySet +
+                ", userObjectSet=" + userObjectSet +
                 '}';
+    }
+
+    public void addUserToCommunity(UserObject userObject) {
+        userObjectSet.add(userObject);
     }
 }

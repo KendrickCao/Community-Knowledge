@@ -1,5 +1,6 @@
 package com.community.client.models;
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -24,12 +25,14 @@ public class UserObject {
     private UserProfile userProfile;
 
     //create a join table to implement the ManyToMany relations between user and community
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(
             name = "user_relates_community",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "community_id"))
-    private Set<UserObject> userObjectSet;
+    private Set<Community> communitySet = new HashSet<>();
+
+
 
     //Getters and Setters
     public Long getId() {
@@ -72,6 +75,13 @@ public class UserObject {
         this.userProfile = userProfile;
     }
 
+    public Set<Community> getCommunitySet() {
+        return communitySet;
+    }
+
+    public void setCommunitySet(Set<Community> communitySet) {
+        this.communitySet = communitySet;
+    }
     //No Args Constructor
 
     public UserObject() {
@@ -92,6 +102,7 @@ public class UserObject {
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", userProfile=" + userProfile +
+                ", communitySet=" + communitySet +
                 '}';
     }
 }
