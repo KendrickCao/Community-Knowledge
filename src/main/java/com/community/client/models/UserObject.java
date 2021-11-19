@@ -1,5 +1,6 @@
 package com.community.client.models;
 import javax.persistence.*;
+import java.util.Optional;
 
 @Entity
 @Table(name = "user_table")
@@ -74,6 +75,8 @@ public class UserObject {
         this.email = email;
         this.password = password;
     }
+
+
 
     @Override
     public String toString() {
