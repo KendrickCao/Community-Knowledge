@@ -2,6 +2,8 @@ package com.community.client.models;
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.Optional;
+
 
 @Entity
 @Table(name = "user_table")
@@ -12,13 +14,13 @@ public class UserObject {
     @Column(name = "user_id")
     private Long id;
 
-    @Column(name = "user_name")
+    @Column(name = "user_name", nullable = false)
     private String name;
 
-    @Column(name = "user_email")
+    @Column(name = "user_email", nullable = false, unique = true)
     private String email;
 
-    @Column(name = "user_password")
+    @Column(name = "user_password", nullable = false)
     private String password;
 
     @OneToOne(mappedBy = "userObject", cascade = CascadeType.ALL)
@@ -93,6 +95,8 @@ public class UserObject {
         this.email = email;
         this.password = password;
     }
+
+
 
     @Override
     public String toString() {
