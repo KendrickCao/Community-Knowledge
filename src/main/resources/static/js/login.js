@@ -70,10 +70,14 @@ const loginUser = async function (e) {
             body:JSON.stringify(userObject)
         })
         if (response.status =="200") {
+            try {
                 const data = await response.json()
                 var cookieInformation = {email: data.email, id: data.id, name: data.name};
                 var userInformation = JSON.stringify(cookieInformation);
                 setLoginCookie(userInformation, 1);
+            } catch (err) {
+                window.alert("Invalid Email and/or Password.")
+            }
         } else {
             window.alert("A problem has occurred. Please try again later.")
         }
