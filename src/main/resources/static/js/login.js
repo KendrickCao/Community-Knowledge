@@ -5,7 +5,9 @@ var userPassword = null;
 
 // Function to validate the userInputs
 const validate = function (elementName, userInput) {
+
     let validated = false;
+
     if (elementName === "email") {
         if (userInput.length > 6) {
             validated = true;
@@ -28,7 +30,7 @@ const captureUserInput = function (e) {
 
     const userInput = e.target.value;
     const elementName = e.target.name;
-    //Based on name, assign values and do validation
+
     if (elementName === "email") {
         const validated = validate(elementName, userInput);
         if (validated) {
@@ -42,17 +44,25 @@ const captureUserInput = function (e) {
     }
 };
 
+// Function to set cookie to contain user information retrieved from user_table DB
+const setLoginCookie = function (userInformation, days){
+
+    var date = new Date();
+    date.setTime(date.getTime() + (days*24*60*60*1000));
+    var expires = "expires="+ date.toUTCString();
+    document.cookie = userInformation + expires + ";path=/";
+}
+
 // Function to get userObject and send to user_table database if user credentials are valid.
 const createUser = async function (e) {
+
     e.preventDefault();
     if (userEmail !=null && userPassword !=null) {
         loginButton.disabled = true;
-        //Create User Object
         const userObject = {
             email:userEmail,
             password:userPassword
         }
-
         const response = await fetch("http://localhost:8081/api/login-user",{
             method:"POST",
             headers:{
@@ -61,21 +71,16 @@ const createUser = async function (e) {
             body:JSON.stringify(userObject)
 
         })
-        if(response.status =="200"){
+        if (response.status =="200") {
             const data = await response.json()
-            //store the user details in a cookie or on local storage TODO
-            //Application cookies inspect
-
-
-            //Create a JS object lets say loggedinUser = {email:data.email}
-            //JSON.stringify(the JS object)
-            console.log(data);
-        }else{
+            var cookieInformation= {email:data.email,id:data.id,name:data.name};
+            var userInformation = JSON.stringify(cookieInformation);
+            setLoginCookie(userInformation, 1);
+        } else {
             window.alert("A problem has occurred. Please try again later.")
         }
-
     } else {
-        window.alert("Invalid user credentials - Please try again.")
+        window.alert("A problem has occurred. Please try again later.")
     }
 };
 
