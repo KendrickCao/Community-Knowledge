@@ -53,7 +53,7 @@ const createUser = async function (e) {
             password:userPassword
         }
 
-        const response = await fetch("http://localhost:8081/api/get-user-email/{email}",{
+        const response = await fetch("http://localhost:8081/api/login-user",{
             method:"POST",
             headers:{
                 "Content-type":"application/json"
@@ -63,6 +63,12 @@ const createUser = async function (e) {
         })
         if(response.status =="200"){
             const data = await response.json()
+            //store the user details in a cookie or on local storage TODO
+            //Application cookies inspect
+
+
+            //Create a JS object lets say loggedinUser = {email:data.email}
+            //JSON.stringify(the JS object)
             console.log(data);
         }else{
             window.alert("A problem has occurred. Please try again later.")
