@@ -15,4 +15,9 @@ public class MainController {
         return modelAndView;
     }
 
+    @GetMapping("/Login")
+    public ModelAndView showLoginPage(ModelAndView modelAndView){
+        modelAndView = new ModelAndView("/login/Login");
+        return modelAndView;
+    }
 }

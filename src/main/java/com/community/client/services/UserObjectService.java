@@ -50,4 +50,14 @@ public class UserObjectService {
         }
     }
 
+    //5. To get user by password
+    public UserObject getUserByPassword(String password) {
+        Optional<UserObject> userObjectOptional = userObjectRepository.findUserObjectByPassword(password);
+        if (userObjectOptional.isPresent()) {
+            return userObjectOptional.get();
+        } else {
+            return null;
+        }
+    }
+
 }

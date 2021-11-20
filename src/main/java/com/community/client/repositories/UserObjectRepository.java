@@ -2,6 +2,7 @@ package com.community.client.repositories;
 
 import com.community.client.models.UserObject;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
@@ -22,5 +23,6 @@ public interface UserObjectRepository extends CrudRepository<UserObject, Long> {
     //4. Get a User by Email
     Optional<UserObject> findUserObjectByEmail(String email);
 
-
+    //5. Get a User by Password
+    Optional<UserObject> findUserObjectByPassword(String password);
 }
