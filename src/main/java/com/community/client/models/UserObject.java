@@ -7,6 +7,11 @@ import java.util.Optional;
 
 @Entity
 @Table(name = "user_table")
+@NamedQueries ({
+        @NamedQuery(name = "UserObject.getEmail",
+        query = "SELECT b FROM UserObject b WHERE b.name = :name")
+        })
+
 public class UserObject {
 
     @Id
