@@ -23,6 +23,9 @@ public class Community {
     @ManyToMany(mappedBy = "communitySet", fetch = FetchType.EAGER)
     private Set<UserObject> userObjectSet = new HashSet<>();
 
+    @OneToMany(mappedBy ="Community",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private Set<Project>projects;
+
     public Long getId() {
         return id;
     }
@@ -55,6 +58,14 @@ public class Community {
         this.userObjectSet = userObjectSet;
     }
 
+    public Set<Project> getProjects() {
+        return projects;
+    }
+
+    public void setProjects(Set<Project> projects) {
+        this.projects = projects;
+    }
+
     //No Args Constructor
     public Community() {
     }
@@ -66,6 +77,7 @@ public class Community {
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", userObjectSet=" + userObjectSet +
+                ", projects=" + projects +
                 '}';
     }
 

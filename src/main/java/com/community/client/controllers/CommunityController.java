@@ -46,7 +46,7 @@ public class CommunityController {
 
     //end point to get all communities
     @GetMapping("/api/communities")
-    private Set<Community> getAllCommunities(){
+    private Set<Community>  getAllCommunities(){
         return communityService.getAllCommunities();
     }
 
