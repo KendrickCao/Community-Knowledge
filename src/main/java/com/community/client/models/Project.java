@@ -1,5 +1,7 @@
 package com.community.client.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 
@@ -23,8 +25,12 @@ public class Project {
     @Column(name = "funds_received")
     private BigDecimal fundsReceived;
 
+    @Column(name = "creator_userid",nullable = false)
+    private Long creatorUserId;
+
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "community_id", nullable = false)
+    @JoinColumn(name = "community_id",nullable = false)
     private Community community;
 
     public Project() {
@@ -70,6 +76,14 @@ public class Project {
         this.fundsReceived = fundsReceived;
     }
 
+    public Long getCreatorUserId() {
+        return creatorUserId;
+    }
+
+    public void setCreatorUserId(Long creatorUserId) {
+        this.creatorUserId = creatorUserId;
+    }
+
     public Community getCommunity() {
         return community;
     }
@@ -86,6 +100,7 @@ public class Project {
                 ", description='" + description + '\'' +
                 ", fundsRequired=" + fundsRequired +
                 ", fundsReceived=" + fundsReceived +
+                ", creatorUserId=" + creatorUserId +
                 ", community=" + community +
                 '}';
     }
