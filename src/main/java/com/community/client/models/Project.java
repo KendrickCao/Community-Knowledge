@@ -1,12 +1,13 @@
 package com.community.client.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "project")
+@Table(name = "project_table")
 public class Project {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,7 +29,7 @@ public class Project {
     @Column(name = "creator_userid",nullable = false)
     private Long creatorUserId;
 
-    @JsonIgnore
+    @JsonIgnoreProperties("projectSet")
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "community_id",nullable = false)
     private Community community;

@@ -9,12 +9,15 @@ import java.util.Set;
 
 @Service
 public class ProjectService {
-    public ProjectRepository projectRepository;
+
+    //Dependency Injection of the project repository
+    private ProjectRepository projectRepository;
 
     public ProjectService(ProjectRepository projectRepository) {
         this.projectRepository = projectRepository;
     }
 
+    //Methods in the service
     public Project saveProject(Project project){
         return projectRepository.save(project);
     }

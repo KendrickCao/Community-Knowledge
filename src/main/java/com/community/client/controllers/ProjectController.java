@@ -2,7 +2,6 @@ package com.community.client.controllers;
 
 import com.community.client.models.Community;
 import com.community.client.models.Project;
-import com.community.client.models.UserObject;
 import com.community.client.services.CommunityService;
 import com.community.client.services.ProjectService;
 import com.community.client.services.UserObjectService;
@@ -14,17 +13,15 @@ import java.util.Set;
 public class ProjectController {
     private final ProjectService projectService;
     private final CommunityService communityService;
-    private final UserObjectService userObjectService;
 
-    public ProjectController(ProjectService projectService, CommunityService communityService, UserObjectService userObjectService) {
+    public ProjectController(ProjectService projectService, CommunityService communityService) {
         this.projectService = projectService;
         this.communityService = communityService;
-        this.userObjectService = userObjectService;
     }
 
     //end point to create/update a project(when create a project,the community is the Required field)
-    @PostMapping("/api/add-project/{userId}/{communityId}")
-    private Project addProject(@RequestBody Project project, @PathVariable Long userId,@PathVariable Long communityId){
+    @PostMapping("/api/add-project/userId/{userId}/communityId/{communityId}")
+    public Project addProject(@RequestBody Project project, @PathVariable Long userId,@PathVariable Long communityId){
         Community community = communityService.getCommunityById(communityId);
         //save userId from url to creatorUserId
         project.setCreatorUserId(userId);
