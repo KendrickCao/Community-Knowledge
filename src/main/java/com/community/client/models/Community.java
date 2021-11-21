@@ -1,5 +1,6 @@
 package com.community.client.models;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -22,6 +23,10 @@ public class Community {
     @JsonIgnore
     @ManyToMany(mappedBy = "communitySet", fetch = FetchType.EAGER)
     private Set<UserObject> userObjectSet = new HashSet<>();
+
+    @OneToMany(mappedBy ="community",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JsonIgnoreProperties("community")
+    private Set<Project> projectSet = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -55,6 +60,14 @@ public class Community {
         this.userObjectSet = userObjectSet;
     }
 
+    public Set<Project> getProjectSet() {
+        return projectSet;
+    }
+
+    public void setProjectSet(Set<Project> projectSet) {
+        this.projectSet = projectSet;
+    }
+
     //No Args Constructor
     public Community() {
     }
@@ -66,6 +79,7 @@ public class Community {
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", userObjectSet=" + userObjectSet +
+                ", projectSet=" + projectSet +
                 '}';
     }
 

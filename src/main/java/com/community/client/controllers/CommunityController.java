@@ -29,6 +29,7 @@ public class CommunityController {
         Set<Community> communitySet = userObject.getCommunitySet();
         communitySet.add(savedCommunity);
         userObject.setCommunitySet(communitySet);
+        //the user who create this community will automatically join this community
         userObjectService.saveUser(userObject);
         return savedCommunity;
     }
@@ -46,7 +47,7 @@ public class CommunityController {
 
     //end point to get all communities
     @GetMapping("/api/communities")
-    private Set<Community> getAllCommunities(){
+    private Set<Community>  getAllCommunities(){
         return communityService.getAllCommunities();
     }
 
