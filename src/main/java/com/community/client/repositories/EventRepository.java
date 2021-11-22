@@ -12,7 +12,7 @@ public interface EventRepository extends CrudRepository <Event, Long> {
 
     Event save(Event event);
 
-    Set<Event> findall();
+    Set<Event> findAll();
 
     Optional<Event> findEventById (Long Id);
 
