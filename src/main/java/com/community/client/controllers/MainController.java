@@ -20,4 +20,10 @@ public class MainController {
         modelAndView = new ModelAndView("/login/Login");
         return modelAndView;
     }
+
+    @GetMapping("/EventForm")
+    public ModelAndView showEventFormPage(ModelAndView modelAndView){
+        modelAndView = new ModelAndView("/event/EventForm");
+        return modelAndView;
+    }
 }
