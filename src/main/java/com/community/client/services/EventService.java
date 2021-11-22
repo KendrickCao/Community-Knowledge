@@ -11,12 +11,12 @@ import java.util.Set;
 public class EventService {
 
     private EventRepository eventRepository;
-
     public EventService(EventRepository eventRepository) {
         this.eventRepository = eventRepository;
     }
 
     public Event saveEvent(Event event){
+
         return eventRepository.save(event);
     }
 
