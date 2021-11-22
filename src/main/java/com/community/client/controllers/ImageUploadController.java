@@ -28,9 +28,9 @@ public class ImageUploadController {
         //Check if the image is of right type
         Object imageObject = image.getContentType();
         System.out.println(imageObject);
-        if (imageObject != null && !imageObject.toString().equals("image/jpeg") || imageObject != null && !imageObject.toString().equals("image/jpg")) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Only JPEG/JPG uploads allowed");
-        }
+//        if (imageObject != null && !imageObject.toString().equals("image/jpeg") || imageObject != null && !imageObject.toString().equals("image/jpg")) {
+//            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Only JPEG/JPG uploads allowed");
+//        }
 
         //check if the image size is within specified range
         long imageSize = image.getSize();
@@ -43,7 +43,7 @@ public class ImageUploadController {
         String uploadDir = "src/main/resources/static/uploads";
         try {
             Files.copy(image.getInputStream(), Paths.get(uploadDir + File.separator + image.getOriginalFilename()), StandardCopyOption.REPLACE_EXISTING);
-            return ResponseEntity.status(HttpStatus.OK).body(image.getOriginalFilename() + "@" + " Uploaded Successfully!");
+            return ResponseEntity.status(HttpStatus.OK).body(image.getOriginalFilename());
         } catch (Exception e) {
             return ResponseEntity.internalServerError().body(e.getMessage() + "\n File Could be Uploaded. Please tray again later.");
         }

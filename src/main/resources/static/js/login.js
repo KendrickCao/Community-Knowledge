@@ -50,7 +50,8 @@ const setLoginCookie = function (userInformation, days){
     var date = new Date();
     date.setTime(date.getTime() + (days*24*60*60*1000));
     var expires = "expires="+ date.toUTCString();
-    document.cookie = userInformation + expires + ";path=/";
+    document.cookie = JSON.stringify(userInformation)  + expires + ";path=/";
+    // document.cookie = `userId = ${userInformation.id}` +"expires="+ expires + ";path=/"
 }
 
 // Function to post userObject and to store user information as a cookie after successful login.
@@ -73,8 +74,7 @@ const loginUser = async function (e) {
             try {
                 const data = await response.json()
                 var cookieInformation = {email: data.email, id: data.id, name: data.name};
-                var userInformation = JSON.stringify(cookieInformation);
-                setLoginCookie(userInformation, 1);
+                setLoginCookie(cookieInformation, 1);
             } catch (err) {
                 window.alert("Invalid Email and/or Password.")
             }
