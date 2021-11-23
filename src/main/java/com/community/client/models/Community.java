@@ -21,7 +21,7 @@ public class Community {
     @Column(name = "description", length = 800)
     private String description;
 
-    @JsonIgnore
+    @JsonIgnoreProperties("communitySet")
     @ManyToMany(mappedBy = "communitySet", fetch = FetchType.EAGER)
     private Set<UserObject> userObjectSet = new HashSet<>();
 

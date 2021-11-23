@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.com">
+<head th:replace="fragments/base::common-header(~{::title},~{::link})">
+    <meta charset="UTF-8">
+    <title>Communities</title>
+    <link th:href="@{/css/community.list.styles.css}" rel="stylesheet"/>
+
+    <!--    Google Fonts connect-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Eczar&family=Montserrat&family=Oswald:wght@200&display=swap" rel="stylesheet">
+</head>
+<body th:replace="fragments/base::common-body(~{::#community-list},~{} ,~{::script})">
+<div id="community-list" class="container">
+    <div class="row" >
+        <div class="col col-md-5 mb-5 p-3" th:each="community : ${communities}">
+            <div class="community-list__container" >
+                <img th:src="@{${'/uploads/'+community.communityImage}}" class="card-img-top fluid" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${community.name}"></h5>
+                    <p class="card-text" th:text="${community.description}">
+                    </p>
+                    <a th:href="@{${'/community/'+community.id}}" class="btn btn-primary">READ MORE</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!--Attach JS here-->
+<script th:src="@{/js/communities.js}"></script>
+</body>
+</html>
