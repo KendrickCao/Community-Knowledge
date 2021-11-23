@@ -17,16 +17,21 @@ public class Community {
     @Column(name = "community_name")
     private String name;
 
-    @Column(name = "description")
+    @Lob
+    @Column(name = "description", length = 800)
     private String description;
 
-    @JsonIgnore
+    @JsonIgnoreProperties("communitySet")
     @ManyToMany(mappedBy = "communitySet", fetch = FetchType.EAGER)
     private Set<UserObject> userObjectSet = new HashSet<>();
 
     @OneToMany(mappedBy ="community",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JsonIgnoreProperties("community")
     private Set<Project> projectSet = new HashSet<>();
+
+    //Adding the field to handle the image name
+    @Column(name = "community_image")
+    private String communityImage;
 
     public Long getId() {
         return id;
@@ -68,6 +73,14 @@ public class Community {
         this.projectSet = projectSet;
     }
 
+    public String getCommunityImage() {
+        return communityImage;
+    }
+
+    public void setCommunityImage(String communityImage) {
+        this.communityImage = communityImage;
+    }
+
     //No Args Constructor
     public Community() {
     }
@@ -80,6 +93,7 @@ public class Community {
                 ", description='" + description + '\'' +
                 ", userObjectSet=" + userObjectSet +
                 ", projectSet=" + projectSet +
+                ", communityImage='" + communityImage + '\'' +
                 '}';
     }
 

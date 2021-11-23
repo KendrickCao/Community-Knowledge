@@ -1,4 +1,6 @@
 package com.community.client.models;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -32,6 +34,7 @@ public class UserObject {
     private UserProfile userProfile;
 
     //create a join table to implement the ManyToMany relations between user and community
+    @JsonIgnoreProperties("userObjectSet")
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(
             name = "user_relates_community",

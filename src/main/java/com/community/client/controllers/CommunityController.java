@@ -34,7 +34,7 @@ public class CommunityController {
         return savedCommunity;
     }
 
-    ///This method is for the user who is not creating the community but only want to join it.
+    ///This method is for joining the community
    @PutMapping("/api/update-community/userid/{userId}/community-id/{communityId}")
     private UserObject addUserToCommunity(@PathVariable Long userId, @PathVariable Long communityId){
         UserObject userObject = userObjectService.getUserById(userId);

@@ -20,11 +20,10 @@ public class ProjectController {
     }
 
     //end point to create/update a project(when create a project,the community is the Required field)
-    @PostMapping("/api/add-project/userId/{userId}/communityId/{communityId}")
-    public Project addProject(@RequestBody Project project, @PathVariable Long userId,@PathVariable Long communityId){
+    @PostMapping("/api/add-project/communityId/{communityId}")
+    public Project addProject(@RequestBody Project project,@PathVariable Long communityId){
         Community community = communityService.getCommunityById(communityId);
-        //save userId from url to creatorUserId
-        project.setCreatorUserId(userId);
+       //We will take the user as part of request payload
         project.setCommunity(community);
         Project savedProject = projectService.saveProject(project);
         Set<Project> projectSet = community.getProjectSet();
