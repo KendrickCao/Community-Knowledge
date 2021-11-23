@@ -17,6 +17,7 @@ public class EventController {
 
     @PostMapping("/api/add-event/userId/{userId}")
     public Event addEvent(@RequestBody Event event, @PathVariable Long userId){
+        event.setCreatorUserId(userId);
         Event savedEvent = eventService.saveEvent(event);
         return savedEvent;
     }
