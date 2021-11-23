@@ -1,5 +1,7 @@
 package com.community.client.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 
 @Entity
@@ -10,20 +12,30 @@ public class Event {
     @Column(name = "event_id", updatable = false, nullable = false)
     private Long id;
 
+    @ManyToOne
+    @JoinColumn (name = "community_id")
+    @JsonIgnoreProperties("event")
+    private Community community;
+
+    @ManyToOne
+    @JoinColumn (name = "project_id")
+    @JsonIgnoreProperties("event")
+    private Project project;
+
     @Column (name = "event_date", nullable = false)
     private String date;
 
     @Column (name = "event_name", nullable = false)
     private String name;
 
-    @Column (name = "about_section", nullable = false)
+    @Column (name = "about_section")
     private String aboutSection;
 
     @Column (name = "event_contributors", nullable = false)
     private String contributors;
 
     @Column(name = "creator_userid",nullable = false)
-    private Long creatorUserId;
+    private String creatorUserId;
 
     public Event(){
     }
@@ -68,12 +80,28 @@ public class Event {
         this.contributors = contributors;
     }
 
-    public Long getCreatorUserId() {
+    public String getCreatorUserId() {
         return creatorUserId;
     }
 
-    public void setCreatorUserId(Long creatorUserId) {
+    public void setCreatorUserId(String creatorUserId) {
         this.creatorUserId = creatorUserId;
+    }
+
+    public Community getCommunity() {
+        return community;
+    }
+
+    public void setCommunity(Community community) {
+        this.community = community;
+    }
+
+    public Project getProject() {
+        return project;
+    }
+
+    public void setProject(Project project) {
+        this.project = project;
     }
 
     @Override
