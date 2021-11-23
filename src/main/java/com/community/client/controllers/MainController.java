@@ -20,4 +20,10 @@ public class MainController {
         modelAndView = new ModelAndView("/login/Login");
         return modelAndView;
     }
+
+    @GetMapping("/CreateProject")
+    public ModelAndView showCreateProjectPage(ModelAndView modelAndView){
+        modelAndView = new ModelAndView("/project/CreateProject");
+        return modelAndView;
+    }
 }

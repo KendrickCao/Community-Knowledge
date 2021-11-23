@@ -4,9 +4,7 @@ import com.community.client.models.Community;
 import com.community.client.models.Project;
 import com.community.client.services.CommunityService;
 import com.community.client.services.ProjectService;
-import com.community.client.services.UserObjectService;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.Set;
 
 @RestController
