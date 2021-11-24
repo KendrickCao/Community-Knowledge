@@ -34,12 +34,8 @@
                         <input class = "form-control" id="fundsCollected" placeholder="Funds collected.."/>
                         <span class="input-group-text">£</span>
                     </div>
-                    <select class="form-select mt-3" name="communitySelect" onChange="window.open(this.options[this.selectedIndex].value);">
+                    <select class="form-select mt-3" id="communitySelect" name="communitySelect">
                         <option selected>Choose a community</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <!--redirect to add-community page-->
-                        <option value="add-community">Create a new community</option>
                     </select>
                     <label for="uploadCoverImg" class="form-label mt-3">Upload Cover Image For Project:</label>
                     <input class="form-control" type="file" id="uploadCoverImg">
