@@ -27,6 +27,9 @@ public class UserProfile {
     @Column(name = "phone")
     private int phone;
 
+    @OneToOne(mappedBy = "userProfile")
+    private Address address;
+
     @OneToOne
     @JoinColumn(name = "user_id")
     @JsonIgnore
@@ -87,5 +90,9 @@ public class UserProfile {
     public void setUserObject(UserObject userObject) {
         this.userObject = userObject;
     }
+
+    public Address getAddress() {return address;}
+
+    public void setAddress(Address address) {this.address = address;}
 }
 

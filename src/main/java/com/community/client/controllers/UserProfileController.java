@@ -1,8 +1,10 @@
 package com.community.client.controllers;
 
+import com.community.client.models.Address;
 import com.community.client.models.UserObject;
 import com.community.client.models.UserProfile;
 import com.community.client.requests.UserProfileRequest;
+import com.community.client.services.AddressService;
 import com.community.client.services.UserObjectService;
 import com.community.client.services.UserProfileService;
 import org.springframework.web.bind.annotation.*;
@@ -11,10 +13,12 @@ import org.springframework.web.bind.annotation.*;
 public class UserProfileController {
     private final UserObjectService userObjectService;
     private final UserProfileService userProfileService;
+    private final AddressService addressService;
 
-    public UserProfileController(UserObjectService userObjectService, UserProfileService userProfileService) {
+    public UserProfileController(UserObjectService userObjectService, UserProfileService userProfileService, AddressService addressService) {
         this.userObjectService = userObjectService;
         this.userProfileService = userProfileService;
+        this.addressService = addressService;
     }
 
     @PutMapping("/api/update-profile/{userId}")
@@ -29,12 +33,18 @@ public class UserProfileController {
 
             //If the profile exists, then load that profile otherwise create a new profile.
             UserProfile userProfile;
+            Address address;
             //check if the userObject has a profile associated already
             UserProfile userProfileFound = userObject.getUserProfile();
             if(userProfileFound == null){
                 userProfile = new UserProfile();
+                address = new Address();
             }else{
                 userProfile = userProfileFound;
+                address = userProfile.getAddress();
+                if(address ==null){
+                    address = new Address();
+                }
             }
 
             //We set the user profile fields with the payload we have received
@@ -44,6 +54,20 @@ public class UserProfileController {
             userProfile.setPhone(userProfileRequest.getPhone());
             userProfile.setQualifications(userProfileRequest.getQualifications());
             userProfile.setUserObject(userObject);
+            //userProfileService.saveProfile(userProfile);
+
+            //update the address from the payload received in the form of request object
+            address.setLine1Address(userProfileRequest.getLineOneAddress());
+            address.setLine2Address(userProfileRequest.getLineTwoAddress());
+            address.setCity(userProfileRequest.getCity());
+            address.setPostcode(userProfileRequest.getPostCode());
+            address.setCountry(userProfileRequest.getCountry());
+            Address savedAddress = addressService.saveAddress(address);
+
+            //update the user profile with the saved address
+            userProfile.setAddress(savedAddress);
+
+            //now we save the user profile
             userProfileService.saveProfile(userProfile);
 
             userObject.setName(userProfileRequest.getName());
