@@ -14,7 +14,7 @@
 <div id="community-list" class="container">
     <div class="row" >
         <div class="col col-md-5 mb-5 p-3" th:each="community : ${communities}">
-            <div class="card mt-2 mb-2" >
+            <div class="community-list__container" >
                 <img th:src="@{${'/uploads/'+community.communityImage}}" class="card-img-top fluid" alt="...">
                 <div class="card-body">
                     <h5 class="card-title" th:text="${community.name}"></h5>
