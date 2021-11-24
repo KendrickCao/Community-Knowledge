@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.Set;
 
 @Entity
 @Table(name = "project_table")
@@ -33,6 +34,10 @@ public class Project {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "community_id",nullable = false)
     private Community community;
+
+    @OneToMany(mappedBy = "project")
+    @JsonIgnoreProperties("project")
+    private Set<Event> event;
 
     public Project() {
     }
@@ -91,6 +96,14 @@ public class Project {
 
     public void setCommunity(Community community) {
         this.community = community;
+    }
+
+    public Set<Event> getEvent() {
+        return event;
+    }
+
+    public void setEvent(Set<Event> event) {
+        this.event = event;
     }
 
     @Override

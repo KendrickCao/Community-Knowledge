@@ -14,12 +14,16 @@ public class Community {
     @Column(name = "community_id",updatable = false)
     private Long id;
 
-    @Column(name = "community_name")
+    @Column(name = "community_name", nullable = false)
     private String name;
 
     @Lob
-    @Column(name = "description", length = 800)
+    @Column(name = "description", length = 800, nullable = false)
     private String description;
+
+    @OneToMany(mappedBy = "community")
+    @JsonIgnoreProperties("community")
+    private Set<Event> event;
 
     @JsonIgnoreProperties("communitySet")
     @ManyToMany(mappedBy = "communitySet", fetch = FetchType.EAGER)
@@ -79,6 +83,14 @@ public class Community {
 
     public void setCommunityImage(String communityImage) {
         this.communityImage = communityImage;
+    }
+
+    public Set<Event> getEvent() {
+        return event;
+    }
+
+    public void setEvent(Set<Event> event) {
+        this.event = event;
     }
 
     //No Args Constructor
