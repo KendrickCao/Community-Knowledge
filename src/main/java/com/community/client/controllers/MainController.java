@@ -31,6 +31,12 @@ public class MainController {
         return modelAndView;
     }
 
+    @GetMapping("/EventForm")
+    public ModelAndView showEventPage(ModelAndView modelAndView) {
+        modelAndView = new ModelAndView("/event/EventForm");
+        return modelAndView;
+    }
+
     //Controller to load the VIEW which allows user to create a new community
     @RequestMapping("/add-community")
     public ModelAndView addCommunity(ModelAndView modelAndView) {

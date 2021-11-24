@@ -37,8 +37,10 @@ public class Event {
     @Column(name = "creator_userid",nullable = false)
     private String creatorUserId;
 
-    public Event(){
-    }
+    @Column(name = "event_image")
+    private String eventImage;
+
+    public Event(){ }
 
     public Long getId() {
         return id;
@@ -104,15 +106,22 @@ public class Event {
         this.project = project;
     }
 
+    public String getEventImage() { return eventImage; }
+
+    public void setEventImage(String eventImage) { this.eventImage = eventImage; }
+
     @Override
     public String toString() {
         return "Event{" +
                 "id=" + id +
+                ", community=" + community +
+                ", project=" + project +
                 ", date='" + date + '\'' +
                 ", name='" + name + '\'' +
                 ", aboutSection='" + aboutSection + '\'' +
                 ", contributors='" + contributors + '\'' +
-                ", creatorUserId=" + creatorUserId +
+                ", creatorUserId='" + creatorUserId + '\'' +
+                ", eventImage='" + eventImage + '\'' +
                 '}';
     }
 }
