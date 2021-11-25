@@ -105,6 +105,7 @@ public class Project {
 
     public void setProjectCoverImage(String projectCoverImage) {
         this.projectCoverImage = projectCoverImage;
+    }
 
     public Set<Event> getEvent() {
         return event;
