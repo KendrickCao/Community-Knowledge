@@ -10,6 +10,11 @@ public class UserProfileRequest {
     private String hobbies;
     private String achievements;
     private int phone;
+    private String lineOneAddress;
+    private String lineTwoAddress;
+    private String city;
+    private String postCode;
+    private String country;
 
     public String getName() {
         return name;
@@ -65,5 +70,63 @@ public class UserProfileRequest {
 
     public void setPhone(int phone) {
         this.phone = phone;
+    }
+
+    public String getLineOneAddress() {
+        return lineOneAddress;
+    }
+
+    public void setLineOneAddress(String lineOneAddress) {
+        this.lineOneAddress = lineOneAddress;
+    }
+
+    public String getLineTwoAddress() {
+        return lineTwoAddress;
+    }
+
+    public void setLineTwoAddress(String lineTwoAddress) {
+        this.lineTwoAddress = lineTwoAddress;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getPostCode() {
+        return postCode;
+    }
+
+    public void setPostCode(String postCode) {
+        this.postCode = postCode;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public UserProfileRequest(String name, String email, String aboutYourSelf, String qualifications, String hobbies, String achievements, int phone, String lineOneAddress, String lineTwoAddress, String city, String postCode, String country) {
+        this.name = name;
+        this.email = email;
+        this.aboutYourSelf = aboutYourSelf;
+        this.qualifications = qualifications;
+        this.hobbies = hobbies;
+        this.achievements = achievements;
+        this.phone = phone;
+        this.lineOneAddress = lineOneAddress;
+        this.lineTwoAddress = lineTwoAddress;
+        this.city = city;
+        this.postCode = postCode;
+        this.country = country;
+    }
+
+    public UserProfileRequest() {
     }
 }

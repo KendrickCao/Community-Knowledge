@@ -2,6 +2,7 @@ package com.community.client.models;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.Set;
 
 @Entity
 @Table(name = "project_table")
@@ -33,6 +34,11 @@ public class Project {
 
     @Column(name = "project_cover_image")
     private String projectCoverImage;
+
+    @OneToMany(mappedBy = "project")
+    @JsonIgnoreProperties("project")
+    private Set<Event> event;
+
 
     public Project() {
     }
@@ -99,6 +105,13 @@ public class Project {
 
     public void setProjectCoverImage(String projectCoverImage) {
         this.projectCoverImage = projectCoverImage;
+
+    public Set<Event> getEvent() {
+        return event;
+    }
+
+    public void setEvent(Set<Event> event) {
+        this.event = event;
     }
 
     @Override

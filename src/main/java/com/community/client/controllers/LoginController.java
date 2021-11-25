@@ -26,7 +26,7 @@ public class LoginController {
      * stored within the user_table database. If the email and password match an existing user,
      * login is successful and a cookie can be set using the information returned by this method.
      * @param loginRequest JSON containing email and password submitted from the frontend.
-     * @return loggedInUser JSON containing user information from user_table database.
+     * @return loggedInUser Object containing user information from user_table database.
      */
     @PostMapping("/api/login-user")
     public Object loginUser(@RequestBody LoginRequest loginRequest){
