@@ -4,9 +4,7 @@ import com.community.client.models.Community;
 import com.community.client.models.Project;
 import com.community.client.services.CommunityService;
 import com.community.client.services.ProjectService;
-import com.community.client.services.UserObjectService;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.Set;
 
 @RestController
@@ -20,10 +18,11 @@ public class ProjectController {
     }
 
     //end point to create/update a project(when create a project,the community is the Required field)
-    @PostMapping("/api/add-project/communityId/{communityId}")
-    public Project addProject(@RequestBody Project project,@PathVariable Long communityId){
+    @PostMapping("/api/add-project/userId/{userId}/communityId/{communityId}")
+    public Project addProject(@RequestBody Project project, @PathVariable Long userId,@PathVariable Long communityId){
         Community community = communityService.getCommunityById(communityId);
-       //We will take the user as part of request payload
+        //save userId from url to creatorUserId
+        project.setCreatorUserId(userId);
         project.setCommunity(community);
         Project savedProject = projectService.saveProject(project);
         Set<Project> projectSet = community.getProjectSet();
@@ -32,6 +31,7 @@ public class ProjectController {
         communityService.saveCommunity(community);
         return savedProject;
     }
+
 
     //end point to get all project
     @GetMapping("/api/projects")

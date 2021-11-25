@@ -31,6 +31,10 @@ public class MainController {
         return modelAndView;
     }
 
+    @GetMapping("/CreateProject")
+    public ModelAndView showCreateProjectPage(ModelAndView modelAndView) {
+        modelAndView = new ModelAndView("/project/CreateProject");
+
     @GetMapping("/EventForm")
     public ModelAndView showEventPage(ModelAndView modelAndView) {
         modelAndView = new ModelAndView("/event/EventForm");

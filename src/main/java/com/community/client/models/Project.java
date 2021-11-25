@@ -1,8 +1,5 @@
 package com.community.client.models;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Set;
@@ -25,7 +22,7 @@ public class Project {
     private BigDecimal fundsRequired;
 
     @Column(name = "funds_received")
-    private BigDecimal fundsReceived;
+    private BigDecimal fundsCollected;
 
     @Column(name = "creator_userid",nullable = false)
     private Long creatorUserId;
@@ -35,9 +32,13 @@ public class Project {
     @JoinColumn(name = "community_id",nullable = false)
     private Community community;
 
+    @Column(name = "project_cover_image")
+    private String projectCoverImage;
+
     @OneToMany(mappedBy = "project")
     @JsonIgnoreProperties("project")
     private Set<Event> event;
+
 
     public Project() {
     }
@@ -74,12 +75,12 @@ public class Project {
         this.fundsRequired = fundsRequired;
     }
 
-    public BigDecimal getFundsReceived() {
-        return fundsReceived;
+    public BigDecimal getFundsCollected() {
+        return fundsCollected;
     }
 
-    public void setFundsReceived(BigDecimal fundsReceived) {
-        this.fundsReceived = fundsReceived;
+    public void setFundsCollected(BigDecimal fundsCollected) {
+        this.fundsCollected = fundsCollected;
     }
 
     public Long getCreatorUserId() {
@@ -98,6 +99,13 @@ public class Project {
         this.community = community;
     }
 
+    public String getProjectCoverImage() {
+        return projectCoverImage;
+    }
+
+    public void setProjectCoverImage(String projectCoverImage) {
+        this.projectCoverImage = projectCoverImage;
+
     public Set<Event> getEvent() {
         return event;
     }
@@ -113,9 +121,10 @@ public class Project {
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", fundsRequired=" + fundsRequired +
-                ", fundsReceived=" + fundsReceived +
+                ", fundsCollected=" + fundsCollected +
                 ", creatorUserId=" + creatorUserId +
                 ", community=" + community +
+                ", projectCoverImage='" + projectCoverImage + '\'' +
                 '}';
     }
 }
