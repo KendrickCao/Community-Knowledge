@@ -4,228 +4,228 @@
 <head th:replace="fragments/base::common-header(~{::title}, ~{::link})">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title th:replace="${title}">Home</title>
+    <title >Co-Community</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!--    Common CSS-->
-
-
     <!-- Creating Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Raleway:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-    <!-- link for Fontawesome -->
-    <script src="https://kit.fontawesome.com/dbed6b6114.js" crossorigin="anonymous"></script>
-
-    <!--    Bootstrap CDN-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
     <!--Landing css(it will also be commonly shared)-->
     <link th:href= "@{/css/base.landing.css}" rel="stylesheet" />
-    <!--    Custom CSS of fragments which will replace this-->
-    <th:block th:replace="${link}"/>
+
 </head>
 <body th:replace="fragments/base::common-body(~{::#landing},~{} ,~{::script})">
 
+<div id="landing">
+    <!--Section for the company banner-->
+    <section class="companyBanner">
+        <div class="companyBannerMainContent">
+            <h2>LATEST NEWS IN YOUR COMMUNITY</h2>
+            <h3>Upcoming Community Projects</h3>
 
-<!--Section for the company banner-->
-<section class="companyBanner">
-    <div class="companyBannerMainContent">
-        <h2>LATEST NEWS IN YOUR COMMUNITY</h2>
-        <h3>Upcoming Community Projects</h3>
+            <button type="button" name="button">
+                <a href="#">More Info</a>
+            </button>
+            <div class="CompanyCurrentNewsHeadlines">
+                <h3>Cardiff Center: Expanding diversity in the community.
+                    <span>by Dan Allen</span></h3>
 
-        <button type="button" name="button">
-            <a href="#">More Info</a>
-        </button>
-        <div class="CompanyCurrentNewsHeadlines">
-            <h3>Cardiff Center: Expanding diversity in the community.
-                <span>by Dan Allen</span></h3>
+                <h3>Cardiff's Community club: Ways to improve our community.
+                    <span>by Sarah West</span></h3>
 
-            <h3>Cardiff's Community club: Ways to improve our community.
-                <span>by Sarah West</span></h3>
+                <h3>Cardiff Christmas Fair 2021: The highlight high-life.
+                    <span>by David Ohimain</span></h3>
 
-            <h3>Cardiff Christmas Fair 2021: The highlight high-life.
-                <span>by David Ohimain</span></h3>
-
-            <h3>The beauty in our community
-                <span>by Dan Allen</span></h3>
-        </div>
-    </div>
-
-    <div class="companyBannerSubContent">
-        <div class="importantTopic">
-            <img src="img/AntiVaccinationProtest.jfif" alt="Anti vaccination Protest Photo">
-            <div class="importantTopicContent">
-                <h2>Anti Vaccination Protest</h2>
-
-                <h3>New Topic 1</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                    sed do eiusmod tempor incididunt ut labore .</p>
-                <a href="#">Read More</a>
+                <h3>The beauty in our community
+                    <span>by Dan Allen</span></h3>
             </div>
         </div>
 
-        <div class="importantTopic">
-            <img src="img/AntiVaccinationProtest.jfif" alt="Anti vaccination Protest Photo">
-            <div class="importantTopicContent">
-                <h2>Anti Vaccination Protest</h2>
+        <div class="companyBannerSubContent">
+            <div class="importantTopic">
+                <img th:src="@{images/landing-page/AntiVaccinationProtest.jfif}" alt="Anti vaccination Protest Photo">
+                <div class="importantTopicContent">
+                    <h2>Anti Vaccination Protest</h2>
 
-                <h3>New Topic 1</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                    sed do eiusmod tempor incididunt ut labore.</p>
-                <a href="#">Read More</a>
+                    <h3>New Topic 1</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                        sed do eiusmod tempor incididunt ut labore .</p>
+                    <a href="#">Read More</a>
+                </div>
             </div>
-        </div>
 
-        <div class="importantTopic">
-            <img src="img/AntiVaccinationProtest.jfif" alt="Anti vaccination Protest Photo">
-            <div class="importantTopicContent">
-                <h2>Anti Vaccination Protest</h2>
+            <div class="importantTopic">
+                <img th:src="@{images/landing-page/AntiVaccinationProtest.jfif}" alt="Anti vaccination Protest Photo">
+                <div class="importantTopicContent">
+                    <h2>Anti Vaccination Protest</h2>
 
-                <h3>New Topic 1</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                    sed do eiusmod tempor incididunt ut labore.</p>
-                <a href="#">Read More</a>
+                    <h3>New Topic 1</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                        sed do eiusmod tempor incididunt ut labore.</p>
+                    <a href="#">Read More</a>
+                </div>
             </div>
-        </div>
 
-        <div class="importantTopic">
-            <img src="img/AntiVaccinationProtest.jfif" alt="Anti vaccination Protest Photo">
-            <div class="importantTopicContent">
-                <h2>Anti Vaccination Protest</h2>
+            <div class="importantTopic">
+                <img th:src="@{images/landing-page/AntiVaccinationProtest.jfif}" alt="Anti vaccination Protest Photo">
+                <div class="importantTopicContent">
+                    <h2>Anti Vaccination Protest</h2>
 
-                <h3>New Topic 1</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                    sed do eiusmod tempor incididunt ut labore.</p>
-                <a href="#">Read More</a>
+                    <h3>New Topic 1</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                        sed do eiusmod tempor incididunt ut labore.</p>
+                    <a href="#">Read More</a>
+                </div>
             </div>
-        </div>
-    </div>
-</section>
 
-<hr>
+            <div class="importantTopic">
+                <img th:src="@{images/landing-page/AntiVaccinationProtest.jfif}" alt="Anti vaccination Protest Photo">
+                <div class="importantTopicContent">
+                    <h2>Anti Vaccination Protest</h2>
 
-<main>
-    <section class="companyMainContainerLeft">
-        <h2>Top Stories</h2>
-        <div class="companyContainerTopLeft">
-            <article class="">
-                <img src="img/tvReview.jfif" alt="TV Review Photo">
-
-                <div>
-                    <h3>TV Community Review</h3>
-
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-
-                    <a href="#">Read More
-                        <span>>></span></a>
+                    <h3>New Topic 1</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                        sed do eiusmod tempor incididunt ut labore.</p>
+                    <a href="#">Read More</a>
                 </div>
-            </article>
-        </div>
-
-        <div class="companyContainerBottomLeft">
-            <article>
-                <img src="img/tvReview.jfif" alt="TV Review Photo">
-
-                <div>
-                    <h3>Election in Cardiff</h3>
-
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                    <a href="#">Read Me
-                        <span>>></span></a>
-                </div>
-            </article>
-
-            <article>
-                <img src="img/tvReview.jfif" alt="TV Review Photo">
-
-                <div>
-                    <h3>Election in Cardiff</h3>
-
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                    <a href="#">Read Me
-                        <span>>></span></a>
-                </div>
-            </article>
-
-            <article>
-                <img src="img/tvReview.jfif" alt="TV Review Photo">
-
-                <div>
-                    <h3>Summer Fair in Cardiff</h3>
-
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                    <a href="#">Read Me
-                        <span>>></span></a>
-                </div>
-            </article>
+            </div>
         </div>
     </section>
 
-    <section class="companyMainContainerRight">
-        <h2>Latest Stories</h2>
+    <hr>
 
-        <article>
-            <h4>Latest Alert</h4>
-            <div>
-                <h2>Covid Vacination: Visit you nearest Walk-in center</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    <main>
+        <section class="companyMainContainerLeft">
+            <h2>Top Stories</h2>
+            <div class="companyContainerTopLeft">
+                <article class="">
+                    <img th:src="@{images/landing-page/tvReview.jfif}" alt="TV Review Photo">
 
-                <a href="#">Read More <span>>></span></a>
+                    <div>
+                        <h3>TV Community Review</h3>
+
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+                        <a href="#">Read More
+                            <span>>></span></a>
+                    </div>
+                </article>
             </div>
-            <img src="img/cityCentre.jfif" alt="">
-        </article>
 
-        <article>
-            <h4>Latest Alert</h4>
-            <div>
-                <h2>Covid Vacination: Visit you nearest Walk-in center</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <div class="companyContainerBottomLeft">
+                <article>
+                    <img th:src="@{images/landing-page/tvReview.jfif}" alt="TV Review Photo">
 
-                <a href="#">Read More <span>>></span></a>
+                    <div>
+                        <h3>Election in Cardiff</h3>
+
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        <a href="#">Read Me
+                            <span>>></span></a>
+                    </div>
+                </article>
+
+                <article>
+                    <img th:src="@{images/landing-page/tvReview.jfif}" alt="TV Review Photo">
+
+                    <div>
+                        <h3>Election in Cardiff</h3>
+
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        <a href="#">Read Me
+                            <span>>></span></a>
+                    </div>
+                </article>
+
+                <article>
+                    <img th:src="@{images/landing-page/tvReview.jfif}" alt="TV Review Photo">
+
+                    <div>
+                        <h3>Summer Fair in Cardiff</h3>
+
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        <a href="#">Read Me
+                            <span>>></span></a>
+                    </div>
+                </article>
+                <article>
+                    <img th:src="@{images/landing-page/tvReview.jfif}" alt="TV Review Photo">
+
+                    <div>
+                        <h3>Winter Fair in Cardiff</h3>
+
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        <a href="#">Read Me
+                            <span>>></span></a>
+                    </div>
+                </article>
             </div>
-            <img src="img/cityCentre.jfif" alt="">
-        </article>
+        </section>
 
-        <article>
-            <h4>Latest Alert</h4>
-            <div>
-                <h2>Racial Bullying: Visit you nearest Walk-in center</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <section class="companyMainContainerRight">
+            <h2>Latest Stories</h2>
 
-                <a href="#">Read More <span>>></span></a>
-            </div>
-            <img src="img/cityCentre.jfif" alt="">
-        </article>
+            <article>
+                <h4>Latest Alert</h4>
+                <div>
+                    <h2>Covid Vacination: Visit you nearest Walk-in center</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 
-        <article>
-            <h4>Latest Alert</h4>
-            <div>
-                <h2>Covid Vacination: Visit you nearest Walk-in center</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <a href="#">Read More <span>>></span></a>
+                </div>
+                <img th:src="@{/images/landing-page/cityCentre.jfif}" alt="">
+            </article>
 
-                <a href="#">Read More <span>>></span></a>
-            </div>
-            <img src="img/cityCentre.jfif" alt="">
-        </article>
+            <article>
+                <h4>Latest Alert</h4>
+                <div>
+                    <h2>Covid Vacination: Visit you nearest Walk-in center</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 
-        <article>
-            <h4>Latest Alert</h4>
-            <div>
-                <h2>Covid Vacination: Visit you nearest Walk-in center</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <a href="#">Read More <span>>></span></a>
+                </div>
+                <img th:src="@{/images/landing-page/cityCentre.jfif}" alt="">
+            </article>
 
-                <a href="#">Read More <span>>></span></a>
-            </div>
-            <img src="img/cityCentre.jfif" alt="">
-        </article>
-    </section>
-</main>
+            <article>
+                <h4>Latest Alert</h4>
+                <div>
+                    <h2>Racial Bullying: Visit you nearest Walk-in center</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 
-<script src="js/base.landing.js" async defer></script>
-<th:block th:replace="${script}"/>
+                    <a href="#">Read More <span>>></span></a>
+                </div>
+                <img th:src="@{/images/landing-page/cityCentre.jfif}" alt="">
+            </article>
 
-<!--Common JS added here-->
-<!--Adding Bootstrap JS-->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+            <article>
+                <h4>Latest Alert</h4>
+                <div>
+                    <h2>Covid Vacination: Visit you nearest Walk-in center</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+                    <a href="#">Read More <span>>></span></a>
+                </div>
+                <img th:src="@{/images/landing-page/cityCentre.jfif}" alt="">
+            </article>
+
+            <article>
+                <h4>Latest Alert</h4>
+                <div>
+                    <h2>Covid Vacination: Visit you nearest Walk-in center</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+                    <a href="#">Read More <span>>></span></a>
+                </div>
+                <img th:src="@{/images/landing-page/cityCentre.jfif}" alt="">
+            </article>
+        </section>
+    </main>
+
+    <!-- link for Fontawesome -->
+    <script src="https://kit.fontawesome.com/dbed6b6114.js" crossorigin="anonymous"></script>
+
+</div>
+<script th:src="@{/js/base.landing.js}" async defer></script>
 </body>
 </html>

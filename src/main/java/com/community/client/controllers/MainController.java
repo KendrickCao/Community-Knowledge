@@ -24,6 +24,11 @@ public class MainController {
         modelAndView = new ModelAndView("/signup/SignUp");
         return modelAndView;
     }
+    @GetMapping("/")
+    public ModelAndView showLandingPage(ModelAndView modelAndView) {
+        modelAndView = new ModelAndView("/landing/landing");
+        return modelAndView;
+    }
 
     @GetMapping("/Login")
     public ModelAndView showLoginPage(ModelAndView modelAndView) {
