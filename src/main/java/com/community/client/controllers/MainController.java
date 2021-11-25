@@ -1,9 +1,11 @@
 package com.community.client.controllers;
 
 import com.community.client.models.Community;
+import com.community.client.models.Event;
 import com.community.client.models.Project;
 import com.community.client.models.UserObject;
 import com.community.client.services.CommunityService;
+import com.community.client.services.EventService;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -15,8 +17,12 @@ public class MainController {
     //DI the community service
     private CommunityService communityService;
 
-    public MainController(CommunityService communityService) {
+    //DI the event service
+    private EventService eventService;
+
+    public MainController(CommunityService communityService, EventService eventService) {
         this.communityService = communityService;
+        this.eventService = eventService;
     }
 
     @GetMapping("/SignUp")
@@ -73,6 +79,22 @@ public class MainController {
         Set<Community> communities = communityService.getAllCommunities();
         modelAndView.setViewName("community-listview/index");
         modelAndView.addObject("communities", communities);
+        return modelAndView;
+    }
+
+    //Controller which allows the user the VIEW the details of a particular event
+    @RequestMapping("/event/{eventId}")
+    public ModelAndView viewEventDetails(ModelAndView modelAndView, @PathVariable Long eventId) {
+        //Get the event by ID
+        Event event = eventService.getEventById(eventId);
+        Community eventCommunity = event.getCommunity();
+        Project eventProject = event.getProject();
+        modelAndView.addObject("event", event);
+            modelAndView.addObject("eventCommunity",eventCommunity );
+            modelAndView.addObject("eventProject", eventProject);
+
+
+        modelAndView.setViewName("event-detail/EventDetail");
         return modelAndView;
     }
 }
