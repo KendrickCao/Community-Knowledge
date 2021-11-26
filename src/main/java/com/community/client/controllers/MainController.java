@@ -6,6 +6,7 @@ import com.community.client.models.Project;
 import com.community.client.models.UserObject;
 import com.community.client.services.CommunityService;
 import com.community.client.services.EventService;
+import com.community.client.services.ProjectService;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -20,9 +21,13 @@ public class MainController {
     //DI the event service
     private EventService eventService;
 
-    public MainController(CommunityService communityService, EventService eventService) {
+    //DI the project service
+    private ProjectService projectService;
+
+    public MainController(CommunityService communityService, EventService eventService, ProjectService projectService) {
         this.communityService = communityService;
         this.eventService = eventService;
+        this.projectService = projectService;
     }
 
     @GetMapping("/SignUp")
@@ -93,6 +98,25 @@ public class MainController {
         return modelAndView;
     }
 
+    //Controller to view the events of a community/project
+    @RequestMapping("/event/parent/{parentId}")
+    public ModelAndView viewEventForCommunityOrProject(ModelAndView modelAndView,
+                                                       @RequestParam("parent") String parent,
+                                                       @PathVariable Long parentId
+    ) {
+        if (parent.equals("community")){
+            Community community = communityService.getCommunityById(parentId);
+            Set<Event> eventsFromParent = community.getEvent();
+            modelAndView.addObject("eventsFromParent", eventsFromParent);
+        } else if (parent.equals("project")) {
+            Project project = projectService.getProjectById(parentId);
+            Set<Event> eventsFromParent = project.getEvent();
+            modelAndView.addObject("eventsFromParent", eventsFromParent);
+        }
+        modelAndView.setViewName("event-listview/EventList");
+        return modelAndView;
+    }
+
     //Controller which allows the user the VIEW the details of a particular event
     @RequestMapping("/event/{eventId}")
     public ModelAndView viewEventDetails(ModelAndView modelAndView, @PathVariable Long eventId) {
@@ -103,9 +127,9 @@ public class MainController {
         modelAndView.addObject("event", event);
             modelAndView.addObject("eventCommunity",eventCommunity );
             modelAndView.addObject("eventProject", eventProject);
-
-
         modelAndView.setViewName("event-detail/EventDetail");
         return modelAndView;
     }
+
+
 }
