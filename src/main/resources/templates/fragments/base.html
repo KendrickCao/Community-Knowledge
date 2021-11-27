@@ -47,10 +47,10 @@
                 <nav>
                     <ul>
                         <li>
-                            <a href="#">Community</a>
+                            <a th:href="@{/communities}">Community</a>
                         </li>
                         <li>
-                            <a href="#">Services</a>
+                            <a th:href="@{/projects}">Projects</a>
                         </li>
                         <li>
                             <a href="#">About</a>
@@ -87,7 +87,10 @@
 </div>
 
 <!--Create a block to append the value from template caller-->
-<th:block th:replace="${body}"/>
+<div class="body__container">
+    <th:block th:replace="${body}"/>
+
+</div>
 
 
 <footer>

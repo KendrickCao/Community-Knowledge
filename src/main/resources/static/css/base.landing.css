@@ -85,12 +85,10 @@ JS Styling
     text-decoration: underline;
 }
 /*BODY container css*/
-/*.base-body__container{*/
-/*    min-height: 80vh !important ;*/
-/*}*/
-/*
-Social Media ICONS
-*/
+.body__container{
+    min-height: 70vh;
+}
+/*Social Media ICONS*/
 .socialMediaIcons{
     display: none;
 }
