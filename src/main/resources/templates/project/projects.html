@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/base::common-header(~{::title}, ~{::link})">
+    <meta charset="UTF-8">
+    <title>Projects</title>
+    <link th:href= "@{/css/project.styles.css}" rel="stylesheet" />
+</head>
+<body th:replace="fragments/base::common-body(~{::#project-list},~{}, ~{})">
+<!--The header and footer is from the template-->
+<div id="project-list" class="container">
+    <div class="row" >
+        <div class="col col-md-5 mb-5 p-3" th:each="project : ${projects}">
+            <div class="projectCard" >
+                <img th:src="@{${'/uploads/'+project.projectCoverImage}}" class="card-img-top fluid" alt="cover">
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${project.name}"></h5>
+                    <p class="card-text" th:text="${project.description}">
+                    </p>
+                    <a href="#" class="btn btn-secondary text-nowrap createProject-button">READ MORE</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

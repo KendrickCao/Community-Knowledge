@@ -4,6 +4,7 @@ import com.community.client.models.Community;
 import com.community.client.models.Project;
 import com.community.client.models.UserObject;
 import com.community.client.services.CommunityService;
+import com.community.client.services.ProjectService;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -12,11 +13,13 @@ import java.util.Set;
 @RestController
 public class MainController {
 
-    //DI the community service
+    //DI the community service,project service
     private CommunityService communityService;
+    private ProjectService projectService;
 
-    public MainController(CommunityService communityService) {
+    public MainController(CommunityService communityService, ProjectService projectService) {
         this.communityService = communityService;
+        this.projectService = projectService;
     }
 
     @GetMapping("/SignUp")
@@ -34,6 +37,8 @@ public class MainController {
     @GetMapping("/CreateProject")
     public ModelAndView showCreateProjectPage(ModelAndView modelAndView) {
         modelAndView = new ModelAndView("/project/CreateProject");
+        return modelAndView;
+    }
 
     @GetMapping("/EventForm")
     public ModelAndView showEventPage(ModelAndView modelAndView) {
@@ -77,6 +82,15 @@ public class MainController {
         Set<Community> communities = communityService.getAllCommunities();
         modelAndView.setViewName("community-listview/index");
         modelAndView.addObject("communities", communities);
+        return modelAndView;
+    }
+
+    //Controller which allows the user the VIEW to a list of all projects
+    @RequestMapping ("/projects")
+    public ModelAndView viewProjects(ModelAndView modelAndView) {
+        Set<Project> projects = projectService.getAllProjects();
+        modelAndView.setViewName("project/projects");
+        modelAndView.addObject("projects", projects);
         return modelAndView;
     }
 }
