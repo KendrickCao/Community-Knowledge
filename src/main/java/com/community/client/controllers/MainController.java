@@ -6,7 +6,7 @@ import com.community.client.models.Project;
 import com.community.client.models.UserObject;
 import com.community.client.services.CommunityService;
 import com.community.client.services.EventService;
-import com.community.client.services.ProjectService;
+import com.community.client.services.UserObjectService;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -21,13 +21,13 @@ public class MainController {
     //DI the event service
     private EventService eventService;
 
-    //DI the project service
-    private ProjectService projectService;
+    //DI the user service
+    private UserObjectService  userObjectService;
 
-    public MainController(CommunityService communityService, EventService eventService, ProjectService projectService) {
+    public MainController(CommunityService communityService, EventService eventService, UserObjectService userObjectService) {
         this.communityService = communityService;
         this.eventService = eventService;
-        this.projectService = projectService;
+        this.userObjectService = userObjectService;
     }
 
     @GetMapping("/SignUp")
@@ -55,6 +55,7 @@ public class MainController {
 
     @GetMapping("/EventForm")
     public ModelAndView showEventPage(ModelAndView modelAndView) {
+
         modelAndView = new ModelAndView("/event/EventForm");
         return modelAndView;
     }
