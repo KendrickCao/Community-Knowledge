@@ -17,6 +17,11 @@
     <div class = "master-container">
         <div class = "form-container">
             <form action="/processFormPost" method="Post">
+                <label class = "display-4 text-center fs-2" >Event Community/Project:</label>
+                <div id="user-community__placeholder">
+
+                </div>
+<!--                <input class = "form-control" id="community/project" placeholder="Enter the Project or Community associated with your event here..." type="text" name="community/project"/><br>-->
                 <label class = "display-4 text-center fs-2" for="name">Event Name:</label>
                 <input class = "form-control" id="name" placeholder="Enter your Event Name Here..." type="text" name="name"/><br>
                 <label class = "display-4 text-center fs-2" for="date">Event Date:</label>
@@ -24,10 +29,19 @@
                 <label class = "display-4 text-center fs-2" for="address">Event Address:</label>
                 <input class = "form-control" id="address" placeholder="Enter the Address of the Event Here..." type="text" name="address"/><br>
                 <label class = "display-4 text-center fs-2" for="contributors">Event Contributors:</label>
-                <input class = "form-control" id="contributors" placeholder="Enter the Names of those who Contributed to the Project Here..." type="text" name="contributors"/><br>
+                <input class = "form-control" id="contributors" placeholder="Enter the Names of those who Contributed to the Event Here..." type="text" name="contributors"/><br>
                 <label class = "display-4 text-center fs-2" for="aboutSection">About Section:</label>
-                <textarea class = "form-control" id="aboutSection" rows = "10" cols = "10" name="aboutSection" >Enter Event Details Here... </textarea>
-                <br>
+                <textarea class = "form-control" id="aboutSection" rows = "10" cols = "10" name="aboutSection" >Enter Event Details Here... </textarea><br>
+                <div>
+                    <p >Upload Image For Event</p>
+                        <div>
+                            <label for="uploadImage" class="upload-image__label btn btn-success">UPLOAD IMAGE</label>
+                            <input type="file" id="uploadImage" hidden />
+                        </div>
+                        <div>
+                            <p id="upload-image__status">Upload status</p>
+                        </div>
+                </div>
                 <div class = "button-container">
                     <button id="createEvent-button" class="btn btn-success btn-lg">Create Event</button>
                 </div>
