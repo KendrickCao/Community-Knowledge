@@ -1,8 +1,19 @@
+#login-page{
+    height: 60vh;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+}
+#login-page .container{
+    margin: 20px 0px;
+}
 h1{
     background-color: #abc6be;
     border: 1px solid teal;
     padding: 5px;
     text-align:center;
+    width: 100%;
+    border-radius: 5px;
 }
 .login-container, row{
     min-height: 80vh !important;
@@ -25,5 +36,8 @@ h1{
 
 .button-container{
     text-align:center;
-    padding: 10px;
+    padding: 10px 0px;
+}
+.button-container .btn{
+    width: 100%;
 }

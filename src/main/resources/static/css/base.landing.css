@@ -11,6 +11,7 @@
     padding: 0;
     margin: 0;
 }
+
 :root{
     --heading:
             'Montserrat',
@@ -83,9 +84,11 @@ JS Styling
 .navBar ul li a:hover{
     text-decoration: underline;
 }
-/*
-Social Media ICONS
-*/
+/*BODY container css*/
+.body__container{
+    min-height: 70vh;
+}
+/*Social Media ICONS*/
 .socialMediaIcons{
     display: none;
 }
