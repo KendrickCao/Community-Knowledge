@@ -1,9 +1,10 @@
 // Define Variables
 
-var eventName = null;
-var eventDate = null;
-var eventContributors = null;
-var eventDetails = null;
+let eventName = null;
+let eventDate = null;
+let eventAddress = null;
+let eventContributors = null;
+let eventDetails = null;
 let cookieArray =document.cookie.split(":")[2];
 let userId = cookieArray.split(",")[0];
 
@@ -24,7 +25,10 @@ const captureUserInput = function (e) {
         eventContributors = userInput;
 
     } else if (elementName === "aboutSection") {
-            eventDetails = userInput;
+        eventDetails = userInput;
+
+    } else if (elementName === "address") {
+        eventAddress = userInput;
     }
 };
 
@@ -32,12 +36,13 @@ const captureUserInput = function (e) {
 const postEvent = async function (e) {
 
     e.preventDefault();
-    if (eventName !=null && eventDate !=null && eventContributors !=null && eventDetails !=null) {
+    if (eventName !=null && eventDate !=null && eventAddress !=null && eventContributors !=null && eventDetails !=null) {
         const event = {
             name:eventName,
             date:eventDate,
             aboutSection:eventDetails,
-            contributors:eventContributors
+            contributors:eventContributors,
+            address:eventAddress
         }
         console.log(event);
         const response = await fetch("http://localhost:8081/api/add-event/userId/"+ userId,{
@@ -61,6 +66,7 @@ const postEvent = async function (e) {
 // Capture DOM elements
 const eventNameInput = document.getElementById("name");
 const eventDateInput = document.getElementById("date");
+const eventAddressInput = document.getElementById("address");
 const eventContributorsInput = document.getElementById("contributors");
 const eventDetailsInput = document.getElementById("aboutSection");
 const createEventButton = document.getElementById("createEvent-button");
@@ -68,6 +74,7 @@ const createEventButton = document.getElementById("createEvent-button");
 // Event Listeners
 eventNameInput.addEventListener("change", captureUserInput);
 eventDateInput.addEventListener("change", captureUserInput);
+eventAddressInput.addEventListener("change", captureUserInput);
 eventContributorsInput.addEventListener("change", captureUserInput);
 eventDetailsInput.addEventListener("change", captureUserInput);
 createEventButton.addEventListener("click", postEvent);
