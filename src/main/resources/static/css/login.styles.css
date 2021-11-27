@@ -36,5 +36,8 @@ h1{
 
 .button-container{
     text-align:center;
-    padding: 10px;
+    padding: 10px 0px;
+}
+.button-container .btn{
+    width: 100%;
 }
