@@ -28,6 +28,9 @@ public class Event {
     @Column (name = "event_name", nullable = false)
     private String name;
 
+    @Column (name = "event_address", nullable = false)
+    private String address;
+
     @Column (name = "about_section")
     private String aboutSection;
 
@@ -109,6 +112,14 @@ public class Event {
     public String getEventImage() { return eventImage; }
 
     public void setEventImage(String eventImage) { this.eventImage = eventImage; }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
 
     @Override
     public String toString() {

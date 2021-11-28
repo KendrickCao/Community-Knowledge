@@ -1,10 +1,13 @@
 package com.community.client.controllers;
 
 import com.community.client.models.Community;
+import com.community.client.models.Event;
 import com.community.client.models.Project;
 import com.community.client.models.UserObject;
 import com.community.client.services.CommunityService;
 import com.community.client.services.ProjectService;
+import com.community.client.services.EventService;
+import com.community.client.services.UserObjectService;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -13,18 +16,33 @@ import java.util.Set;
 @RestController
 public class MainController {
 
-    //DI the community service,project service
+    //DI the community service
     private CommunityService communityService;
+
+    //DI the event service
+    private EventService eventService;
+
+    //DI the user service
+    private UserObjectService  userObjectService;
+
+    //DI project service
     private ProjectService projectService;
 
-    public MainController(CommunityService communityService, ProjectService projectService) {
+    public MainController(CommunityService communityService, EventService eventService, UserObjectService userObjectService, ProjectService projectService) {
         this.communityService = communityService;
+        this.eventService = eventService;
+        this.userObjectService = userObjectService;
         this.projectService = projectService;
     }
 
     @GetMapping("/SignUp")
     public ModelAndView showSignUpPage(ModelAndView modelAndView) {
         modelAndView = new ModelAndView("/signup/SignUp");
+        return modelAndView;
+    }
+    @GetMapping("/")
+    public ModelAndView showLandingPage(ModelAndView modelAndView) {
+        modelAndView = new ModelAndView("/landing/landing");
         return modelAndView;
     }
 
@@ -42,6 +60,7 @@ public class MainController {
 
     @GetMapping("/EventForm")
     public ModelAndView showEventPage(ModelAndView modelAndView) {
+
         modelAndView = new ModelAndView("/event/EventForm");
         return modelAndView;
     }
@@ -84,6 +103,41 @@ public class MainController {
         modelAndView.addObject("communities", communities);
         return modelAndView;
     }
+
+    //Controller to view the events of a community/project
+    @RequestMapping("/event/parent/{parentId}")
+    public ModelAndView viewEventForCommunityOrProject(ModelAndView modelAndView,
+                                                       @RequestParam("parent") String parent,
+                                                       @PathVariable Long parentId
+    ) {
+        if (parent.equals("community")){
+            Community community = communityService.getCommunityById(parentId);
+            Set<Event> eventsFromParent = community.getEvent();
+            modelAndView.addObject("eventsFromParent", eventsFromParent);
+        } else if (parent.equals("project")) {
+            Project project = projectService.getProjectById(parentId);
+            Set<Event> eventsFromParent = project.getEvent();
+            modelAndView.addObject("eventsFromParent", eventsFromParent);
+        }
+        modelAndView.setViewName("event-listview/EventList");
+        return modelAndView;
+    }
+
+    //Controller which allows the user the VIEW the details of a particular event
+    @RequestMapping("/event/{eventId}")
+    public ModelAndView viewEventDetails(ModelAndView modelAndView, @PathVariable Long eventId) {
+        //Get the event by ID
+        Event event = eventService.getEventById(eventId);
+        Community eventCommunity = event.getCommunity();
+        Project eventProject = event.getProject();
+        modelAndView.addObject("event", event);
+            modelAndView.addObject("eventCommunity",eventCommunity );
+            modelAndView.addObject("eventProject", eventProject);
+        modelAndView.setViewName("event-detail/EventDetail");
+        return modelAndView;
+    }
+
+
 
     //Controller which allows the user the VIEW to a list of all projects
     @RequestMapping ("/projects")

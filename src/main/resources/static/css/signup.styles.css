@@ -1,27 +1,24 @@
+#signup-page{
+    height: 70vh;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+}
+#signup-page .container{
+    margin: 20px 0px;
+}
 h1{
     background-color: #abc6be;
     border: 1px solid teal;
     padding: 5px;
     text-align:center;
-}
-
-.master-container{
-    position:relative;
-    background-color: #abc6be;
-}
-
-.form-container{
-    position:absolute;
-    padding: 10px;
-    background-color:whitesmoke;
-    border: 5px solid teal;
-    width: 600px;
-    height: 400px;
-    top: calc(40vh - 200px);
-    left: calc(50vw - 350px);
+    border-radius: 5px;
 }
 
 .button-container{
     text-align:center;
-    padding: 10px;
+    padding: 10px 0px;
+}
+.button-container .btn{
+    width: 100%;
 }

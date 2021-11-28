@@ -75,6 +75,8 @@ const loginUser = async function (e) {
                 const data = await response.json()
                 var cookieInformation = {email: data.email, id: data.id, name: data.name};
                 setLoginCookie(cookieInformation, 1);
+                alert("You have successfully logged in. Redirecting to Home Page")
+                window.location.href = "/"
             } catch (err) {
                 window.alert("Invalid Email and/or Password.")
             }
