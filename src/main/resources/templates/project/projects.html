@@ -4,23 +4,26 @@
     <meta charset="UTF-8">
     <title>Projects</title>
     <link th:href= "@{/css/project.styles.css}" rel="stylesheet" />
+    <link th:href= "@{/css/projectlist.styles.css}" rel="stylesheet" />
+
 </head>
 <body th:replace="fragments/base::common-body(~{::#project-list},~{}, ~{})">
 <!--The header and footer is from the template-->
 <div id="project-list" class="container">
-    <div class="row" >
-        <div class="col col-md-5 mb-5 p-3" th:each="project : ${projects}">
-            <div class="projectCard" >
-                <img th:src="@{${'/uploads/'+project.projectCoverImage}}" class="card-img-top fluid" alt="cover">
-                <div class="card-body">
-                    <h5 class="card-title" th:text="${project.name}"></h5>
-                    <p class="card-text" th:text="${project.description}">
-                    </p>
-                    <a href="#" class="btn btn-secondary text-nowrap createProject-button">READ MORE</a>
-                </div>
+    <section class="project-index" >
+        <!--automatically create div-->
+        <article class="projectCard-container" th:each="project : ${projects}"> <!--        a kind of foreach in thymeleaf-->
+            <a class="project-cover" href="#">
+                <img th:src="@{${'/uploads/'+project.projectCoverImage}}">
+                <div class="color-hr"></div>
+            </a>
+            <div class="project-content">
+                <h4 th:text="${project.name}"></h4>
+                <p th:text="${project.description}"></p>
+                <div class="btn-wrapper"><a href="#" class="btn btn-secondary project-button">READ MORE</a></div>
             </div>
-        </div>
-    </div>
+        </article>
+    </section>
 </div>
 
 </body>

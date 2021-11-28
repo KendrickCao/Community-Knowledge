@@ -51,12 +51,12 @@
 .button-container{
     padding: 1rem 0 1rem 0;
 }
-.createProject-button{
+.project-button{
     width: 100%;
     background-color: #00aa37;
     border-color: #00ff52;
 }
-.createProject-button:hover{
+.project-button:hover{
     background-color: #d21033;
     border-color: #ff143e;
 }
