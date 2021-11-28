@@ -5,8 +5,8 @@ import com.community.client.models.Event;
 import com.community.client.models.Project;
 import com.community.client.models.UserObject;
 import com.community.client.services.CommunityService;
-import com.community.client.services.EventService;
 import com.community.client.services.ProjectService;
+import com.community.client.services.EventService;
 import com.community.client.services.UserObjectService;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -138,4 +138,13 @@ public class MainController {
     }
 
 
+
+    //Controller which allows the user the VIEW to a list of all projects
+    @RequestMapping ("/projects")
+    public ModelAndView viewProjects(ModelAndView modelAndView) {
+        Set<Project> projects = projectService.getAllProjects();
+        modelAndView.setViewName("project/projects");
+        modelAndView.addObject("projects", projects);
+        return modelAndView;
+    }
 }
