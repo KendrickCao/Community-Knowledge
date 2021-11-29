@@ -21,7 +21,7 @@
             <div class="project-content">
                 <h4 th:text="${project.name}"></h4>
                 <p th:text="${project.description}"></p>
-                <div class="btn-wrapper"><a href="#" class="btn btn-secondary project-button">READ MORE</a></div>
+                <div class="btn-wrapper"><a th:href="@{${'/project/'+project.id}}" class="btn btn-secondary project-button">READ MORE</a></div>
             </div>
         </article>
     </section>

@@ -147,4 +147,16 @@ public class MainController {
         modelAndView.addObject("projects", projects);
         return modelAndView;
     }
+
+    @RequestMapping ("/project/{projectId}")
+    public ModelAndView viewProjects(ModelAndView modelAndView,@PathVariable Long projectId) {
+        Project project = projectService.getProjectById(projectId);
+        Community projectCommunity = project.getCommunity();
+        Set<Event> projectEvents = project.getEvent();
+        modelAndView.setViewName("project/ProjectDetail");
+        modelAndView.addObject("project", project);
+        modelAndView.addObject("projectCommunity", projectCommunity);
+        modelAndView.addObject("projectEvents", projectEvents);
+        return modelAndView;
+    }
 }
