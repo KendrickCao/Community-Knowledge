@@ -7,8 +7,9 @@
     <link th:href= "@{/css/projectlist.styles.css}" rel="stylesheet" />
 
 </head>
-<body th:replace="fragments/base::common-body(~{::#project-list},~{}, ~{})">
+<body th:replace="fragments/base::common-body(~{::#project-list-page},~{}, ~{})">
 <!--The header and footer is from the template-->
+<div id="project-list-page">
 <div id="project-list" class="container">
     <section class="project-index" >
         <!--automatically create div-->
@@ -25,6 +26,6 @@
         </article>
     </section>
 </div>
-
+</div>
 </body>
 </html>

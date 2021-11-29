@@ -4,6 +4,7 @@
     box-shadow: 0 2px 10px 0 rgb(191 191 186 / 25%);
     transform: scale(1);
     transition: box-shadow 1.25s ease,transform .5s ease;
+    background-color: #ffffff;
 }
 .projectCard-container:hover{
     box-shadow: 0 8px 20px 0 rgb(191 191 186 / 50%);
@@ -14,8 +15,11 @@
     width: 100%;
     min-height: 200px;
 }
+#project-list-page{
+    background-color: #f5f6f7;
+}
 #project-list{
-    padding: 0;
+    padding: 18px 0 2px 0;
     max-width: 1240px;
 }
 .project-index{
