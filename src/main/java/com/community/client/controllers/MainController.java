@@ -52,6 +52,13 @@ public class MainController {
         return modelAndView;
     }
 
+    @GetMapping("/UserProfile")
+    public ModelAndView showUserProfilePage(ModelAndView modelAndView){
+        modelAndView = new ModelAndView("/userprofile/UserProfile");
+        return modelAndView;
+    }
+
+
     @GetMapping("/CreateProject")
     public ModelAndView showCreateProjectPage(ModelAndView modelAndView) {
         modelAndView = new ModelAndView("/project/CreateProject");
