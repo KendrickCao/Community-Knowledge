@@ -29,6 +29,11 @@ public class MainController {
         modelAndView = new ModelAndView("/landing/landing");
         return modelAndView;
     }
+    @RequestMapping("/transaction")
+    public ModelAndView showTransactionPage(ModelAndView modelAndView) {
+        modelAndView = new ModelAndView("/transaction/transaction");
+        return modelAndView;
+    }
 
     @GetMapping("/Login")
     public ModelAndView showLoginPage(ModelAndView modelAndView) {
