@@ -93,8 +93,13 @@ public class Community {
         this.event = event;
     }
 
+    public Community(Long id) {
+        this.id = id;
+    }
+
     //No Args Constructor
-    public Community() {
+    public Community(){
+
     }
 
     @Override
