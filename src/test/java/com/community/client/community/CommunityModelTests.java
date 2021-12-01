@@ -2,6 +2,8 @@ package com.community.client.community;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
+
+import java.util.HashSet;
 import java.util.Set;
 import com.community.client.models.Community;
 import com.community.client.models.UserObject;
@@ -84,6 +86,30 @@ public class CommunityModelTests {
         assertEquals("Test Community", communityFound.getName());
         assertEquals("Test community description", communityFound.getDescription());
         assertEquals("communityImage.jpg", communityFound.getCommunityImage());
+    }
+    //Test case to check get all communities API
+    @Test
+    public void testGetAllCommunities(){
+        CommunityRepository communityRepository = mock(CommunityRepository.class);
+        CommunityService communityService = new CommunityService(communityRepository);
+
+        //Create two community objects
+        Community dummyCommunity1 = new Community(1L, "Test Community","Test community description", "communityImage.jpg" );
+        Community dummyCommunity2 = new Community(1L, "Test Community -2","Test community description -2", "communityImage2.jpg" );
+
+        //Create a dummy community set
+        Set<Community> communities = new HashSet<>();
+        communities.add(dummyCommunity1);
+        communities.add(dummyCommunity2);
+
+        //Define when and return functonality on community repository
+        when(communityRepository.findAll()).thenReturn(communities);
+
+        Set<Community> communitiesFromApi = communityService.getAllCommunities();
+
+        //Make assertions
+        assertEquals(communitiesFromApi.size(), 2);
+
     }
     
 }
