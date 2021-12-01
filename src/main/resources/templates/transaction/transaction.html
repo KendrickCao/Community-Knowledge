@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.com">
+<head th:replace="fragments/base::common-header(~{::title}, ~{::link})">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width-device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Project Donate Transaction</title>
+    <!-- PopUp Link and Script -->
+    <link rel="stylesheet" th:href="@{/css/donationTransaction.css}">
+    <script defer th:src="@{/js/donationTransaction.js}"></script>
+
+    <!-- Donation Form Link and Script -->
+    <link rel="stylesheet" th:href="@{/css/donationTransactionForm.css}">
+
+    <!-- Link for Fontawesome -->
+    <script src="https://kit.fontawesome.com/dbed6b6114.js" crossorigin="anonymous"></script>
+</head>
+<body th:replace="fragments/base::common-body(~{::#DonationTransactionPage},~{} ,~{::script})">
+
+<!-- Donation Content -->
+<div id="DonationTransactionPage">
+
+    <div class="popup" id="popup-1">
+        <div class="overlay"></div>
+        <div class="content"  id="wrapper">
+            <div class="close-btn" onclick="togglePopup()">&times;</div>
+
+            <h2 class="transactionhTwo">Donation Form</h2>
+            <form class="#" action="#" method="post">
+                <h4 class="transactionhFour">Account</h4>
+                <div class="input-group">
+                    <div class="input-box">
+                        <input type="text" placeholder="Full Name" required class="name">
+                        <i class="fa fa-user icon"></i>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <div class="input-box">
+                        <input type="email" placeholder="Email Address" required class="name">
+                        <i class="fa fa-envelope icon"></i>
+                    </div>
+                </div>
+                <h5 class="transactionhFive" for="Signup"><a id="SignUpRedirect" href="">If you do not have an account, Sign Up here.</a></h5>
+                <br>
+                <h4 class="transactionhFour">Project ID</h4>
+                <div class="input-group">
+                    <div class="input-box">
+                        <input type="text" placeholder="Project ID: #21wqsd" contenteditable="false" required class="nameTwo">
+                        <i class="fa fa-file icon"></i>
+                    </div>
+                </div>
+                <br>
+                <div class="input-group">
+                    <div class="input-box">
+                        <h4 class="transactionhFour">Donation Amount</h4>
+                        <input type="tel" placeholder="Enter Donation Amount" required class="nameTwo">
+                    </div>
+                    <div class="input-box">
+                        <h4 class="transactionhFour">Select Donation</h4>
+                        <input type="radio" id="b1" name="donationOptions"  checked class="radio">
+                        <label for="b1">£5</label>
+                        <input type="radio" id="b2" name="donationOptions"  class="radio">
+                        <label for="b2">£10</label>
+                        <input type="radio" id="b3" name="donationOption"  class="radio">
+                        <label for="b3">£15</label>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <div class="input-box">
+                        <h4 class="transactionhFour">Payment Details</h4>
+                        <input type="radio" name="Payment" id="bc1" checked class="radio">
+                        <label for="bc1"><span><i class="fa fa-cc-visa"></i>Credit Card</span></label>
+                        <input type="radio" name="payment" id="bc2" class="radio">
+                        <label for="bc2"><span><i class="fa fa-cc-paypal"></i>Paypal</span></label>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <div class="input-box">
+                        <input type="tel" placeholder="Card Number: xxxx xxxx xxxx xxxx" inputmode="numeric" pattern="[0-9\s]{13,19}" autocomplete="cc-number" maxlength="19"required class="name">
+                        <i class="fa fa-credit-card icon"></i>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <div class="input-box">
+                        <input type="tel" placeholder="Card CVC" required class="name">
+                        <i class="fa fa-user icon"></i>
+                    </div>
+                    <div class="input-box">
+                        <select>
+                            <option>Month</option>
+                            <option>01</option>
+                            <option>02</option>
+                            <option>03</option>
+                            <option>04</option>
+                            <option>05</option>
+                            <option>06</option>
+                            <option>07</option>
+                            <option>08</option>
+                            <option>09</option>
+                            <option>10</option>
+                            <option>11</option>
+                            <option>12</option>
+                        </select>
+                        <select>
+                            <option>Year</option>
+                            <option>2021</option>
+                            <option>2022</option>
+                            <option>2023</option>
+                            <option>2024</option>
+                            <option>2025</option>
+                            <option>2026</option>
+                            <option>2027</option>
+                            <option>2028</option>
+                            <option>2029</option>
+                            <option>2030</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <div class="input-box">
+                        <button type="submit">Donate Now</button>
+                    </div>
+                </div>
+            </form>
+
+
+
+            <!-- Content for Donation Form End -->
+
+        </div>
+    </div>
+
+    <button onclick="togglePopup()">Donate</button>
+
+    <!-- The end of the body -->
+</div>
+
+</body>
+</html>

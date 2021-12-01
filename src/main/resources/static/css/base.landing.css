@@ -334,6 +334,8 @@ footer {
     background: #252525;
     color: #f3f3f3;
     padding: 30px;
+    margin-bottom: 0;
+    position: fixed;
 }
 
 footer h2{
