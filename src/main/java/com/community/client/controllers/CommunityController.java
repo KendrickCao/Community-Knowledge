@@ -2,13 +2,10 @@ package com.community.client.controllers;
 
 import com.community.client.models.Community;
 import com.community.client.models.UserObject;
-import com.community.client.requests.UserProfileRequest;
 import com.community.client.services.CommunityService;
 import com.community.client.services.UserObjectService;
 import org.springframework.web.bind.annotation.*;
 
-import javax.persistence.criteria.Path;
-import java.util.Currency;
 import java.util.Set;
 
 @RestController
