@@ -14,7 +14,7 @@
     <section class="project-index" >
         <!--automatically create div-->
         <article class="projectCard-container" th:each="project : ${projects}"> <!--        a kind of foreach in thymeleaf-->
-            <a class="project-cover" href="#">
+            <a class="project-cover" th:href="@{${'/project/'+project.id}}">
                 <img th:src="@{${'/uploads/'+project.projectCoverImage}}">
                 <div class="color-hr"></div>
             </a>
