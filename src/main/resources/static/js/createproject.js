@@ -71,7 +71,7 @@ const saveProject = async (e) =>{
     })
     if(response.status == "200"){
         console.log("Succeed adding project")
-        // window.location.href ="/projects"; projects page TODO
+        window.location.href ="/projects"; //open the project list when create successfully
     }else{
         window.alert("Something went bad. Please try again later")
     }

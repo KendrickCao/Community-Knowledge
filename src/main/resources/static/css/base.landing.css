@@ -507,3 +507,12 @@ footer > p{
         grid-template-columns: 1fr 2fr;
     }
 }
+
+/*in order to vertical center the header elements*/
+.container-fluid{
+    padding-right:0 !important;
+    padding-left: 0 !important;
+}
+h1,ul{
+    margin-bottom: 0 !important;
+}
