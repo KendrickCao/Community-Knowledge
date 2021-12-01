@@ -29,7 +29,7 @@ public class UserObjectTests {
         UserObject savedUser = mockUserObjectService.saveUser(dummyUser);
 
         //make assertions
-        assertEquals("1L", savedUser.getId());
+        assertEquals(1, savedUser.getId());
         assertEquals("testuser", savedUser.getName());
         assertEquals("test@test.com", savedUser.getEmail());
         assertEquals("testpassword", savedUser.getPassword());
@@ -49,9 +49,6 @@ public class UserObjectTests {
 
         //create the mock user object service
         UserObjectService mockUserObjectService = new UserObjectService(mockUserObjectRepository);
-
-        //save that user to the mockUserRepository
-        mockUserObjectService.saveUser(dummyUser);
 
         //Now lets get the user by ID
         UserObject fetchedUser = mockUserObjectService.getUserById(1L);

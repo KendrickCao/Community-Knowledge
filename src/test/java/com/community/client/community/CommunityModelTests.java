@@ -2,18 +2,17 @@ package com.community.client.community;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
-
 import java.util.Set;
-
 import com.community.client.models.Community;
 import com.community.client.models.UserObject;
 import com.community.client.repositories.CommunityRepository;
 import com.community.client.repositories.UserObjectRepository;
 import com.community.client.services.CommunityService;
 import com.community.client.services.UserObjectService;
-
 import org.junit.jupiter.api.Test;
 
+
+//Test block to handle all the tests related to community
 public class CommunityModelTests {
 
     //Events and Projects if attached to the community, needs to be tested separately 
@@ -60,8 +59,31 @@ public class CommunityModelTests {
         //Making the asertions
         assertEquals(1L, savedCommunity.getId() );
         assertEquals("Test Community", savedCommunity.getName());
-        assertEquals("Test Community Description", savedCommunity.getDescription());
+        assertEquals("Test community description", savedCommunity.getDescription());
 
+    }
+
+    //Test to get a community BY ID
+    @Test
+    public void testCaseToCheckGetCommunityById(){
+        
+        CommunityRepository communityRepository = mock(CommunityRepository.class);
+
+        //create a Dummy Community Object
+        Community dummyCommunity = new Community(1L, "Test Community","Test community description", "communityImage.jpg" );
+    
+        when(communityRepository.findCommunityById(1L)).thenReturn(java.util.Optional.of(dummyCommunity));
+
+        //create a mock community service using the above mock community repository
+        CommunityService communityService = new CommunityService(communityRepository);
+        //find community by ID
+        Community communityFound = communityService.getCommunityById(1L);
+
+        //make the assertions
+        assertEquals(1, communityFound.getId());
+        assertEquals("Test Community", communityFound.getName());
+        assertEquals("Test community description", communityFound.getDescription());
+        assertEquals("communityImage.jpg", communityFound.getCommunityImage());
     }
     
 }
