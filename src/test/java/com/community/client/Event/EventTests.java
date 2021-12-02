@@ -11,13 +11,16 @@ import com.community.client.services.EventService;
 import com.community.client.services.ProjectService;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 public class EventTests {
 
-    // Test to mock the save event functionality using a mock event repository, service and model.
+    //Test to mock the save event functionality using a mock event repository, service and model.
     @Test
     public void testToCheckSaveEventFunctionality() {
         // Create mock event,community and project repositories
@@ -100,4 +103,43 @@ public class EventTests {
         assertEquals("image.jpg", fetchedEvent.getEventImage());
     }
 
+    // Test to get events by community
+    @Test
+    public void testToGetEventsByCommunity(){
+
+        // Create mock event and community repositories
+        CommunityRepository mockCommunityRepository = mock(CommunityRepository.class);
+        EventRepository mockEventRepository = mock(EventRepository.class);
+
+        // Create mock event and community services
+        CommunityService mockCommunityService = new CommunityService(mockCommunityRepository);
+        EventService mockEventService = new EventService(mockEventRepository);
+
+        Community mockCommunity1 = new Community ();
+        mockCommunity1.setId(1L);
+        Set<Event> event = new HashSet<>();
+        mockCommunity1.setEvent(event);
+
+        when(mockCommunityRepository.save(mockCommunity1)).thenReturn(mockCommunity1);
+
+        Community savedCommunity = mockCommunityService.saveCommunity(mockCommunity1);
+
+        Set<Event> communityEventSet = savedCommunity.getEvent();
+
+        Event mockEvent1 = new Event();
+        mockEvent1.setId(1L);
+        mockEvent1.setName("test-event 1");
+
+        when(mockEventRepository.save(mockEvent1)).thenReturn(mockEvent1);
+        Event savedEvent1 = mockEventService.saveEvent(mockEvent1);
+        communityEventSet.add(savedEvent1);
+
+        savedEvent1.setCommunity(savedCommunity);
+
+        assertEquals(1, savedCommunity.getEvent().size());
+        assertEquals(1, savedEvent1.getCommunity().getId());
+
+    }
+
+    // Test to get events by project
 }

@@ -93,6 +93,8 @@ public class Community {
         this.event = event;
     }
 
+
+
     public Community(Long id) {
         this.id = id;
     }
