@@ -1,4 +1,4 @@
 function togglePopup(){
     document.getElementById('popup-1').classList.toggle('active');
 }
-//Defining variables
+//Defining variables form front-end
