@@ -23,7 +23,7 @@ public class Community {
 
     @OneToMany(mappedBy = "community")
     @JsonIgnoreProperties("community")
-    private Set<Event> event;
+    private Set<Event> eventSet = new HashSet<>();
 
     @JsonIgnoreProperties("communitySet")
     @ManyToMany(mappedBy = "communitySet", fetch = FetchType.EAGER)
@@ -85,16 +85,26 @@ public class Community {
         this.communityImage = communityImage;
     }
 
+
     public Set<Event> getEvent() {
-        return event;
+        return this.eventSet;
     }
 
-    public void setEvent(Set<Event> event) {
-        this.event = event;
+    public void setEvent(Set<Event> eventSet) {
+        this.eventSet = eventSet;
     }
+   
 
     //No Args Constructor
     public Community() {
+    }
+
+
+    public Community(Long id, String name, String description,  String communityImage) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.communityImage = communityImage;
     }
 
     @Override
