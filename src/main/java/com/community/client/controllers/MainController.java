@@ -94,16 +94,18 @@ public class MainController {
         Community community = communityService.getCommunityById(communityId);
         Set<Project> projectSet = community.getProjectSet();
         Set<UserObject> userObjectSet = community.getUserObjectSet();
+        Set<Event> eventSet = community.getEvent();
 
         String totalUsers = String.valueOf(userObjectSet.size());
         String totalProjects = String.valueOf(projectSet.size());
-        System.out.println(totalUsers);
-        System.out.println(totalProjects);
+        String totalEvents = String.valueOf(eventSet.size());
         modelAndView.addObject("community", community);
         modelAndView.addObject("communityProjects", projectSet);
+        modelAndView.addObject("communityEvents", eventSet);
         modelAndView.addObject("communityUsers", userObjectSet);
         modelAndView.addObject("communityUsersCount", totalUsers);
         modelAndView.addObject("communityProjectsCount", totalProjects);
+        modelAndView.addObject("communityEventsCount", totalEvents);
 
         modelAndView.setViewName("community-detail/index");
         return modelAndView;

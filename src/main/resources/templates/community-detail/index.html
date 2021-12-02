@@ -14,64 +14,54 @@
 <body th:replace="fragments/base::common-body(~{::#community-details},~{} ,~{::script})">
 <div id="community-details">
 
-    <div class="container">
+    <div class="container mb-5">
         <div class="row">
             <h4 th:text="${community.name}" class="display-4"></h4>
         </div>
     </div>
 
     <div class="container-fluid">
-        <div class="row">
+        <div class="row mb-5">
             <div class="col col-md-5">
-                <img class="img-fluid" th:src="@{${'/uploads/'+community.communityImage}}" alt="community-picture"/>
+                <img class="img-fluid community-details__img" th:src="@{${'/uploads/'+community.communityImage}}" alt="community-picture"/>
             </div>
-            <div class="col col-md-5 d-flex flex-column justify-content-evenly align-items-left">
+            <div class="col col-md-5 d-flex flex-column justify-content-evenly align-items-left community-details__info-container">
                 <h6 class="display-6">About us...</h6>
                 <p class="lead" th:text="${community.description}"></p>
                 <div style="display: flex">
                     <p class="lead" style="width:40%" th:text="'Total Members:'+ ${communityUsersCount}"></p>
                     <button style="width: 40%" class="btn btn-outline-info community_members-modal--show" type="button" >VIEW ALL</button>
                 </div>
-
-                <p class="lead" th:text="'Total Projects: '+ ${communityProjectsCount} +' as shown below'" ></p>
+                <p class="lead" th:text="'Total Projects: '+ ${communityProjectsCount} " ></p>
+                <p class="lead" th:text="'Total Events: '+ ${communityEventsCount} " ></p>
                 <button class="btn btn-success" type="button" id="join_community-modal-show">JOIN US HERE</button>
             </div>
         </div>
     </div>
 
     <div class="community-events-projects__container">
-            <div class="community-event__container">
-                <h4 class="display-4">Upcoming Events</h4>
+            <div class="community-event__container" >
+                <h6 class="display-6">Upcoming Events</h6>
                 <!--Place holder to display a list of events(Glimpse) TODO-->
-                <div class="community-event__card">
+                <div class="community-event__card" th:each="event:${communityEvents}">
                     <div class="event_card--header">
-                        <p class="display-6">Code Hunting</p>
-                        <p class="lead">22/12/2021</p>
+                        <p class="display-6" th:text="${event.name}"></p>
+                        <p class="lead" th:text="${event.date}"></p>
                     </div>
                     <div class="event-card__footer">
-                        <a href="#" class="btn btn-outline-dark">INTERESTED</a>
-                    </div>
-                </div>
-
-                <div class="community-event__card">
-                    <div class="event_card--header">
-                        <p class="display-6">Hackathon</p>
-                        <p class="lead">16/12/2021</p>
-                    </div>
-                    <div class="event-card__footer">
-                        <a href="#" class="btn btn-outline-dark">INTERESTED</a>
+                        <a th:href="@{${'/event/'+event.id}}" class="btn btn-light">INTERESTED</a>
                     </div>
                 </div>
             </div>
+                <!-- Projects For a Particular Community -->
             <div class="community-project--list__container">
-                <h4 class="display-4">Projects undertaken</h4>
+                <h6 class="display-6">Projects undertaken</h6>
                 <div class="community__project-card" th:each="project:${communityProjects}">
-                    <!-- Placeholder for project image TODO-->
-<!--                    <img th:src="@{${'/uploads/'+project.projectImage}}" alt="project-picture"/>-->
+                   <img th:src="@{${'/uploads/'+project.projectCoverImage}}" alt="project-picture"/>
                     <div class="community-project_card--footer">
                         <h6 class="display-6" th:text="${project.name}"></h6>
                         <p th:text="${project.description}"></p>
-                        <a class="btn btn-light" th:href="@{${'/project/'+project.id}}">READ MORE</a>
+                        <a class="btn btn-dark" th:href="@{${'/project/'+project.id}}">READ MORE</a>
                     </div>
                 </div>
             </div>
