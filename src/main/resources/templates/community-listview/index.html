@@ -12,18 +12,32 @@
 </head>
 <body th:replace="fragments/base::common-body(~{::#community-list},~{} ,~{::script})">
 <div id="community-list" class="container">
-    <div class="row" >
-        <div class="col col-md-5 mb-5 p-3" th:each="community : ${communities}">
-            <div class="community-list__container" >
-                <img th:src="@{${'/uploads/'+community.communityImage}}" class="card-img-top fluid" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title" th:text="${community.name}"></h5>
-                    <p class="card-text" th:text="${community.description}">
-                    </p>
-                    <a th:href="@{${'/community/'+community.id}}" class="btn btn-primary">READ MORE</a>
-                </div>
+    <div class="community-list__container" th:each="community : ${communities}">
+        <div class="community-list__image">
+            <img th:src="@{${'/uploads/'+community.communityImage}}"  alt="...">
+        </div>
+        <div class="community-list__information-container">
+            <h6 class="display-6" th:text="${community.name}"></h6>
+            <div>
+                <span class="text-muted">Total Users</span>
+                <span class="text-muted" th:text="${community.userObjectSet.size()}"></span>
+                <span>&nbsp; || &nbsp;</span>
+                <span class="text-muted">On Going Projects</span>
+                <span class="text-muted" th:text="${community.projectSet.size()}"></span>
+                <span>&nbsp; || &nbsp;</span>
+                <span class="text-muted">Upcoming Events</span>
+                <span class="text-muted" th:text="${community.event.size()}"></span>
+            </div>
+
+            <div>
+                <p class="lead" th:text="${community.description}"></p>
+            </div>
+
+            <div>
+                <a class="btn btn-dark" th:href="@{${'/community/'+community.id}}">READ MORE</a>
             </div>
         </div>
+
     </div>
 
 </div>
