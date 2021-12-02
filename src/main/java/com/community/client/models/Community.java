@@ -1,4 +1,5 @@
 package com.community.client.models;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -11,7 +12,7 @@ import java.util.Set;
 public class Community {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "community_id",updatable = false)
+    @Column(name = "community_id", updatable = false)
     private Long id;
 
     @Column(name = "community_name", nullable = false)
@@ -29,11 +30,11 @@ public class Community {
     @ManyToMany(mappedBy = "communitySet", fetch = FetchType.EAGER)
     private Set<UserObject> userObjectSet = new HashSet<>();
 
-    @OneToMany(mappedBy ="community",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "community", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JsonIgnoreProperties("community")
     private Set<Project> projectSet = new HashSet<>();
 
-    //Adding the field to handle the image name
+    // Adding the field to handle the image name
     @Column(name = "community_image")
     private String communityImage;
 
@@ -95,7 +96,7 @@ public class Community {
     }
    
 
-    //No Args Constructor
+    // No Args Constructor
     public Community() {
     }
 
@@ -109,14 +110,15 @@ public class Community {
 
     @Override
     public String toString() {
-        return "Community{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", userObjectSet=" + userObjectSet +
-                ", projectSet=" + projectSet +
-                ", communityImage='" + communityImage + '\'' +
-                '}';
+        return "{" +
+                " id='" + getId() + "'" +
+                ", name='" + getName() + "'" +
+                ", description='" + getDescription() + "'" +
+                ", event='" + getEvent() + "'" +
+                ", userObjectSet='" + getUserObjectSet() + "'" +
+                ", projectSet='" + getProjectSet() + "'" +
+                ", communityImage='" + getCommunityImage() + "'" +
+                "}";
     }
 
     public void addUserToCommunity(UserObject userObject) {
