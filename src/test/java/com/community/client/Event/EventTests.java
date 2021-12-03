@@ -127,7 +127,7 @@ public class EventTests {
         Set<Event> communityEventSet = savedCommunity.getEvent();
 
         Event mockEvent1 = new Event();
-        mockEvent1.setId(1L);
+        mockEvent1.setId(2L);
         mockEvent1.setName("test-event 1");
 
         when(mockEventRepository.save(mockEvent1)).thenReturn(mockEvent1);
@@ -138,8 +138,46 @@ public class EventTests {
 
         assertEquals(1, savedCommunity.getEvent().size());
         assertEquals(1, savedEvent1.getCommunity().getId());
+        assertEquals(2, savedEvent1.getId());
 
     }
 
     // Test to get events by project
+    @Test
+    public void testToGetEventsByProject(){
+
+        // Create mock event and project repositories
+        ProjectRepository mockProjectRepository = mock(ProjectRepository.class);
+        EventRepository mockEventRepository = mock(EventRepository.class);
+
+        // Create mock event and project services
+        ProjectService mockProjectService = new ProjectService(mockProjectRepository);
+        EventService mockEventService = new EventService(mockEventRepository);
+
+        Project mockProject1 = new Project ();
+        mockProject1.setId(1L);
+        Set<Event> event = new HashSet<>();
+        mockProject1.setEvent(event);
+
+        when(mockProjectRepository.save(mockProject1)).thenReturn(mockProject1);
+
+        Project savedProject = mockProjectService.saveProject(mockProject1);
+
+        Set<Event> ProjectEventSet = savedProject.getEvent();
+
+        Event mockEvent1 = new Event();
+        mockEvent1.setId(2L);
+        mockEvent1.setName("test-event 1");
+
+        when(mockEventRepository.save(mockEvent1)).thenReturn(mockEvent1);
+        Event savedEvent1 = mockEventService.saveEvent(mockEvent1);
+        ProjectEventSet.add(savedEvent1);
+
+        savedEvent1.setProject(savedProject);
+
+        assertEquals(1, savedProject.getEvent().size());
+        assertEquals(1, savedEvent1.getProject().getId());
+        assertEquals(2, savedEvent1.getId());
+
+    }
 }
