@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/base::common-header(~{::title}, ~{::link})">
+    <meta charset="UTF-8">
+    <title>Projects</title>
+    <link th:href= "@{/css/project.styles.css}" rel="stylesheet" />
+    <link th:href= "@{/css/projectlist.styles.css}" rel="stylesheet" />
+    <link th:href= "@{/css/projectdetail.styles.css}" rel="stylesheet" />
+</head>
+<body th:replace="fragments/base::common-body(~{::#project-detail-page},~{}, ~{::script})">
+<!--The header and footer is from the template-->
+<div id="project-detail-page">
+    <div class="project-cover-bg-wrapper"><div class="project-cover-bg" th:style="'background:url(' + @{${'/uploads/'+project.projectCoverImage}} + ');'"></div></div>
+    <br>
+    <div class="project-layout container">
+        <article class="project-detail" style="flex-basis: 66.66%;">
+            <h1 th:text="${project.name}"></h1><hr class="mb-3 mt-3">
+            <div class="description">
+                <p th:text="${project.description}"></p>
+                <p th:text="${project.description}+${project.description}+${project.description}+${project.description}"></p>
+                <p th:text="${project.description}+${project.description}"></p>
+            </div>
+        </article>
+        <div class="project-community" style="flex-basis: 33.33%;">
+            <article class="projectCard-container"> <!--        a kind of foreach in thymeleaf-->
+                <a class="project-cover" th:href="@{${'/community/'+projectCommunity.id}}">
+                    <img th:src="@{${'/uploads/'+projectCommunity.getCommunityImage()}}">
+                    <div class="color-hr"></div>
+                </a>
+                <div class="project-content">
+                    <h4 th:text="${projectCommunity.name}"></h4>
+                    <p th:text="${projectCommunity.description}"></p>
+                    <div class="btn-wrapper"><a th:href="@{${'/community/'+projectCommunity.id}}" class="btn btn-secondary project-button">READ MORE</a></div>
+                </div>
+            </article>
+        </div>
+    </div>
+</div>
+<script th:src="@{/js/project.detail.js}"></script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+.project-cover-bg{
+    background-image: url("https://cdn2.hubspot.net/hubfs/6326501/boilerplate/grayscale-mountain.png");
+    background-position: center top !important;
+    background-size: cover !important;
+    background-attachment: fixed !important;
+    display: flex;
+    min-height: 400px;
+    position: relative;
+}
+.project-layout{
+    display: flex;
+    flex-wrap: nowrap;
+    padding: 0 !important;
+    margin-bottom: 3rem;
+}
+.project-detail{
+    overflow: hidden;
+    word-break: break-word;
+}
+.project-detail hr{
+    width: 95% !important;
+    margin: 0;
+}
+.description{
+    padding-right: 3rem;
+}
+.project-community .projectCard-container:hover{
+    transform: scale(1) !important;
+}
+.projectCard-container{
+    width: 90%;
+    margin: 0 auto;
+    /*the community card will be fixed when scroll down*/
+    position: sticky;
+    top: 50px;
+}
