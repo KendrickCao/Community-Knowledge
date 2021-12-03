@@ -138,6 +138,20 @@ const fetchUser = async () =>{
 window.onload =()=>{
     fetchUser();
 }
+
+// Function to validate the userInputs
+const validate = function (elementName, userInput) {
+    let validated = false;
+    if (elementName === "name") {
+        if (userInput.length > 1) {
+            validated = true;
+        } else {
+            window.alert("\n Event name needs to be at least 2 characters.")
+        }
+    }
+    return validated;
+}
+
 // Function to capture user Inputs in input boxes.
 const captureUserInput = function (e) {
 
@@ -145,8 +159,10 @@ const captureUserInput = function (e) {
     const elementName = e.target.name;
 
     if (elementName === "name") {
-        eventName = userInput;
-
+        const validated = validate(elementName, userInput);
+        if (validated) {
+            eventName = userInput;
+        }
     } else if (elementName === "date") {
         eventDate = userInput;
 
