@@ -43,6 +43,10 @@ public class Project {
     public Project() {
     }
 
+    public Project (Long id) {
+        this.id = id;
+    }
+
     public Long getId() {
         return id;
     }
