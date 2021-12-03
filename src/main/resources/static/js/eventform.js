@@ -14,7 +14,24 @@ let communitySelected=null
 let projectSelected = null;
 let url = null;
 
-//We assume that the user is a logged in user cookie must be present
+// Method to close the model
+const closeModelDisclaimer = (e) =>{
+    e.preventDefault();
+    document.getElementsByClassName("background--drop")[0].classList.add("model__hide")
+    document.getElementsByClassName("create-event__disclaimer")[0].classList.add("model__hide")
+    document.body.classList.remove("stop_body--scroll")
+}
+
+// Method to display the create event disclaimer model
+const showModelDisclaimer = (e) =>{
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    document.getElementsByClassName("background--drop")[0].classList.remove("model__hide")
+    document.getElementsByClassName("create-event__disclaimer")[0].classList.remove("model__hide")
+    document.body.classList.add("stop_body--scroll")
+}
+
+// We assume that the user is a logged in user cookie must be present
 const captureSelectedProject = (e) =>{
     if(e.target.value != null){
 
@@ -22,6 +39,7 @@ const captureSelectedProject = (e) =>{
         url =`http://localhost:8081/api/add-event/project/${projectSelected}`
     }
 }
+
 const selectCommunity = (e) =>{
     communitySelected = e.target.value;
     url =`http://localhost:8081/api/add-event/community/${communitySelected}`
@@ -29,7 +47,7 @@ const selectCommunity = (e) =>{
     if(selectedCommunity){
         //check if it has any projects or not
         if(!selectedCommunity.projectSet.length){
-            const textNode = document.createTextNode("This community ahs not projects. Either create Events on Community or create a project first")
+            const textNode = document.createTextNode("This community has no projects. Either create Events on Community or create a project first")
             const p = document.createElement("p").appendChild(textNode)
             const a = document.createElement("a")
             a.href ="http://localhost:8081:/CreateProject"
@@ -61,7 +79,7 @@ const selectCommunity = (e) =>{
 }
 
 
-//Function which fetches user object from backend
+// Function which fetches user object from backend
 const fetchUser = async () =>{
     try{
         const response = await fetch(`http://localhost:8081/api/get-user/${userId}`)
@@ -96,11 +114,11 @@ const fetchUser = async () =>{
                 initialOption.innerHTML = "<option>------Select Community to which Event belongs-----</option>"
                 selectElement.add(initialOption);
                 for(let i=0; i<communitySet.length; i++){
-                const optionElement = document.createElement("option")
+                    const optionElement = document.createElement("option")
 
                     optionElement.value =communitySet[i].id
                     optionElement.text = communitySet[i].name
-                selectElement.append(optionElement);
+                    selectElement.append(optionElement);
                 }
                 document.getElementById("user-community__placeholder").append(selectElement);
                 communitySelectElement = document.getElementsByClassName("community-select")[0];
@@ -116,7 +134,7 @@ const fetchUser = async () =>{
 
 }
 
-//On Load we try to get the user object
+// On Load try to get the user object
 window.onload =()=>{
     fetchUser();
 }
@@ -168,7 +186,8 @@ const postEvent = async function (e) {
         })
         if (response.status =="200") {
             const data = await response.json()
-
+            alert("You have successfully created an event. Redirecting to Home Page")
+            window.location.href = "/"
         } else {
             window.alert("A problem has occurred. Please try again later.")
         }
@@ -216,6 +235,8 @@ const eventDetailsInput = document.getElementById("aboutSection");
 const createEventButton = document.getElementById("createEvent-button");
 const uploadImageElement = document.getElementById("uploadImage");
 const uploadedImageStatusElement = document.getElementById("upload-image__status");
+const postEventButton = document.getElementById("proceed");
+const closeModelButton = document.getElementsByClassName("close_model")[0];
 
 // Event Listeners
 eventNameInput.addEventListener("change", captureUserInput);
@@ -223,5 +244,8 @@ eventDateInput.addEventListener("change", captureUserInput);
 eventAddressInput.addEventListener("change", captureUserInput);
 eventContributorsInput.addEventListener("change", captureUserInput);
 eventDetailsInput.addEventListener("change", captureUserInput);
-createEventButton.addEventListener("click", postEvent);
 uploadImageElement.addEventListener("change",captureImageUploaded );
+createEventButton.addEventListener("click", showModelDisclaimer);
+closeModelButton.addEventListener("click", closeModelDisclaimer);
+postEventButton.addEventListener("click", postEvent);
+postEventButton.addEventListener("click", closeModelDisclaimer);

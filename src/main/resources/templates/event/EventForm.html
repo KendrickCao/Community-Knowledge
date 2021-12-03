@@ -26,7 +26,7 @@
                 <div id="community-project__placeholder">
 
                 </div>
-<!--                <input class = "form-control" id="community/project" placeholder="Enter the Project or Community associated with your event here..." type="text" name="community/project"/><br>-->
+                <!--                <input class = "form-control" id="community/project" placeholder="Enter the Project or Community associated with your event here..." type="text" name="community/project"/><br>-->
                 <label class = "display-4 text-center fs-2" for="name">Event Name:</label>
                 <input class = "form-control" id="name" placeholder="Enter your Event Name Here..." type="text" name="name"/><br>
                 <label class = "display-4 text-center fs-2" for="date">Event Date:</label>
@@ -39,19 +39,43 @@
                 <textarea class = "form-control" id="aboutSection" rows = "10" cols = "10" name="aboutSection" >Enter Event Details Here... </textarea><br>
                 <div>
                     <p >Upload Image For Event</p>
-                        <div>
-                            <label for="uploadImage" class="upload-image__label btn btn-success">UPLOAD IMAGE</label>
-                            <input type="file" id="uploadImage" hidden />
-                        </div>
-                        <div>
-                            <p id="upload-image__status">Upload status</p>
-                        </div>
+                    <div>
+                        <label for="uploadImage" class="upload-image__label btn btn-success">UPLOAD IMAGE</label>
+                        <input type="file" id="uploadImage" hidden />
+                    </div>
+                    <div>
+                        <p id="upload-image__status">Upload status</p>
+                    </div>
                 </div>
                 <div class = "button-container">
                     <button id="createEvent-button" class="btn btn-success btn-lg">Create Event</button>
                 </div>
             </form>
         </div>
+    </div>
+    <!--    Custom MODAL-->
+    <div class="background--drop model__hide">
+
+    </div>
+    <!--    Model which shows the disclaimer before creating an event-->
+    <div class="create-event__disclaimer model__hide">
+        <div class="container">
+            <h6 class="display-6"> Read Disclaimer</h6>
+            <p class="lead">Please read following terms and conditions before creating an event</p>
+            <p class="lead">By creating an event, do you give your consent to the following?</p>
+
+            <p class="lead">1. Event information will be displayed on an event details page.</p>
+            <p class="lead">2. Event date, name and photo will be displayed under the associated community/project.</p>
+            <p class="lead">3. Event information will be stored for a maximum of 24 months.</p>
+            <p class="lead">4. Event information should not contain any language which could be considered offensive.</p>
+            <p class="lead">You are able to create multiple events.</p>
+            <h6 class="display-6">Do you wish to proceed?</h6>
+            <div class="modal-footer">
+                <button id= "proceed" type="button" class="btn btn-outline-success create_event--CTA" data-dismiss="model">Proceed</button>
+                <button type="button" class="btn btn-outline-danger close_model">Close</button>
+            </div>
+        </div>
+
     </div>
 </div>
 <script th:src="@{/js/eventform.js}"></script>
