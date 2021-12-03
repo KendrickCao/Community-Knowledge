@@ -31,7 +31,8 @@ public class Event {
     @Column (name = "event_address", nullable = false)
     private String address;
 
-    @Column (name = "about_section")
+    @Lob
+    @Column (name = "about_section", length = 800, nullable = false)
     private String aboutSection;
 
     @Column (name = "event_contributors", nullable = false)
