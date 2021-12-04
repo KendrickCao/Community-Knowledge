@@ -160,6 +160,12 @@ const validate = function (elementName, userInput) {
         } else {
             window.alert("\n Event address needs to be at least 8 characters.")
         }
+    } else if (elementName === "contributors") {
+        if (userInput.length > 2) {
+            validated = true;
+        } else {
+            window.alert("\n Event contributors needs to be at least 3 characters.")
+        }
     }
     return validated;
 }
@@ -181,8 +187,10 @@ const captureUserInput = function (e) {
             eventDate = userInput;
         }
     } else if (elementName === "contributors") {
-        eventContributors = userInput;
-
+        const validated = validate(elementName, userInput);
+        if (validated) {
+            eventContributors = userInput;
+        }
     } else if (elementName === "aboutSection") {
         eventDetails = userInput;
 
@@ -225,7 +233,7 @@ const postEvent = async function (e) {
             window.alert("A problem has occurred. Please try again later.")
         }
     } else {
-        window.alert("Please Ensure that you Have Completed all Required Fields.")
+        window.alert("Please Ensure that you Have Completed all Required Fields Correctly.")
     }
 }
 
