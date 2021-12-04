@@ -166,6 +166,12 @@ const validate = function (elementName, userInput) {
         } else {
             window.alert("\n Event contributors needs to be at least 3 characters.")
         }
+    } else if (elementName === "aboutSection") {
+        if (userInput.length > 99) {
+            validated = true;
+        } else {
+            window.alert("\n The Event About Section needs to be at least 100 characters.")
+        }
     }
     return validated;
 }
@@ -192,8 +198,10 @@ const captureUserInput = function (e) {
             eventContributors = userInput;
         }
     } else if (elementName === "aboutSection") {
-        eventDetails = userInput;
-
+        const validated = validate(elementName, userInput);
+        if (validated) {
+            eventDetails = userInput;
+        }
     } else if (elementName === "address") {
         const validated = validate(elementName, userInput);
         if (validated) {
