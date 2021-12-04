@@ -154,6 +154,12 @@ const validate = function (elementName, userInput) {
         } else {
             window.alert("\n Event date needs to be at least 10 characters.")
         }
+    } else if (elementName === "address") {
+        if (userInput.length > 7) {
+            validated = true;
+        } else {
+            window.alert("\n Event address needs to be at least 8 characters.")
+        }
     }
     return validated;
 }
@@ -181,7 +187,10 @@ const captureUserInput = function (e) {
         eventDetails = userInput;
 
     } else if (elementName === "address") {
-        eventAddress = userInput;
+        const validated = validate(elementName, userInput);
+        if (validated) {
+            eventAddress = userInput;
+        }
     }
 };
 
