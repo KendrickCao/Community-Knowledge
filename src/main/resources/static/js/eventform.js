@@ -148,6 +148,12 @@ const validate = function (elementName, userInput) {
         } else {
             window.alert("\n Event name needs to be at least 2 characters.")
         }
+    } else if (elementName === "date"){
+        if (userInput.length > 9) {
+            validated = true;
+        } else {
+            window.alert("\n Event date needs to be at least 10 characters.")
+        }
     }
     return validated;
 }
@@ -164,8 +170,10 @@ const captureUserInput = function (e) {
             eventName = userInput;
         }
     } else if (elementName === "date") {
-        eventDate = userInput;
-
+        const validated = validate(elementName, userInput);
+        if (validated) {
+            eventDate = userInput;
+        }
     } else if (elementName === "contributors") {
         eventContributors = userInput;
 
