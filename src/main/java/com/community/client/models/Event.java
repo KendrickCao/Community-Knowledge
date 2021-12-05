@@ -121,6 +121,22 @@ public class Event {
         this.address = address;
     }
 
+    public Event(Long id, Community community, Project project, String date, String name, String address, String aboutSection, String contributors, String creatorUserId, String eventImage) {
+        this.id = id;
+        this.community = community;
+        this.project = project;
+        this.date = date;
+        this.name = name;
+        this.address = address;
+        this.aboutSection = aboutSection;
+        this.contributors = contributors;
+        this.creatorUserId = creatorUserId;
+        this.eventImage = eventImage;
+    }
+
+
+
+
     @Override
     public String toString() {
         return "Event{" +
