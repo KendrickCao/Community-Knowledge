@@ -1,4 +1,5 @@
 package com.community.client.project;
+import com.community.client.models.Community;
 import com.community.client.models.Project;
 import com.community.client.repositories.ProjectRepository;
 import com.community.client.services.ProjectService;
@@ -33,9 +34,12 @@ class ProjectServiceTest {
     void testSaveProject(){
         BigDecimal fundsRequired = new BigDecimal(1234);
         BigDecimal fundsCollected = new BigDecimal(4321);
-
+        Community dummyCommunity = new Community();
+        dummyCommunity.setId(123L);
+        dummyCommunity.setName("Name");
+        dummyCommunity.setDescription("The characteristics of someone or something");
         //given a dummy project
-        Project dummyProject = new Project(1L,"test name","test description", fundsRequired,fundsCollected,"test.jpg");
+        Project dummyProject = new Project(1L,"test name","test description", fundsRequired,fundsCollected,"test.jpg",123L,dummyCommunity);
         //when
         mockProjectService.saveProject(dummyProject);
         //then
@@ -45,6 +49,8 @@ class ProjectServiceTest {
         Project capturedProject = projectArgumentCaptor.getValue();
         //assert the repository was given the same object with what we pass in
         assertThat(capturedProject).isEqualTo(dummyProject);
+        assertThat(capturedProject.getCommunity()).isEqualTo(dummyCommunity);
+        assertThat(capturedProject.getCreatorUserId()).isEqualTo(123L);
     }
 
     @Test
@@ -60,7 +66,11 @@ class ProjectServiceTest {
         //save a dummyProject first
         BigDecimal fundsRequired = new BigDecimal(1234);
         BigDecimal fundsCollected = new BigDecimal(4321);
-        Project dummyProject = new Project(1L,"test name","test description", fundsRequired,fundsCollected,"test.jpg");
+        Community dummyCommunity = new Community();
+        dummyCommunity.setId(123L);
+        dummyCommunity.setName("Name");
+        dummyCommunity.setDescription("The characteristics of someone or something");
+        Project dummyProject = new Project(1L,"test name","test description", fundsRequired,fundsCollected,"test.jpg",123L,dummyCommunity);
         mockProjectService.saveProject(dummyProject);
         Optional<Project> ofResult = Optional.of(dummyProject);
 
