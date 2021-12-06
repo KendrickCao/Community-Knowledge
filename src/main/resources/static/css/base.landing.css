@@ -137,7 +137,7 @@ JS Styling
     color: #0d0a0b;
 }
 
-.CompanyCurrentNewsHeadlines, .projectNameContainer{
+.CompanyCurrentNewsHeadlines, .projectNameContainer, .eventNameContainer {
     background: #fff;
     padding:20px;
     font-size: 12px;
@@ -145,7 +145,7 @@ JS Styling
     width: 25%;
 }
 
-.CompanyCurrentNewsHeadlines a, .projectNameContainer a{
+.CompanyCurrentNewsHeadlines a, .projectNameContainer a, .eventNameContainer a {
     padding: 6px;
     cursor: pointer;
     position: relative;
@@ -155,13 +155,13 @@ JS Styling
     text-decoration: underline;
 }
 
-.CompanyCurrentNewsHeadlines h3:hover::before, .projectNameContainer h3:hover::before {
+.CompanyCurrentNewsHeadlines h3:hover::before, .projectNameContainer h3:hover::before, .eventNameContainer h3:hover::before {
     content:">> ";
     position: absolute;
     left: -12px;
 }
 
-.CompanyCurrentNewsHeadlines span, .projectNameContainer span {
+.CompanyCurrentNewsHeadlines span, .projectNameContainer span, .eventNameContainer span {
     display: block;
     font-family: var(--heading);
     font-weight: 300;
@@ -436,14 +436,14 @@ footer > p{
 
 
 }
-.project-info__container, .community-info__container{
+.project-info__container, .community-info__container, .event-info__container {
     display: flex;
     gap: 10px;
     justify-content: center;
     align-content: center;
 }
 
-.projectImageContainer, .companyBannerSubContent {
+.projectImageContainer, .companyBannerSubContent, .eventImageContainer {
     display: grid;
     grid-template-columns: 300px 300px;
     grid-template-rows: 300px 300px;
@@ -451,7 +451,7 @@ footer > p{
     gap: 10px;
 }
 
-.projectImageContainer img {
+.projectImageContainer img, .eventImageContainer img {
     width: 100%;
     height: 100%;
     object-fit: cover;

@@ -13,13 +13,22 @@ window.onload = async () => {
   let projectImageContainerElement = document.getElementsByClassName(
       "projectImageContainer"
   )[0];
+  let eventNameContainerElement = document.getElementsByClassName(
+      "eventNameContainer"
+  )[0];
+  let eventImageContainerElement = document.getElementsByClassName(
+      "eventImageContainer"
+  )[0];
 
   const responseCommunity = await fetch("http://localhost:8081/api/communities");
   const dataCommunity = await responseCommunity.json()
   const maxLengthCommunity = dataCommunity.length < 4 ? dataCommunity.length :4 ;
   const responseProject = await fetch("http://localhost:8081/api/projects");
   const dataProject = await responseProject.json();
-  const maxLengthEvent = dataProject.length < 4 ? dataProject.length :4 ;
+  const maxLengthProject = dataProject.length < 4 ? dataProject.length :4 ;
+  const responseEvent = await fetch("http://localhost:8081/api/events");
+  const dataEvent = await responseEvent.json();
+  const maxLengthEvent = dataEvent.length < 4 ? dataEvent.length :4 ;
 
   if (dataCommunity) {
     for (let i = 0; i < maxLengthCommunity; i++) {
@@ -37,7 +46,7 @@ window.onload = async () => {
   }
 
   if (dataProject) {
-    for (let i = 0; i < maxLengthEvent; i++) {
+    for (let i = 0; i < maxLengthProject; i++) {
       const a = document.createElement("a");
       a.innerText = dataProject[i].name;
       a.setAttribute("href", `http://localhost:8081/project/${dataProject[i].id}`);
@@ -48,6 +57,21 @@ window.onload = async () => {
       const sourceString = `http://localhost:8081/uploads/${dataProject[i].projectCoverImage}`;
       div.innerHTML = `<img style="{{object-fit: contain}}"   src=${sourceString} alt="Project image">`;
       projectImageContainerElement.append(div);
+    }
+  }
+
+  if (dataEvent) {
+    for (let i = 0; i < maxLengthEvent; i++) {
+      const a = document.createElement("a");
+      a.innerText = dataEvent[i].name;
+      a.setAttribute("href", `http://localhost:8081/event/${dataEvent[i].id}`);
+      eventNameContainerElement.append(a);
+      // Upload images
+      const div = document.createElement("div");
+      div.classList.add("importantTopicEvent");
+      const sourceString = `http://localhost:8081/uploads/${dataEvent[i].eventImage}`;
+      div.innerHTML = `<img style="{{object-fit: contain}}"   src=${sourceString} alt="Event image">`;
+      eventImageContainerElement.append(div);
     }
   }
 
