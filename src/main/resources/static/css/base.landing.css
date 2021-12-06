@@ -137,14 +137,15 @@ JS Styling
     color: #0d0a0b;
 }
 
-.CompanyCurrentNewsHeadlines{
+.CompanyCurrentNewsHeadlines, .projectNameContainer{
     background: #fff;
     padding:20px;
     font-size: 12px;
     margin: 20px 0;
+    width: 25%;
 }
 
-.CompanyCurrentNewsHeadlines a{
+.CompanyCurrentNewsHeadlines a, .projectNameContainer a{
     padding: 6px;
     cursor: pointer;
     position: relative;
@@ -154,13 +155,13 @@ JS Styling
     text-decoration: underline;
 }
 
-.CompanyCurrentNewsHeadlines h3:hover::before{
+.CompanyCurrentNewsHeadlines h3:hover::before, .projectNameContainer h3:hover::before {
     content:">> ";
     position: absolute;
     left: -12px;
 }
 
-.CompanyCurrentNewsHeadlines span{
+.CompanyCurrentNewsHeadlines span, .projectNameContainer span {
     display: block;
     font-family: var(--heading);
     font-weight: 300;
@@ -423,10 +424,10 @@ footer > p{
 }
 
 @media(min-width: 768px) {
-    .companyBannerSubContent{
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-    }
+    /*.companyBannerSubContent{*/
+    /*    display: grid;*/
+    /*    grid-template-columns: repeat(2, 1fr);*/
+    /*}*/
 
     .companyContainerBottomLeft{
         display: grid;
@@ -434,6 +435,26 @@ footer > p{
     }
 
 
+}
+.project-info__container, .community-info__container{
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-content: center;
+}
+
+.projectImageContainer, .companyBannerSubContent {
+    display: grid;
+    grid-template-columns: 300px 300px;
+    grid-template-rows: 300px 300px;
+    width: 75%;
+    gap: 10px;
+}
+
+.projectImageContainer img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 @media(min-width:800px) { /*Navigation*/
@@ -503,9 +524,9 @@ footer > p{
 
 
 @media (min-width: 1080px) {
-    .companyBanner{
-        grid-template-columns: 1fr 2fr;
-    }
+    /*.companyBanner{*/
+    /*    grid-template-columns: 1fr 2fr;*/
+    /*}*/
 }
 
 /*in order to vertical center the header elements*/

@@ -8,10 +8,11 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Creating Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Raleway:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Raleway:wght@300;400;500;700;900&display=swap"
+          rel="stylesheet">
 
     <!--Landing css(it will also be commonly shared)-->
-    <link th:href= "@{/css/base.landing.css}" rel="stylesheet" />
+    <link th:href="@{/css/base.landing.css}" rel="stylesheet"/>
 
 </head>
 <body th:replace="fragments/base::common-body(~{::#landing},~{} ,~{::script})">
@@ -19,61 +20,42 @@
 <div id="landing">
     <!--Section for the company banner-->
     <section class="companyBanner">
-        <div class="companyBannerMainContent">
-            <h2>LATEST NEWS IN YOUR COMMUNITY</h2>
-            <h3>Upcoming Community Projects</h3>
 
-            <button type="button" name="button">
-                <a th:href = "@{/projects}" >More Info</a>
-            </button>
+        <h2>LATEST NEWS IN YOUR COMMUNITY</h2>
+
+        <div class="community-info__container">
             <div class="CompanyCurrentNewsHeadlines">
-
+<!--            This div will show the community name.-->
+            </div>
+            <div class="companyBannerSubContent">
+<!--    This div will show community images-->
             </div>
         </div>
 
-        <div class="companyBannerSubContent">
-
-            </div>
-
-            <div class="importantTopic">
-                <img th:src="@{images/landing-page/AntiVaccinationProtest.jfif}" alt="Anti vaccination Protest Photo">
-                <div class="importantTopicContent">
-                    <h2>Anti Vaccination Protest</h2>
-
-                    <h3>New Topic 1</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                        sed do eiusmod tempor incididunt ut labore.</p>
-                    <a href="#">Read More</a>
-                </div>
-            </div>
-
-            <div class="importantTopic">
-                <img th:src="@{images/landing-page/AntiVaccinationProtest.jfif}" alt="Anti vaccination Protest Photo">
-                <div class="importantTopicContent">
-                    <h2>Anti Vaccination Protest</h2>
-
-                    <h3>New Topic 1</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                        sed do eiusmod tempor incididunt ut labore.</p>
-                    <a href="#">Read More</a>
-                </div>
-            </div>
-
-            <div class="importantTopic">
-                <img th:src="@{images/landing-page/AntiVaccinationProtest.jfif}" alt="Anti vaccination Protest Photo">
-                <div class="importantTopicContent">
-                    <h2>Anti Vaccination Protest</h2>
-
-                    <h3>New Topic 1</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                        sed do eiusmod tempor incididunt ut labore.</p>
-                    <a href="#">Read More</a>
-                </div>
-            </div>
-        </div>
     </section>
 
     <hr>
+
+    <!--PROJECTS HERE-->
+    <section class="displayProjects">
+        <h3>Upcoming Community Projects</h3>
+        <button type="button" name="button">
+            <a th:href="@{/projects}">More Info</a>
+        </button>
+        <div class="project-info__container">
+
+            <div class="projectNameContainer">
+
+            </div>
+
+            <div class="projectImageContainer">
+
+            </div>
+
+        </div>
+
+
+    </section>
 
     <main>
         <section class="companyMainContainerLeft">
@@ -85,7 +67,8 @@
                     <div>
                         <h3>TV Community Review</h3>
 
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua.</p>
 
                         <a href="#">Read More
                             <span>>></span></a>
@@ -100,7 +83,8 @@
                     <div>
                         <h3>Election in Cardiff</h3>
 
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua.</p>
                         <a href="#">Read Me
                             <span>>></span></a>
                     </div>
@@ -112,7 +96,8 @@
                     <div>
                         <h3>Election in Cardiff</h3>
 
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua.</p>
                         <a href="#">Read Me
                             <span>>></span></a>
                     </div>
@@ -124,7 +109,8 @@
                     <div>
                         <h3>Summer Fair in Cardiff</h3>
 
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua.</p>
                         <a href="#">Read Me
                             <span>>></span></a>
                     </div>
@@ -135,7 +121,8 @@
                     <div>
                         <h3>Winter Fair in Cardiff</h3>
 
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua.</p>
                         <a href="#">Read Me
                             <span>>></span></a>
                     </div>
@@ -150,7 +137,8 @@
                 <h4>Latest Alert</h4>
                 <div>
                     <h2>Covid Vacination: Visit you nearest Walk-in center</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                        labore et dolore magna aliqua.</p>
 
                     <a href="#">Read More <span>>></span></a>
                 </div>
@@ -161,7 +149,8 @@
                 <h4>Latest Alert</h4>
                 <div>
                     <h2>Covid Vacination: Visit you nearest Walk-in center</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                        labore et dolore magna aliqua.</p>
 
                     <a href="#">Read More <span>>></span></a>
                 </div>
@@ -172,7 +161,8 @@
                 <h4>Latest Alert</h4>
                 <div>
                     <h2>Racial Bullying: Visit you nearest Walk-in center</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                        labore et dolore magna aliqua.</p>
 
                     <a href="#">Read More <span>>></span></a>
                 </div>
@@ -183,7 +173,8 @@
                 <h4>Latest Alert</h4>
                 <div>
                     <h2>Covid Vacination: Visit you nearest Walk-in center</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                        labore et dolore magna aliqua.</p>
 
                     <a href="#">Read More <span>>></span></a>
                 </div>
@@ -194,7 +185,8 @@
                 <h4>Latest Alert</h4>
                 <div>
                     <h2>Covid Vacination: Visit you nearest Walk-in center</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                        labore et dolore magna aliqua.</p>
 
                     <a href="#">Read More <span>>></span></a>
                 </div>
