@@ -9,8 +9,11 @@ let communityId;
 let communityName;
 //We assume that the user is a logged in user cookie must be present
 let cookieArray =document.cookie.split(":")[2];
-let userId = cookieArray.split(",")[0];
-
+let userId = cookieArray ? cookieArray.split(",")[0] : null;
+    if (!userId) {
+        window.alert("You need to login first. Redirecting...");
+        window.location.href = "/Login";
+    }
 //Define methods
 //Method to capture user input
 const captureUserInput = (e) =>{
@@ -34,7 +37,7 @@ const captureUserInput = (e) =>{
     }
 }
 //Method to get communityId from user to show in the dropdown list
-window.onload = async function (){
+async function fetchCommunities (){
     const url = `http://localhost:8081/api/get-user/${userId}`
     const response = await fetch(url)
     if (response.status == "200") {
@@ -48,9 +51,10 @@ window.onload = async function (){
         }
         communitySelectInput.options.add(new Option("Create a new community","add-community"));
     } else {
-        throw new Error("Something went bad. Please refresh or login")
+        throw new Error("Something went bad. Please refresh or login");
     }
 }
+fetchCommunities().then();
 //Method to save the project to the backend by requesting api
 const saveProject = async (e) =>{
     e.preventDefault();
