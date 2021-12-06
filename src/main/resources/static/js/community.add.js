@@ -4,15 +4,11 @@ let description;
 let communityImage;
 //We assume that the user is a logged in user cookie must be present
 let cookieArray = document.cookie.split(":")[2];
-console.log(cookieArray);
 let userId = cookieArray ? cookieArray.split(",")[0] : null;
-console.log(userId);
-window.onload = () => {
   if (!userId) {
     window.alert("You need to login first. Redirecting...");
     window.location.href = "/Login";
   }
-};
 
 //Define methods
 //Method to capture user input
