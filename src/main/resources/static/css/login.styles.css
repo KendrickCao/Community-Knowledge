@@ -34,10 +34,13 @@ h1{
     left: calc(50vw - 350px);
 }
 
-.button-container{
+.button-container, .signUpLinkButton-container{
     text-align:center;
     padding: 10px 0px;
 }
-.button-container .btn{
+.button-container .btn {
+    width: 50%;
+}
+.signUpLinkButton-container .btn {
     width: 100%;
 }
