@@ -1,6 +1,13 @@
 function togglePopup() {
     document.getElementById('popup-1').classList.toggle('active');
 }
+//Fetch user state from cookie
+let cookieArray = document.cookie.split(":")[2];
+let userId = cookieArray ? cookieArray.split(",")[0] : null;
+if (!userId) {
+    window.alert("You need to login first. Redirecting...");
+    window.location.href = "/Login";
+}
 
 //Define variables for Fetch Payload
 let donorName;
@@ -12,7 +19,9 @@ let creditCard;
 let cardCvc;
 let cardYear;
 let cardMonth;
-let userId;
+
+
+
 
 //Define functions
 //Function to capture user input - NAME
@@ -79,7 +88,8 @@ const saveTransaction = async (event) =>{
             creditCard:creditCard,
             cardCvc:cardCvc,
             cardYear:cardYear,
-            cardMonth:cardMonth
+            cardMonth:cardMonth,
+           userId: userId
        }
        const response = await fetch("http://localhost:8081/api/new-transaction", {
            method:"POST",
