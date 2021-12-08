@@ -31,7 +31,8 @@ public class Event {
     @Column (name = "event_address", nullable = false)
     private String address;
 
-    @Column (name = "about_section")
+    @Lob
+    @Column (name = "about_section", length = 800, nullable = false)
     private String aboutSection;
 
     @Column (name = "event_contributors", nullable = false)
@@ -120,6 +121,22 @@ public class Event {
     public void setAddress(String address) {
         this.address = address;
     }
+
+    public Event(Long id, Community community, Project project, String date, String name, String address, String aboutSection, String contributors, String creatorUserId, String eventImage) {
+        this.id = id;
+        this.community = community;
+        this.project = project;
+        this.date = date;
+        this.name = name;
+        this.address = address;
+        this.aboutSection = aboutSection;
+        this.contributors = contributors;
+        this.creatorUserId = creatorUserId;
+        this.eventImage = eventImage;
+    }
+
+
+
 
     @Override
     public String toString() {

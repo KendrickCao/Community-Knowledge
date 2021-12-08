@@ -1,5 +1,4 @@
-// Define Variables
-
+// Define Variables.
 let eventName = null;
 let eventDate = null;
 let eventAddress = null;
@@ -14,7 +13,24 @@ let communitySelected=null
 let projectSelected = null;
 let url = null;
 
-//We assume that the user is a logged in user cookie must be present
+// Method to close the create event disclaimer model.
+const closeModelDisclaimer = (e) =>{
+    e.preventDefault();
+    document.getElementsByClassName("background--drop")[0].classList.add("model__hide")
+    document.getElementsByClassName("create-event__disclaimer")[0].classList.add("model__hide")
+    document.body.classList.remove("stop_body--scroll")
+}
+
+// Method to display the create event disclaimer model.
+const showModelDisclaimer = (e) =>{
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    document.getElementsByClassName("background--drop")[0].classList.remove("model__hide")
+    document.getElementsByClassName("create-event__disclaimer")[0].classList.remove("model__hide")
+    document.body.classList.add("stop_body--scroll")
+}
+
+// Method to capture the project if the user has selected a project associated with an event.
 const captureSelectedProject = (e) =>{
     if(e.target.value != null){
 
@@ -22,14 +38,16 @@ const captureSelectedProject = (e) =>{
         url =`http://localhost:8081/api/add-event/project/${projectSelected}`
     }
 }
+
+// Method to form a drop down list of communities that the user has joined and associated projects.
 const selectCommunity = (e) =>{
     communitySelected = e.target.value;
     url =`http://localhost:8081/api/add-event/community/${communitySelected}`
     const selectedCommunity = userObject.communitySet.find((community)=>community.id == e.target.value)
     if(selectedCommunity){
-        //check if it has any projects or not
+        // Check if community has any projects or not.
         if(!selectedCommunity.projectSet.length){
-            const textNode = document.createTextNode("This community ahs not projects. Either create Events on Community or create a project first")
+            const textNode = document.createTextNode("This community has no projects. Either create Events on Community or create a project first")
             const p = document.createElement("p").appendChild(textNode)
             const a = document.createElement("a")
             a.href ="http://localhost:8081:/CreateProject"
@@ -40,7 +58,7 @@ const selectCommunity = (e) =>{
             document.getElementById("community-project__placeholder").appendChild(p);
             document.getElementById("community-project__placeholder").appendChild(a);
         }
-        //else we create a drop down with the relevant projects of that community
+        // Else create a drop down with the relevant projects of that community.
         else{
             const projectSelectElement = document.getElementsByClassName("project-select")[0];
             projectSelectElement.disabled = false;
@@ -61,24 +79,24 @@ const selectCommunity = (e) =>{
 }
 
 
-//Function which fetches user object from backend
+// Arrow function which fetches user object from backend.
 const fetchUser = async () =>{
     try{
         const response = await fetch(`http://localhost:8081/api/get-user/${userId}`)
         if(response.status == "200"){
             userObject = await response.json()
-            //Once we have the user object we wish to create a drop down with the commmunity set present in user object
-            //If user has joined no community, we show it with a p tag and a message
+            // Once the user object has been retrieved, create a drop down with the community set present in user object.
+            // If user has joined no community, show a message.
             if(!userObject.communitySet.length){
                 const textNode = document.createTextNode("No Communities Joined");
                 const p = document.createElement("p")
                 p.appendChild(textNode)
                 document.getElementById("user-community__placeholder").append(p);
             }
-            //else we show a drop down
+            // Else show a drop down.
             else{
                 const communitySet = userObject.communitySet;
-                //create a select box for project but show it as loading
+                // Create a select box for project but show it as loading.
                 const projectSelectElement = document.createElement("select")
                 projectSelectElement.classList.add("form-select")
                 projectSelectElement.classList.add("project-select")
@@ -88,7 +106,7 @@ const fetchUser = async () =>{
                 projectSelectElement.append(projectDummyOption)
                 projectSelectElement.disabled = true;
                 document.getElementById("community-project__placeholder").append(projectSelectElement)
-                //create a select box for community
+                // Create a select box for community.
                 const selectElement = document.createElement("select");
                 selectElement.classList.add("form-select")
                 selectElement.classList.add("community-select")
@@ -96,11 +114,11 @@ const fetchUser = async () =>{
                 initialOption.innerHTML = "<option>------Select Community to which Event belongs-----</option>"
                 selectElement.add(initialOption);
                 for(let i=0; i<communitySet.length; i++){
-                const optionElement = document.createElement("option")
+                    const optionElement = document.createElement("option")
 
                     optionElement.value =communitySet[i].id
                     optionElement.text = communitySet[i].name
-                selectElement.append(optionElement);
+                    selectElement.append(optionElement);
                 }
                 document.getElementById("user-community__placeholder").append(selectElement);
                 communitySelectElement = document.getElementsByClassName("community-select")[0];
@@ -116,34 +134,83 @@ const fetchUser = async () =>{
 
 }
 
-//On Load we try to get the user object
+// Method to try and get the user object on load.
 window.onload =()=>{
     fetchUser();
 }
-// Function to capture user Inputs in input boxes.
+
+// Function to validate the userInputs.
+const validate = function (elementName, userInput) {
+    let validated = false;
+    if (elementName === "name") {
+        if (1 < userInput.length < 256) {
+            validated = true;
+        } else {
+            window.alert("\n Event name should contain a minimum of 2 and a maximum of 255 characters.")
+        }
+    } else if (elementName === "date"){
+        if (userInput.length > 9) {
+            validated = true;
+        } else {
+            window.alert("\n Please enter the full event date.")
+        }
+    } else if (elementName === "address") {
+        if (7 < userInput.length < 256) {
+            validated = true;
+        } else {
+            window.alert("\n Event address should contain a minimum of 8 and a maximum of 255 characters.")
+        }
+    } else if (elementName === "contributors") {
+        if (2 < userInput.length < 256) {
+            validated = true;
+        } else {
+            window.alert("\n Event contributors should contain a minimum of 3 and a maximum of 255 characters.")
+        }
+    } else if (elementName === "aboutSection") {
+        if (99 < userInput.length < 801) {
+            validated = true;
+        } else {
+            window.alert("\n The Event About Section should contain a minimum of 100 and a maximum of 800 characters.")
+        }
+    }
+    return validated;
+}
+
+// Function to capture user inputs in input boxes.
 const captureUserInput = function (e) {
 
     const userInput = e.target.value;
     const elementName = e.target.name;
 
     if (elementName === "name") {
-        eventName = userInput;
-
+        const validated = validate(elementName, userInput);
+        if (validated) {
+            eventName = userInput;
+        }
     } else if (elementName === "date") {
-        eventDate = userInput;
-
+        const validated = validate(elementName, userInput);
+        if (validated) {
+            eventDate = userInput;
+        }
     } else if (elementName === "contributors") {
-        eventContributors = userInput;
-
+        const validated = validate(elementName, userInput);
+        if (validated) {
+            eventContributors = userInput;
+        }
     } else if (elementName === "aboutSection") {
-        eventDetails = userInput;
-
+        const validated = validate(elementName, userInput);
+        if (validated) {
+            eventDetails = userInput;
+        }
     } else if (elementName === "address") {
-        eventAddress = userInput;
+        const validated = validate(elementName, userInput);
+        if (validated) {
+            eventAddress = userInput;
+        }
     }
-};
+}
 
-// Function to post event and to store event in .
+// Function to post event JSON to backend for storage in Event database.
 const postEvent = async function (e) {
 
     e.preventDefault();
@@ -168,23 +235,25 @@ const postEvent = async function (e) {
         })
         if (response.status =="200") {
             const data = await response.json()
-
+            alert("You have successfully created an event. Redirecting to Home Page")
+            window.location.href = "/"
         } else {
             window.alert("A problem has occurred. Please try again later.")
         }
     } else {
-        window.alert("Please Ensure that you Have Completed all Required Fields.")
+        window.alert("Please Ensure that you Have Completed all Required Fields Correctly.")
     }
 }
 
+// Arrow Function to capture the uploaded image and send it to the backend if appropriate.
 const captureImageUploaded = async (e) =>{
     const uploadImageBackEndUri = "http://localhost:8081/api/upload-image";
     const imageFile = e.target.files[0];
-    //Step 1 update the message of the STATUS as uploading
+    // Step 1 update the message of the STATUS as uploading.
     const loadingText = document.createTextNode("Uploading....")
     uploadedImageStatusElement.innerHTML="";
     uploadedImageStatusElement.append(loadingText);
-    //make a fetch POST call to the api/upload-image
+    // Make a fetch POST call to the api/upload-image.
     const formObject = new FormData();
     formObject.append("image", imageFile);
     const response = await fetch(uploadImageBackEndUri, {
@@ -195,7 +264,7 @@ const captureImageUploaded = async (e) =>{
         body: formObject
     })
     if(response.status == "200") {
-        //update the image upload status method
+        // Update the image upload status method.
         const uploadSuccess = document.createTextNode(`${imageFile.name} has been uploaded successfully!`)
         uploadedImageStatusElement.innerHTML="";
         uploadedImageStatusElement.append(uploadSuccess);
@@ -207,7 +276,7 @@ const captureImageUploaded = async (e) =>{
     }
 }
 
-// Capture DOM elements
+// Capture DOM elements.
 const eventNameInput = document.getElementById("name");
 const eventDateInput = document.getElementById("date");
 const eventAddressInput = document.getElementById("address");
@@ -216,12 +285,17 @@ const eventDetailsInput = document.getElementById("aboutSection");
 const createEventButton = document.getElementById("createEvent-button");
 const uploadImageElement = document.getElementById("uploadImage");
 const uploadedImageStatusElement = document.getElementById("upload-image__status");
+const postEventButton = document.getElementById("proceed");
+const closeModelButton = document.getElementsByClassName("close_model")[0];
 
-// Event Listeners
+// Event Listeners.
 eventNameInput.addEventListener("change", captureUserInput);
 eventDateInput.addEventListener("change", captureUserInput);
 eventAddressInput.addEventListener("change", captureUserInput);
 eventContributorsInput.addEventListener("change", captureUserInput);
 eventDetailsInput.addEventListener("change", captureUserInput);
-createEventButton.addEventListener("click", postEvent);
 uploadImageElement.addEventListener("change",captureImageUploaded );
+createEventButton.addEventListener("click", showModelDisclaimer);
+closeModelButton.addEventListener("click", closeModelDisclaimer);
+postEventButton.addEventListener("click", postEvent);
+postEventButton.addEventListener("click", closeModelDisclaimer);

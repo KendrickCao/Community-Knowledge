@@ -47,7 +47,11 @@ const captureUserInput = function (e) {
     }else if (elementName === "country") {
         userCountry = userInput;
 };
+const fillUserProfile = async function(e){
+e.preventDefault();
 
+}
+}
 // Function to post profile
 const postUserProfile = async function (e) {
 
@@ -69,7 +73,7 @@ const postUserProfile = async function (e) {
         }
         console.log(userProfile);
         const response = await fetch("/api/update-profile/{userId}",{
-            method:"POST",
+            method:"PUT",
             headers:{
                 "Content-type":"application/json"
             },

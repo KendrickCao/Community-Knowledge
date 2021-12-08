@@ -1,6 +1,7 @@
 package com.community.client.controllers;
 
 import com.community.client.models.Address;
+import com.community.client.models.Community;
 import com.community.client.models.UserObject;
 import com.community.client.models.UserProfile;
 import com.community.client.requests.UserProfileRequest;
@@ -77,5 +78,10 @@ public class UserProfileController {
         }else{
             return  null;
         }
+    }
+
+    @GetMapping("/api/get-address/{id}")
+    private Address getAddressById(@PathVariable Long id){
+        return addressService.getAddressById(id);
     }
 }

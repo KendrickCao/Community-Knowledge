@@ -39,8 +39,22 @@ public class Project {
     @JsonIgnoreProperties("project")
     private Set<Event> event;
 
-
+    //constructor
     public Project() {
+    }
+
+    public Project(Long id, String name, String description, BigDecimal fundsRequired,BigDecimal fundsCollected,String projectCoverImage,Long creatorUserId,Community community) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.fundsRequired = fundsRequired;
+        this.fundsCollected = fundsCollected;
+        this.projectCoverImage = projectCoverImage;
+        this.creatorUserId = creatorUserId;
+        this.community = community;
+    }
+    public Project (Long id) {
+        this.id = id;
     }
 
     public Long getId() {

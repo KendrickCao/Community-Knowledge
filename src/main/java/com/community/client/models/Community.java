@@ -96,8 +96,15 @@ public class Community {
     }
    
 
-    // No Args Constructor
-    public Community() {
+
+
+    public Community(Long id) {
+        this.id = id;
+    }
+
+    //No Args Constructor
+    public Community(){
+
     }
 
 

@@ -33,8 +33,9 @@
                 <p class="lead" th:text="${community.description}"></p>
             </div>
 
-            <div>
-                <a class="btn btn-dark" th:href="@{${'/community/'+community.id}}">READ MORE</a>
+            <div class="community-list__CTA">
+                <a class="btn btn-info" th:href="@{/add-community}">Create New</a>
+            <a class="btn btn-dark" th:href="@{${'/community/'+community.id}}">READ MORE</a>
             </div>
         </div>
 
