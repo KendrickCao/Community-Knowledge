@@ -68,9 +68,9 @@ public class MainController {
         return modelAndView;
     }
 
-    @GetMapping("/CreateProject")
+    @GetMapping("/project/create")
     public ModelAndView showCreateProjectPage(ModelAndView modelAndView) {
-        modelAndView = new ModelAndView("/project/CreateProject");
+        modelAndView = new ModelAndView("project/createProject");
         return modelAndView;
     }
 
@@ -168,7 +168,7 @@ public class MainController {
         Project project = projectService.getProjectById(projectId);
         Community projectCommunity = project.getCommunity();
         Set<Event> projectEvents = project.getEvent();
-        modelAndView.setViewName("project/ProjectDetail");
+        modelAndView.setViewName("project/projectDetail");
         modelAndView.addObject("project", project);
         modelAndView.addObject("projectCommunity", projectCommunity);
         modelAndView.addObject("projectEvents", projectEvents);

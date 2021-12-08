@@ -65,5 +65,9 @@
     bottom: 16px;
     width: 90%;
 }
+#searchbar{
+    font-size: 1rem !important;
+    font-weight: inherit !important;
+}
 
 

@@ -15,10 +15,15 @@ h1{
     border-radius: 5px;
 }
 
-.button-container{
+.button-container, .loginLinkButton-container{
     text-align:center;
     padding: 10px 0px;
 }
-.button-container .btn{
+
+.button-container .btn {
+    width: 50%;
+}
+
+.loginLinkButton-container .btn {
     width: 100%;
 }
