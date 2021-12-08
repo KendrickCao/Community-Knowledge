@@ -16,20 +16,24 @@ public class CommunityService {
         this.communityRepository = communityRepository;
     }
 
-    //Implement the methods from repository
-    public Community saveCommunity(Community community){
+    // Implement the methods from repository
+    public Community saveCommunity(Community community) {
         return communityRepository.save(community);
     }
 
-    public Set<Community> getAllCommunities(){
+    public Set<Community> getAllCommunities() {
         return communityRepository.findAll();
     }
 
-    public Community getCommunityById(Long id){
+    public Set<Community> getCommunitySearchResults(String keyword) {
+        return communityRepository.findByKeyword(keyword);
+    }
+
+    public Community getCommunityById(Long id) {
         Optional<Community> communityOptional = communityRepository.findCommunityById(id);
-        if (communityOptional.isPresent()){
+        if (communityOptional.isPresent()) {
             return communityOptional.get();
-        }else {
+        } else {
             return null;
         }
     }

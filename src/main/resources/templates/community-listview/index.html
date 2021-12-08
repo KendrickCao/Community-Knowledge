@@ -12,7 +12,14 @@
 </head>
 <body th:replace="fragments/base::common-body(~{::#community-list},~{} ,~{::script})">
 <div id="community-list" class="container">
+    <!-- We create a search form here -->
+    <form th:action="@{/communities/?keyword=}" class="search-box">
+        <input name="keyword" type="text" class="form-control"/>
+        <button class="btn btn-dark">SEARCH</button>
+    </form>
+
     <div class="community-list__container" th:each="community : ${communities}">
+        
         <div class="community-list__image">
             <img th:src="@{${'/uploads/'+community.communityImage}}"  alt="...">
         </div>

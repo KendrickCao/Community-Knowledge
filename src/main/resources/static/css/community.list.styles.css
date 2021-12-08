@@ -13,6 +13,20 @@
 .community-list__container p{
     font-size: 14px;
 }
+.search-box{
+    display: flex;
+    width: 60%;
+    margin: 20px auto;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+.search-box input{
+    width: 70%;
+}
+.search-box button{
+    width: 25%;
+}
 .community-list__container img{
     object-fit: cover;
     height: 100%;
