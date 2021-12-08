@@ -90,7 +90,7 @@ const postUserProfile = async function (e) {
 }
 
 // Function to post the file image
-const editImage = = async function (e){
+const editImage  = async function (e){
 const uploadImageBackEndUri = "http://localhost:8081/api/upload-image";
     const imageFile = e.target.files[0];
     const formObject = new FormData();
@@ -101,7 +101,7 @@ const uploadImageBackEndUri = "http://localhost:8081/api/upload-image";
             'Accept': 'application/json'
         },
         body: formObject
-    }
+    })
     if(response.status == "200") {
         projectCoverImage = imageFile.name;
         alert("Upload "+projectCoverImage+" successfully")

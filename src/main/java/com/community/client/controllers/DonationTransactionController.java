@@ -2,9 +2,7 @@ package com.community.client.controllers;
 
 import com.community.client.models.DonationTransaction;
 import com.community.client.services.DonationTransactionService;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class DonationTransactionController {
@@ -19,6 +17,10 @@ public class DonationTransactionController {
     //1. End point is to save the transaction
     @PostMapping("/api/new-transaction")
     public DonationTransaction saveNewTransaction(@RequestBody DonationTransaction donationTransaction){
+        System.out.println("I am being hit");
         return donationTransactionService.saveTransaction(donationTransaction);
     }
+
+
+
 }
