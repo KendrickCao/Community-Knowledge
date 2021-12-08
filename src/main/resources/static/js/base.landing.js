@@ -1,6 +1,4 @@
-// On load fetch the communities and projects.
-window.onload = async () => {
-  // Get the elements by class name.
+ // Get the elements by class name.
   let communityNameContainerElement = document.getElementsByClassName(
     "CompanyCurrentNewsHeadlines"
   )[0];
@@ -19,7 +17,12 @@ window.onload = async () => {
   let eventImageContainerElement = document.getElementsByClassName(
       "eventImageContainer"
   )[0];
-
+  let logoElement = document.getElementById("logo")
+  logoElement.onclick = function (){
+    window.location.href ='/'
+  }
+ // On load fetch the communities and projects.
+  async function fetchAll() {
   const responseCommunity = await fetch("http://localhost:8081/api/communities");
   const dataCommunity = await responseCommunity.json()
   const maxLengthCommunity = dataCommunity.length < 4 ? dataCommunity.length :4 ;
@@ -74,5 +77,5 @@ window.onload = async () => {
       eventImageContainerElement.append(div);
     }
   }
-
-};
+}
+fetchAll().then();
