@@ -537,3 +537,6 @@ footer > p{
 h1,ul{
     margin-bottom: 0 !important;
 }
+#logo{
+    cursor:pointer;
+}

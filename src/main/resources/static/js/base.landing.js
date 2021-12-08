@@ -1,24 +1,27 @@
+// Get the elements by class name.
+let communityNameContainerElement = document.getElementsByClassName(
+  "CompanyCurrentNewsHeadlines"
+)[0];
+let communityImageContainerElement = document.getElementsByClassName(
+  "companyBannerSubContent"
+)[0];
+let projectNameContainerElement = document.getElementsByClassName(
+  "projectNameContainer"
+)[0];
+let projectImageContainerElement = document.getElementsByClassName(
+  "projectImageContainer"
+)[0];
+let eventNameContainerElement =
+  document.getElementsByClassName("eventNameContainer")[0];
+let eventImageContainerElement = document.getElementsByClassName(
+  "eventImageContainer"
+)[0];
+let logoElement = document.getElementById("logo");
+logoElement.onclick = function () {
+  window.location.href = "/";
+};
 // On load fetch the communities and projects.
-window.onload = async () => {
-  // Get the elements by class name.
-  let communityNameContainerElement = document.getElementsByClassName(
-    "CompanyCurrentNewsHeadlines"
-  )[0];
-  let communityImageContainerElement = document.getElementsByClassName(
-    "companyBannerSubContent"
-  )[0];
-  let projectNameContainerElement = document.getElementsByClassName(
-    "projectNameContainer"
-  )[0];
-  let projectImageContainerElement = document.getElementsByClassName(
-    "projectImageContainer"
-  )[0];
-  let eventNameContainerElement =
-    document.getElementsByClassName("eventNameContainer")[0];
-  let eventImageContainerElement = document.getElementsByClassName(
-    "eventImageContainer"
-  )[0];
-
+async function fetchAll() {
   const responseCommunity = await fetch(
     "http://localhost:8081/api/communities"
   );
@@ -79,4 +82,5 @@ window.onload = async () => {
       eventImageContainerElement.append(div);
     }
   }
-};
+}
+fetchAll().then();

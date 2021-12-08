@@ -11,6 +11,11 @@
 <!--The header and footer is from the template-->
 <div id="project-list-page">
 <div id="project-list" class="container">
+    <div class="input-group mb-3">
+        <input type="text" id="searchbar" class="form-control" placeholder="Search projects...">
+        <button class="btn btn-outline-secondary" type="submit">Search</button>
+        <button class="btn btn-outline-secondary" type="button" onclick="window.location.href ='/project/create'">New project</button>
+    </div>
     <section class="project-index" >
         <!--automatically create div-->
         <article class="projectCard-container" th:each="project : ${projects}"> <!--        a kind of foreach in thymeleaf-->
