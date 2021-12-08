@@ -8,6 +8,8 @@ import com.community.client.services.CommunityService;
 import com.community.client.services.ProjectService;
 import com.community.client.services.EventService;
 import com.community.client.services.UserObjectService;
+
+import org.hibernate.annotations.SourceType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -113,8 +115,8 @@ public class MainController {
 
     // Controller which allows the user the VIEW to a list of all communities
     @RequestMapping("/communities")
-    public ModelAndView viewCommunities(ModelAndView modelAndView) {
-        Set<Community> communities = communityService.getAllCommunities();
+    public ModelAndView viewCommunities(ModelAndView modelAndView, @RequestParam("keyword") String keyword) {
+        Set<Community> communities = communityService.getAllCommunities(keyword);
         modelAndView.setViewName("community-listview/index");
         modelAndView.addObject("communities", communities);
         return modelAndView;
