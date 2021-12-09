@@ -4,6 +4,9 @@ import com.community.client.models.Community;
 import com.community.client.models.UserObject;
 import com.community.client.services.CommunityService;
 import com.community.client.services.UserObjectService;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Set;
@@ -20,37 +23,53 @@ public class CommunityController {
 
     // end point to create/update a community information
     @PostMapping("/api/add-community/{userId}")
-    private Community addCommunity(@RequestBody Community community, @PathVariable Long userId) {
-        Community savedCommunity = communityService.saveCommunity(community);
-        UserObject userObject = userObjectService.getUserById(userId);
-        Set<Community> communitySet = userObject.getCommunitySet();
-        communitySet.add(savedCommunity);
-        userObject.setCommunitySet(communitySet);
-        // the user who create this community will automatically join this community
-        userObjectService.saveUser(userObject);
-        return savedCommunity;
+    private ResponseEntity<Community> addCommunity(@RequestBody Community community, @PathVariable Long userId) {
+        try {
+            Community savedCommunity = communityService.saveCommunity(community);
+            UserObject userObject = userObjectService.getUserById(userId);
+            Set<Community> communitySet = userObject.getCommunitySet();
+            communitySet.add(savedCommunity);
+            userObject.setCommunitySet(communitySet);
+            // the user who create this community will automatically join this community
+            userObjectService.saveUser(userObject);
+            return new ResponseEntity<>(savedCommunity, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
     }
 
     /// This method is for joining the community
     @PutMapping("/api/update-community/userid/{userId}/community-id/{communityId}")
-    private UserObject addUserToCommunity(@PathVariable Long userId, @PathVariable Long communityId) {
-        UserObject userObject = userObjectService.getUserById(userId);
-        Community community = communityService.getCommunityById(communityId);
-        Set<Community> communitySet = userObject.getCommunitySet();
-        communitySet.add(community);
-        userObject.setCommunitySet(communitySet);
-        return userObjectService.saveUser(userObject);
+    private ResponseEntity<UserObject> addUserToCommunity(@PathVariable Long userId, @PathVariable Long communityId) {
+        try {
+            UserObject userObject = userObjectService.getUserById(userId);
+            Community community = communityService.getCommunityById(communityId);
+            Set<Community> communitySet = userObject.getCommunitySet();
+            communitySet.add(community);
+            userObject.setCommunitySet(communitySet);
+            UserObject updatedUser = userObjectService.saveUser(userObject);
+            return new ResponseEntity<>(updatedUser, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
     }
 
     // end point to get all communities
     @GetMapping("/api/communities")
-    private Set<Community> getAllCommunities() {
-        return communityService.getAllCommunities();
+    private ResponseEntity<Set<Community>> getAllCommunities() {
+        try {
+            return new ResponseEntity<>(communityService.getAllCommunities(), HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
     }
 
     @GetMapping("/api/get-community/{id}")
-    private Community getCommunityById(@PathVariable Long id) {
-        return communityService.getCommunityById(id);
+    private ResponseEntity<Community> getCommunityById(@PathVariable Long id) {
+        try {
+            return new ResponseEntity<>(communityService.getCommunityById(id), HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
     }
-
 }

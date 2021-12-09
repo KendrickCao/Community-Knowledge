@@ -26,7 +26,7 @@ public class CommunityService {
         if (keyword == null) {
             communities = communityRepository.findAll();
         } else {
-            communities = communityRepository.findAllByKeyword(keyword);
+            communities = communityRepository.findByKeyword(keyword);
         }
         return communities;
     }
