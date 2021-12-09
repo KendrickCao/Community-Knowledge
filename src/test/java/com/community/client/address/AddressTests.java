@@ -1,8 +1,11 @@
 package com.community.client.address;
 
 import com.community.client.models.Address;
+import com.community.client.models.Community;
 import com.community.client.repositories.AddressRepository;
+import com.community.client.repositories.CommunityRepository;
 import com.community.client.services.AddressService;
+import com.community.client.services.CommunityService;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -27,4 +30,24 @@ public class AddressTests {
         assertEquals("uk", saveAddress.getCountry());
     }
 
+    @Test
+    public void testCaseToCheckGetAddressById() {
+
+        AddressRepository addressRepository = mock(AddressRepository.class);
+
+        Address dummyAddress = new Address(1L, "test lineoneaddress", "test linetwoaddress", "test city", "test postcode",
+                "test country");
+
+        when(addressRepository.findAddressById(1L)).thenReturn(java.util.Optional.of(dummyAddress));
+
+        AddressService addressService = new AddressService(addressRepository);
+        Address addressFound = addressService.getAddressById(1L);
+
+        assertEquals(1, addressFound.getId());
+        assertEquals("test lineoneaddress", addressFound.getLine1Address());
+        assertEquals("test linetwoaddress", addressFound.getLine2Address());
+        assertEquals("test city", addressFound.getCity());
+        assertEquals("test postcode", addressFound.getPostcode());
+        assertEquals("test country", addressFound.getCountry());
+    }
 }
