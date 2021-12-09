@@ -8,6 +8,8 @@ import com.community.client.services.CommunityService;
 import com.community.client.services.ProjectService;
 import com.community.client.services.EventService;
 import com.community.client.services.UserObjectService;
+
+import org.hibernate.annotations.SourceType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 

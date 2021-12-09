@@ -2,7 +2,6 @@ package com.community.client.repositories;
 
 import com.community.client.models.Community;
 
-import org.hibernate.type.TrueFalseType;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;

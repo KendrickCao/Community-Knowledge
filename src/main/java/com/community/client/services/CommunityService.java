@@ -21,6 +21,16 @@ public class CommunityService {
         return communityRepository.save(community);
     }
 
+    public Set<Community> getAllCommunities(String keyword) {
+        Set<Community> communities;
+        if (keyword == null) {
+            communities = communityRepository.findAll();
+        } else {
+            communities = communityRepository.findByKeyword(keyword);
+        }
+        return communities;
+    }
+
     public Set<Community> getAllCommunities() {
         return communityRepository.findAll();
     }
