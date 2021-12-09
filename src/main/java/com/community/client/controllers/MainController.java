@@ -164,8 +164,24 @@ public class MainController {
 
     // Controller which allows the user the VIEW to a list of all projects
     @RequestMapping("/projects")
-    public ModelAndView viewProjects(ModelAndView modelAndView) {
-        Set<Project> projects = projectService.getAllProjects();
+    public ModelAndView viewProjects(ModelAndView modelAndView,
+            @RequestParam(name = "keyword", required = false) String keyword) {
+        Set<Project> projects = new HashSet<>();
+        if (keyword != null){
+            //parseLong() may throw a NumberFormatException
+            try {
+                //parse user input to Long type
+                Long idKeyword = Long.parseLong(keyword);
+                Project searchedProject = projectService.getProjectById(idKeyword);
+                projects.add(searchedProject);
+            } catch (NumberFormatException e) {
+                // cannot parse then search it as name
+                projects = projectService.getProjectByName(keyword);
+            }
+        }else {
+            projects = projectService.getAllProjects();
+        }
+        System.out.println(projects.size()+"projects found");
         modelAndView.setViewName("project/projects");
         modelAndView.addObject("projects", projects);
         return modelAndView;

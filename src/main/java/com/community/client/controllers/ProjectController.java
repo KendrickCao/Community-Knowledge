@@ -44,9 +44,6 @@ public class ProjectController {
     private Project getProjectById(@PathVariable Long id){
         return projectService.getProjectById(id);
     }
-
-
-
 }
 
 
