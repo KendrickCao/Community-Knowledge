@@ -44,12 +44,13 @@ public class CommunityController {
 
     // end point to get all communities
     @GetMapping("/api/communities")
-    private Set<Community> getAllCommunities(@RequestParam("keyword") String keyword) {
-        return communityService.getAllCommunities(keyword);
+    private Set<Community> getAllCommunities() {
+        return communityService.getAllCommunities();
     }
 
     @GetMapping("/api/get-community/{id}")
     private Community getCommunityById(@PathVariable Long id) {
         return communityService.getCommunityById(id);
     }
+
 }

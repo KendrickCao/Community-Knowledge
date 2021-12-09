@@ -31,6 +31,14 @@ public class CommunityService {
         return communities;
     }
 
+    public Set<Community> getAllCommunities() {
+        return communityRepository.findAll();
+    }
+
+    public Set<Community> getCommunitySearchResults(String keyword) {
+        return communityRepository.findByKeyword(keyword);
+    }
+
     public Community getCommunityById(Long id) {
         Optional<Community> communityOptional = communityRepository.findCommunityById(id);
         if (communityOptional.isPresent()) {

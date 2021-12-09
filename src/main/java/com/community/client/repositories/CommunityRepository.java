@@ -2,6 +2,10 @@ package com.community.client.repositories;
 
 import com.community.client.models.Community;
 
+<<<<<<< HEAD
+=======
+import org.hibernate.type.TrueFalseType;
+>>>>>>> ac86e0deda5680cd5dc9d8e596c72f601ab0b136
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -18,11 +22,11 @@ public interface CommunityRepository extends CrudRepository<Community, Long> {
     // 2. Retrieve all communities (help to show the dropdown list)
     Set<Community> findAll();
 
+    @Query(value = "SELECT * from community_table community where community_name LIKE %?1%", nativeQuery = true)
+    Set<Community> findByKeyword(@Param("keyword") String keyword);
+
     // 3. Get one community by id
     Optional<Community> findCommunityById(Long id);
-
-    @Query(value = "select * from community_table  where community_name like %?1%", nativeQuery = true)
-    Set<Community> findAllByKeyword(@Param("keyword") String keyword);
 
     // 4. Get one community by Name for search function(do it later)
     // Optional<Community> findCommunityByName(String name);

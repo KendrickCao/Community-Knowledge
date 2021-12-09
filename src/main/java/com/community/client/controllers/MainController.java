@@ -13,6 +13,7 @@ import org.hibernate.annotations.SourceType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @RestController
@@ -115,8 +116,15 @@ public class MainController {
 
     // Controller which allows the user the VIEW to a list of all communities
     @RequestMapping("/communities")
-    public ModelAndView viewCommunities(ModelAndView modelAndView, @RequestParam("keyword") String keyword) {
-        Set<Community> communities = communityService.getAllCommunities(keyword);
+    public ModelAndView viewCommunities(ModelAndView modelAndView,
+            @RequestParam(name = "keyword", required = false) String keyword) {
+        Set<Community> communities = new HashSet<>();
+        if (keyword != null) {
+            communities = communityService.getCommunitySearchResults(keyword);
+        } else {
+            communities = communityService.getAllCommunities();
+        }
+        System.out.println(communities.size());
         modelAndView.setViewName("community-listview/index");
         modelAndView.addObject("communities", communities);
         return modelAndView;

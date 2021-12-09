@@ -1,20 +1,14 @@
 package com.community.client.models;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import jdk.jfr.DataAmount;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 @Table(name="transaction_table")
 public class DonationTransaction {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "transaction_id")
-    private Long Id;
+    private Long id;
 
     @Column(name="donor_name", nullable = false)
     private String donorName;
@@ -23,26 +17,46 @@ public class DonationTransaction {
     private String donorEmail;
 
     @Column(name="amount", nullable = false, precision = 2)
-    private float amount;
+    private String amount;
 
     @Column(name = "card_number", nullable = false)
-    private String cardNumber;
+    private String creditCard;
 
     @Column(name = "date", nullable = false)
     private String date;
 
     @Column(name = "project_id", nullable = false)
-    private long projectId;
+    private String projectId;
 
-    @Column(name="card_cv", nullable = false)
-    private String cardCv;
+    @Column(name = "user_id", nullable = false)
+    private String userId;
+
+    @Column(name="card_cvc", nullable = false)
+    private String cardCvc;
+
+    @Column(name="card_year", nullable = false)
+    private String cardYear;
+
+    @Column(name="card_month", nullable = false)
+    private String cardMonth;
+
+    //Setting up the getters and setters
+
 
     public Long getId() {
-        return Id;
+        return id;
     }
 
     public void setId(Long id) {
-        Id = id;
+        this.id = id;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public String getDonorName() {
@@ -61,20 +75,20 @@ public class DonationTransaction {
         this.donorEmail = donorEmail;
     }
 
-    public float getAmount() {
+    public String getAmount() {
         return amount;
     }
 
-    public void setAmount(float amount) {
+    public void setAmount(String amount) {
         this.amount = amount;
     }
 
-    public String getCardNumber() {
-        return cardNumber;
+    public String getCreditCard() {
+        return creditCard;
     }
 
-    public void setCardNumber(String cardNumber) {
-        this.cardNumber = cardNumber;
+    public void setCreditCard(String creditCard) {
+        this.creditCard = creditCard;
     }
 
     public String getDate() {
@@ -85,19 +99,35 @@ public class DonationTransaction {
         this.date = date;
     }
 
-    public long getProjectId() {
+    public String getProjectId() {
         return projectId;
     }
 
-    public void setProjectId(long projectId) {
+    public void setProjectId(String projectId) {
         this.projectId = projectId;
     }
 
-    public String getCardCv() {
-        return cardCv;
+    public String getCardCvc() {
+        return cardCvc;
     }
 
-    public void setCardCv(String cardCv) {
-        this.cardCv = cardCv;
+    public void setCardCvc(String cardCvc) {
+        this.cardCvc = cardCvc;
+    }
+
+    public String getCardYear() {
+        return cardYear;
+    }
+
+    public void setCardYear(String cardYear) {
+        this.cardYear = cardYear;
+    }
+
+    public String getCardMonth() {
+        return cardMonth;
+    }
+
+    public void setCardMonth(String cardMonth) {
+        this.cardMonth = cardMonth;
     }
 }
