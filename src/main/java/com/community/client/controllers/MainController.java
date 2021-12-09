@@ -173,7 +173,10 @@ public class MainController {
                 //parse user input to Long type
                 Long idKeyword = Long.parseLong(keyword);
                 Project searchedProject = projectService.getProjectById(idKeyword);
-                projects.add(searchedProject);
+                //check if the id is existed
+                if (searchedProject != null){
+                    projects.add(searchedProject);
+                }
             } catch (NumberFormatException e) {
                 // cannot parse then search it as name
                 projects = projectService.getProjectByName(keyword);
