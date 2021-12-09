@@ -148,6 +148,21 @@ public class MainController {
         return modelAndView;
     }
 
+    // Controller which allows the user to view a list of all events of events with a name containing a keyword
+    @RequestMapping("/AllEventsList")
+    public ModelAndView viewEvents(ModelAndView modelAndView,
+                                   @RequestParam(name = "keyword", required = false) String keyword) {
+        Set<Event> events = new HashSet<>();
+        if (keyword != null) {
+            events = eventService.getEventSearchResults(keyword);
+        } else {
+            events = eventService.getAllEvents();
+        }
+        modelAndView.setViewName("event-listview/AllEventsList");
+        modelAndView.addObject("events", events);
+        return modelAndView;
+    }
+
     // Controller which allows the user the VIEW the details of a particular event
     @RequestMapping("/event/{eventId}")
     public ModelAndView viewEventDetails(ModelAndView modelAndView, @PathVariable Long eventId) {
