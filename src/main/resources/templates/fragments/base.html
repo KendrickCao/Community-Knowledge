@@ -21,7 +21,7 @@
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
     <!--Navbar css(it will also be commonly shared)-->
-    <link th:href="@{/css/base.landing.css}" rel="stylesheet"/>
+    <link th:href="@{/css/base.css}" rel="stylesheet"/>
 
     <!--    Custom CSS of fragments which will replace this-->
     <th:block th:replace="${link}"/>
@@ -29,61 +29,7 @@
 <body th:fragment="common-body(body,footer,script)">
 
 <div class="container-fluid">
-    <header>
-        <div class="navContainer">
-            <div class="topHeader">
-                <div class="community-web-name">
-                    <h1 id="logo">LOGO</h1>
-                </div>
-                <div class="hamBtn">
-                    <span><i class="fas fa-bars"></i></span>
-                </div>
-                <div class="timesBtn">
-                    <span><i class="fas fa-times"></i></span>
-                </div>
-            </div>
-            <!-- THE MAIN NAVIGATION LINKS WILL BE DISPLAYED HERE -->
-            <div class="navBar" id="navBar">
-                <nav>
-                    <ul>
-                        <li>
-                            <a th:href="@{/communities}">Community</a>
-                        </li>
-                        <li>
-                            <a th:href="@{/projects}">Projects</a>
-                        </li>
-                        <li>
-                            <a href="#">About</a>
-                        </li>
-                        <li>
-                            <a href="#">Contact</a>
-                        </li>
-                        <li>
-                            <a th:href="@{/Login}">Login</a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
 
-            <!-- THE SOCIAL MEDIA ICONS FOR THE COMMUNITY WEBSITE-->
-            <div class="socialMediaIcons">
-                <ul>
-                    <li>
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </header>
 </div>
 
 <!--Create a block to append the value from template caller-->
@@ -94,24 +40,6 @@
 
 
 <footer>
-    <div class="companyFooterContainer">
-        <div class="companyFooterLeft">
-            <h2>Company Name</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua.</p>
-        </div>
-
-        <div class="companyFooterRight">
-            <h2>Newsletter</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua.</p>
-            <div class="">
-                <input type="text" placeholder="Email Address" name="" value="">
-                <i class="fas fa-envelope"></i>
-            </div>
-        </div>
-    </div>
-    <p>Copyright &copy; 2021 All rights reserved.</p>
 
 </footer>
 <th:block th:replace="${footer}"/>
