@@ -25,6 +25,10 @@ public class EventService {
         return eventRepository.findAll();
     }
 
+    public Set<Event> getEventSearchResults(String keyword) {
+        return eventRepository.findByKeyword(keyword);
+    }
+
     public Event getEventById(Long id){
         Optional<Event> eventOptional = eventRepository.findEventById(id);
         return eventOptional.orElse(null);
