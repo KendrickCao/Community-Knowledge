@@ -21,7 +21,7 @@
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
     <!--Navbar css(it will also be commonly shared)-->
-    <link th:href="@{/css/base.landing.css}" rel="stylesheet"/>
+    <link th:href="@{/css/base.styles.css}" rel="stylesheet"/>
 
     <!--    Custom CSS of fragments which will replace this-->
     <th:block th:replace="${link}"/>
@@ -29,94 +29,128 @@
 <body th:fragment="common-body(body,footer,script)">
 
 <div class="container-fluid">
-    <header>
-        <div class="navContainer">
-            <div class="topHeader">
-                <div class="community-web-name">
-                    <h1 id="logo">LOGO</h1>
+        <!-- Creating the header -->
+        <header>
+            <div class="base-navigation-container">
+                <div class="top-head">
+                    <div class="company-name">
+                        <h1><a th:href="@{/}">LOGO</a></h1>
+                    </div>
+                <!-- Creating a menu bar -->
+                    <div class="ham-btn">
+                        <span>
+                            <i class="fas fa-bars"></i>
+                        </span>
+                    </div>
+                <!-- Creating a times icon to cancel the menu bar -->
+                    <div class="times-btn">
+                        <span>
+                            <i class="fas fa-times"></i>
+                        </span>
+                    </div>
                 </div>
-                <div class="hamBtn">
-                    <span><i class="fas fa-bars"></i></span>
+
+                <!-- Creating the Navigation bar links  -->
+                <div class="nav-bar" id="nav-bar">
+                    <nav>
+                        <ul>
+                            <li>
+                                <a th:href="@{/communities}"><i class="fa fa-globe"></i>community</a>
+                            </li>
+                            <li>
+                                <a th:href="@{/projects}"><i class="fa fa-folder"></i>projects</a>
+                            </li>
+                            <li>
+                                <a th:href="@{#}"><i class="fa fa-building"></i>about</a>
+                            </li>
+                            <li>
+                                <a th:href="@{#}"><i class="fa fa-address-book"></i>contact</a>
+                            </li>
+                            <li>
+                                <a th:href="@{#}"><i class="fa fa-user"></i>account<i class="fa fa-angle-down"></i></a>
+                                <div class="sub-menu-one">
+                                    <ul>
+                                        <li>
+                                            <a th:href="@{/SignUp}"><i id="fa-user-plus" class="fa fa-user-plus"></i>signup</a>
+                                        </li>
+                                        <li>
+                                            <a th:href="@{/Login}"><i id="fa-user" class="fa fa-user"></i>Login</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </nav>
                 </div>
-                <div class="timesBtn">
-                    <span><i class="fas fa-times"></i></span>
-                </div>
-            </div>
-            <!-- THE MAIN NAVIGATION LINKS WILL BE DISPLAYED HERE -->
-            <div class="navBar" id="navBar">
-                <nav>
+
+            <!-- Creating The Social Media access -->
+                <div class="social-icons">
                     <ul>
                         <li>
-                            <a th:href="@{/communities}">Community</a>
+                            <a href="#">
+                                <i class="fab fa-facebook"></i>
+                            </a>
                         </li>
                         <li>
-                            <a th:href="@{/projects}">Projects</a>
+                            <a href="#">
+                                <i class="fab fa-twitter"></i>
+                            </a>
                         </li>
                         <li>
-                            <a href="#">About</a>
+                            <a href="#">
+                                <i class="fab fa-instagram"></i>
+                            </a>
                         </li>
                         <li>
-                            <a href="#">Contact</a>
-                        </li>
-                        <li>
-                            <a th:href="@{/Login}">Login</a>
+                            <a href="#">
+                                <i class="fab fa-youtube"></i>
+                            </a>
                         </li>
                     </ul>
-                </nav>
+                </div>
             </div>
 
-            <!-- THE SOCIAL MEDIA ICONS FOR THE COMMUNITY WEBSITE-->
-            <div class="socialMediaIcons">
-                <ul>
-                    <li>
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </header>
-</div>
-
-<!--Create a block to append the value from template caller-->
-<div class="body__container">
-    <th:block th:replace="${body}"/>
-
-</div>
+        </header>
 
 
-<footer>
-    <div class="companyFooterContainer">
-        <div class="companyFooterLeft">
-            <h2>Company Name</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua.</p>
-        </div>
+    <!--Create a block to append the value from template caller-->
+    <div class="body__container">
+        <th:block th:replace="${body}"/>
 
-        <div class="companyFooterRight">
-            <h2>Newsletter</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua.</p>
-            <div class="">
-                <input type="text" placeholder="Email Address" name="" value="">
-                <i class="fas fa-envelope"></i>
-            </div>
-        </div>
     </div>
-    <p>Copyright &copy; 2021 All rights reserved.</p>
 
-</footer>
-<th:block th:replace="${footer}"/>
 
-<script src="js/base.landing.js" async defer></script>
+    <footer>
+        <th:block th:replace="${footer}"/>
+        <div class="footer-container">
+            <div class="footer-left">
+                <h2>Company Name</h2>
+                <p>This is a community platform that allows users to create and support projects within their communities. You will be able to be involved with events that unify district for a friendlier environment. </p>
+                <div class="sub-link">
+                    <ul>
+                        <li><a th:href="@{#}"><i class="fa fa-angle-up"></i>back to the top</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-right">
+                <h2>Newsletter</h2>
+                <p>If you would like to get updates regarding recent posts or any changes to the websites, sign up through our Newsletter.</p>
+
+                <div>
+                    <input id="emailAddress" type="text" placeholder="Email Address" name="emailAddress">
+                    <i class="fas fa-envelope"></i>
+                </div>
+            </div>
+        </div>
+
+
+
+        <p>Copyright &copy; 2021 All rights reserved | team 4 community knowledge website</p>
+    </footer>
+
+</div>
+<script src="js/base.js" async defer></script>
 <th:block th:replace="${script}"/>
 
 <!--Common JS added here-->
