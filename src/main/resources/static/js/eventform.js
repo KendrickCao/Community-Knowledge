@@ -5,13 +5,20 @@ let eventAddress = null;
 let eventContributors = null;
 let eventDetails = null;
 let eventImage = null;
-let cookieArray =document.cookie.split(":")[2];
-let userId = cookieArray.split(",")[0];
 let userObject = null;
 let communitySelectElement= null;
 let communitySelected=null
 let projectSelected = null;
 let url = null;
+let cookieArray =document.cookie.split(":")[2];
+let userId = cookieArray ? cookieArray.split(",")[0] : null;
+
+// Checking for userId in cookie
+if (userId) {
+} else {
+    window.alert("You need to login first. Redirecting...");
+    window.location.href = "/Login";
+}
 
 // Method to close the create event disclaimer model.
 const closeModelDisclaimer = (e) =>{

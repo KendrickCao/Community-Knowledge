@@ -16,7 +16,7 @@
     </form>
 
     <aside id="formLink">
-        <a class="btn btn-info" th:href="@{/EventForm}">Create New</a>
+        <button class="btn btn-info" id="createNew" onclick="window.location.href ='/EventForm'">Create New</button>
     </aside>
 
     <article class="all-events-list-page__container" th:each="event : ${events}">
