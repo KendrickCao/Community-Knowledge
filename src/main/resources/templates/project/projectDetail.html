@@ -19,10 +19,12 @@
                 <p th:text="${project.description}"></p>
                 <p th:text="${project.description}+${project.description}+${project.description}+${project.description}"></p>
                 <p th:text="${project.description}+${project.description}"></p>
+<!-- this will be replaced by map api Todo-->
+                <img src="https://www.commonplace.is/hs-fs/hubfs/Vale%20of%20G%20phase%202.png?width=1500&name=Vale%20of%20G%20phase%202.png">
             </div>
         </article>
-        <div class="project-community" style="flex-basis: 33.33%;">
-            <article class="projectCard-container"> <!--        a kind of foreach in thymeleaf-->
+        <div class="rightContent" style="flex-basis: 33.33%;">
+            <article class="projectCard-container">
                 <a class="project-cover" th:href="@{${'/community/'+projectCommunity.id}}">
                     <img th:src="@{${'/uploads/'+projectCommunity.getCommunityImage()}}">
                     <div class="color-hr"></div>
@@ -31,6 +33,14 @@
                     <h4 th:text="${projectCommunity.name}"></h4>
                     <p th:text="${projectCommunity.description}"></p>
                     <div class="btn-wrapper"><a th:href="@{${'/community/'+projectCommunity.id}}" class="btn btn-secondary project-button">READ MORE</a></div>
+                </div>
+            </article>
+            <article class="projectCard-container" id="fundsContent">
+                <div class="project-content">
+                    <h4>Project Schedule</h4>
+                    <p th:text="'Funds Required: '+${project.fundsRequired}+' GBP'"></p>
+                    <p th:text="'Funds Collected: '+${project.fundsCollected}+' GBP'" class="mb-3"></p>
+                    <div class="btn-wrapper"><a th:href="@{${'/community/'+projectCommunity.id}}" class="btn btn-secondary project-button">DONATE</a></div>
                 </div>
             </article>
         </div>
