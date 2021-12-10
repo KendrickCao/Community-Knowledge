@@ -39,7 +39,10 @@
                 <div class="project-content">
                     <h4>Project Schedule</h4>
                     <p th:text="'Funds Required: '+${project.fundsRequired}+' GBP'"></p>
-                    <p th:text="'Funds Collected: '+${project.fundsCollected}+' GBP'" class="mb-3"></p>
+                    <p th:text="'Funds Collected: '+${project.fundsCollected}+' GBP'"></p>
+                    <div class="progress mb-3 mt-2">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 75%"></div>
+                    </div>
                     <div class="btn-wrapper"><a th:href="@{${'/community/'+projectCommunity.id}}" class="btn btn-secondary project-button">DONATE</a></div>
                 </div>
             </article>

@@ -40,3 +40,6 @@
 #fundsContent p{
     margin-bottom: 0;
 }
+.progress-bar{
+    background-color: #acacac !important;
+}
