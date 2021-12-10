@@ -24,13 +24,22 @@
 .description{
     padding-right: 3rem;
 }
-.project-community .projectCard-container:hover{
+.description img{
+    width: 95%;
+}
+.rightContent .projectCard-container:hover{
     transform: scale(1) !important;
 }
 .projectCard-container{
     width: 90%;
-    margin: 0 auto;
+    margin: 0 auto 1rem auto;
     /*the community card will be fixed when scroll down*/
-    position: sticky;
-    top: 50px;
+    /*position: sticky;*/
+    /*top: 50px;*/
+}
+#fundsContent p{
+    margin-bottom: 0;
+}
+.progress-bar{
+    background-color: #acacac !important;
 }

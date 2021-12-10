@@ -35,4 +35,8 @@ public class ProjectService {
         }
     }
 
+    public Set<Project> getProjectByName(String keyword){
+        return projectRepository.findProjectByName(keyword);
+    }
+
 }
