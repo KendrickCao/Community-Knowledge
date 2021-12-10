@@ -12,7 +12,7 @@
           rel="stylesheet">
 
     <!--Landing css(it will also be commonly shared)-->
-    <link th:href="@{/css/base.landing.css}" rel="stylesheet"/>
+    <link th:href="@{/css/landing.style.css}" rel="stylesheet"/>
 
 </head>
 <body th:replace="fragments/base::common-body(~{::#landing},~{} ,~{::script})">
@@ -20,18 +20,18 @@
 <div id="landing">
     <!--Section for the company banner-->
     <section class="companyBanner">
-
-        <h2>LATEST NEWS IN YOUR COMMUNITY</h2>
-
-        <div class="community-info__container">
-            <div class="CompanyCurrentNewsHeadlines">
-<!--            This div will show the community name.-->
-            </div>
-            <div class="companyBannerSubContent">
-<!--    This div will show community images-->
+        <div class="companyBannerMainContent">
+            <h2>LATEST NEWS IN YOUR COMMUNITY</h2>
+            <h3></h3>
+            <div class="community-info__container">
+                <div class="CompanyCurrentNewsHeadlines">
+            <!-- This div will show the community name.-->
+                </div>
+                <div class="companyBannerSubContent">
+            <!--This div will show community images-->
+                </div>
             </div>
         </div>
-
     </section>
 
     <hr>
