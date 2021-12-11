@@ -26,8 +26,8 @@ let cardMonth;
 //Define functions
 //Function to capture user input - NAME
 const captureDonorNameInput = (event) =>{
-    if(event.target.value.length >10 || event.target.value.length <3){
-        window.alert("Name cannot be more than 10 or less than 3")
+    if(event.target.value.length >20 || event.target.value.length <1){
+        window.alert("Name cannot be more than 20 or less than 1")
         donorNameInput.focus();
     }
     donorName = event.target.value
@@ -35,7 +35,7 @@ const captureDonorNameInput = (event) =>{
 
 //Function to capture user input - EMAIL
 const captureUserEmailInput = (event) =>{
-    if(!event.target.value.includes("@")){
+    if(!event.target.value.includes("@gmail", "@yahoo")){
         window.alert("Invlid email")
         donorEmailInput.focus();
     }
@@ -44,35 +44,63 @@ const captureUserEmailInput = (event) =>{
 
 //Function to capture user input - PROJECT ID
 const captureProjectIdInput = (event) =>{
+    if (event.target.value.length <=0){
+        window.alert("Invalid Project Id")
+        projectIdInput.focus();
+    }
     projectId = event.target.value
 }
 
 //Function to capture user input - AMOUNT
 const captureAmountInput = (event) =>{
+    if (event.target.value.length <= 0){
+        window.alert("You have entered an incorrect value, please re-enter a correct value.")
+        amountInput.focus()
+    }
     amount = event.target.value
 }
 
 //Function to capture user input - DATE
 const captureDateInput = (event) =>{
+    if (event.target.value.length = 0){
+        window.alert("Select a valid date")
+        dateInput.focus()
+    }
     dateVariable = event.target.value
 }
 //Function to capture user input - CARD NUMBER
 const captureCardNumberInput = (event) =>{
+    if (event.target.value.length < 16 && event.target.value.length > 16){
+        window.alert("Your card number should be a 16 digit number.")
+        cardNumberInput.focus()
+    }
     creditCard = event.target.value;
 }
 
 //Function to capture user input - CARD MONTH
 const captureCardMonthInput =  (event) =>{
+    if (event.target.value.length == null || event.target.value ==="Month") {
+        window.alert("Select the correct options provided for you.")
+        cardMonthInput.focus()
+    }
     cardMonth = event.target.value;
 }
 
 //Function to capture user input - CARD CVC
 const captureCardCvcInput = (event) =>{
+    if (event.target.value.length <3 || event.target.value.length >3){
+        window.alert("Your card cvc number should be a 3 digit number.")
+        cardCvcInput.focus()
+    }
     cardCvc = event.target.value;
 }
 
 //Function to capture user input - CARD YEAR
 const captureCardYearInput = (event) =>{
+    if (event.target.value.length == null || event.target.value ==="Year") {
+        window.alert("Select the correct options provided for you.")
+        cardYearInput.focus()
+    }
     cardYear = event.target.value;
 }
 
