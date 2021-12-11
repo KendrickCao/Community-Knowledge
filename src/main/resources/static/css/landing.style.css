@@ -1,4 +1,17 @@
 #landing.style.css
+/*
+
+font-family: 'Montserrat',
+sans-serif;
+font-family: 'Raleway', sans-serif;
+
+
+ */
+
+
+
+
+
 
 *{
     box-sizing: border-box;
@@ -10,10 +23,15 @@
     --heading: 'Montserrat', sans-serif;
 }
 
-.container-fluid{
+#landing {
+    height: 100%;
     font-family: 'Raleway', sans-serif;
     background: #fff;
     padding: 0px;
+}
+
+html, body{
+    height: 100%;
 }
 
 /* global Styling */
@@ -36,4 +54,118 @@ a{
 hr{
     width:95vw;
     margin: 0 auto;
+}
+/* ^ the end of global Styling */
+
+/* CSS for the Banner Section */
+
+.companyBanner{
+    min-height: auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+    padding: 30px;
+    margin-top: 8px;
+}
+
+.companyBannerMainContent{
+    padding: 0 2rem;
+    line-height: 1.7;
+}
+
+.companyBannerMainContent h2{
+    font-size: 2rem;
+    font-family: var(--heading);
+}
+
+.companyBannerMainContent h3{
+    padding: 1rem 0;
+}
+
+.companyBannerMainContent button{
+    border: none;
+    background: #252525;
+    padding: 14px 18px;
+    font-size: 1.2rem;
+    font-family: 'Montserrat', sans-serif;
+    transition: background 1s ease;
+}
+
+.companyBannerMainContent button a{
+    color: #f3f3f3;
+    transition: color 1s ease;
+}
+
+.companyBannerMainContent button:hover{
+    background: #606266;
+}
+
+.companyBannerMainContent button:hover a{
+    color: black;
+}
+
+.community-info__container-news-head{
+    background: #fff;
+    padding: 20px;
+    font-size: 12px;
+    margin: 20px 0;
+}
+.CompanyCurrentNewsHeadlines{
+    padding: 6px;
+    cursor: pointer;
+    position: relative;
+}
+.CompanyCurrentNewsHeadlines:hover::before{
+    content: ">> ";
+    position: absolute;
+    left: -12px;
+}
+
+.importantTopics{
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    padding: 12px;
+    height: 300px;
+}
+.companyBannerSubContent{
+    display: block;
+}
+.CompanyCurrentNewsHeadlines:hover{
+    animation: shake 0.2s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+
+}
+
+
+/*
+
+        Media: Making the website responsive
+
+ */
+
+
+@media (max-width: 460px) {
+
+}
+
+@media (min-width: 768px) {
+    .bannerSubContent{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media(min-width: 800px){
+
+}
+
+@media (min-width: 1080px) {
+    .companyBanner{
+        grid-template-columns: 1fr 2fr;
+    }
 }

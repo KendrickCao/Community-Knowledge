@@ -18,27 +18,46 @@
 <body th:replace="fragments/base::common-body(~{::#landing},~{} ,~{::script})">
 
 <div id="landing">
+    <!--Section for the creation for the slider-->
+    <slider id="Slide-show">
+
+    </slider>
+
     <!--Section for the company banner-->
     <section class="companyBanner">
         <div class="companyBannerMainContent">
-            <h2>LATEST NEWS IN YOUR COMMUNITY</h2>
-            <h3></h3>
-            <div class="community-info__container">
+            <!-- this is another button that will redirect users to the project page -->
+            <h2>LATEST PROJECTS IN YOUR COMMUNITY</h2>
+            <h3>View all the project in your community</h3>
+
+            <button type="button" name="buttonProject">
+                <a th:href="@{/projects}">More Info</a>
+            </button>
+
+            <div class="community-info__container-news-head">
                 <div class="CompanyCurrentNewsHeadlines">
             <!-- This div will show the community name.-->
                 </div>
+            </div>
+        </div>
+
+        <div class="bannerSubContent">
+            <div class="importantTopics">
                 <div class="companyBannerSubContent">
-            <!--This div will show community images-->
+                    <!--This div will show community images-->
                 </div>
             </div>
         </div>
-    </section>
 
+    </section>
     <hr>
 
     <!--PROJECTS HERE-->
-    <section class="displayProjects">
-        <h3>Upcoming Community Projects</h3>
+    <section class="MainContainerLeft">
+
+
+
+        //DISPLAYING PROJECTS BELOW
         <button type="button" name="buttonProject">
             <a th:href="@{/projects}">More Info</a>
         </button>
@@ -84,6 +103,6 @@
     <script src="https://kit.fontawesome.com/dbed6b6114.js" crossorigin="anonymous"></script>
 
 </div>
-<script th:src="@{/js/base.landing.js}" async defer></script>
+<script th:src="@{/js/landing.js}" async defer></script>
 </body>
 </html>
