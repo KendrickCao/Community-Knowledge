@@ -47,7 +47,7 @@ const selectCommunity = (e) =>{
     if(selectedCommunity){
         // Check if community has any projects or not.
         if(!selectedCommunity.projectSet.length){
-            const textNode = document.createTextNode("This community has no projects. Either create Events on Community or create a project first")
+            const textNode = document.createTextNode("This Community has no Projects. Either create Events for a Community or create a Project first: ")
             const p = document.createElement("p").appendChild(textNode)
             const a = document.createElement("a")
             a.href ="http://localhost:8081:/CreateProject"
@@ -63,10 +63,10 @@ const selectCommunity = (e) =>{
             const projectSelectElement = document.getElementsByClassName("project-select")[0];
             projectSelectElement.disabled = false;
             projectSelectElement.removeChild(document.getElementById("projectDummyOption"))
-            const noProjectSelecOption = document.createElement("option")
-            noProjectSelecOption.value = null;
-            noProjectSelecOption.text = "Select a Project Under This community(For Event)"
-            projectSelectElement.append(noProjectSelecOption);
+            const noProjectSelectOption = document.createElement("option")
+            noProjectSelectOption.value = null;
+            noProjectSelectOption.text = "Select a Project Under This community(For Event)"
+            projectSelectElement.append(noProjectSelectOption);
             for(let i=0 ; i<selectedCommunity.projectSet.length ; i++){
                 const optionElement = document.createElement("option")
                 optionElement.value = selectedCommunity.projectSet[i].id;
@@ -140,7 +140,7 @@ window.onload =()=>{
 }
 
 // Function to validate the userInputs.
-const validate = function (elementName, userInput) {
+const validateEvent = function (elementName, userInput) {
     let validated = false;
     if (elementName === "name") {
         if (1 < userInput.length < 256) {
@@ -177,33 +177,33 @@ const validate = function (elementName, userInput) {
 }
 
 // Function to capture user inputs in input boxes.
-const captureUserInput = function (e) {
+const captureUserInputEvent = function (e) {
 
     const userInput = e.target.value;
     const elementName = e.target.name;
 
     if (elementName === "name") {
-        const validated = validate(elementName, userInput);
+        const validated = validateEvent(elementName, userInput);
         if (validated) {
             eventName = userInput;
         }
     } else if (elementName === "date") {
-        const validated = validate(elementName, userInput);
+        const validated = validateEvent(elementName, userInput);
         if (validated) {
             eventDate = userInput;
         }
     } else if (elementName === "contributors") {
-        const validated = validate(elementName, userInput);
+        const validated = validateEvent(elementName, userInput);
         if (validated) {
             eventContributors = userInput;
         }
     } else if (elementName === "aboutSection") {
-        const validated = validate(elementName, userInput);
+        const validated = validateEvent(elementName, userInput);
         if (validated) {
             eventDetails = userInput;
         }
     } else if (elementName === "address") {
-        const validated = validate(elementName, userInput);
+        const validated = validateEvent(elementName, userInput);
         if (validated) {
             eventAddress = userInput;
         }
@@ -289,11 +289,11 @@ const postEventButton = document.getElementById("proceed");
 const closeModelButton = document.getElementsByClassName("close_model")[0];
 
 // Event Listeners.
-eventNameInput.addEventListener("change", captureUserInput);
-eventDateInput.addEventListener("change", captureUserInput);
-eventAddressInput.addEventListener("change", captureUserInput);
-eventContributorsInput.addEventListener("change", captureUserInput);
-eventDetailsInput.addEventListener("change", captureUserInput);
+eventNameInput.addEventListener("change", captureUserInputEvent);
+eventDateInput.addEventListener("change", captureUserInputEvent);
+eventAddressInput.addEventListener("change", captureUserInputEvent);
+eventContributorsInput.addEventListener("change", captureUserInputEvent);
+eventDetailsInput.addEventListener("change", captureUserInputEvent);
 uploadImageElement.addEventListener("change",captureImageUploaded );
 createEventButton.addEventListener("click", showModelDisclaimer);
 closeModelButton.addEventListener("click", closeModelDisclaimer);

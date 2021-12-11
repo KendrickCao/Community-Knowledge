@@ -1,6 +1,67 @@
 #event-page{
-    padding: 10px ;
-    margin: 10px 0px;
+    position: relative;
+    background-color: #ffffff;
+    min-width: 100vw;
+    min-height: 100vh;
+}
+
+.master-container{
+    margin: 0 auto;
+    width: 80%;
+    overflow: hidden;
+    border-radius: 4px;
+    background-image: url("../images/event/games-jam-image.jpg");
+    background-size:100%;
+}
+
+.eventCard{
+    opacity: 0.95;
+    background-color: #ffffff;
+    border-radius: 0 4px 0 4px;
+    padding: 24px 64px;
+    margin: 0px 0% 20px 61.8%;
+    box-shadow: -6px 4px 15px -8px #888888;
+}
+
+.display-4{
+    color: #303030;
+    margin-top: 10px;
+    margin-right: 1rem !important;
+    margin-bottom: 0px !important;
+}
+
+.button-container{
+    padding: 1rem 0 1rem 0;
+}
+
+#createEvent-button{
+    width: 100%;
+    background-color: #00bfff;
+    border-color: #097969;
+}
+
+#addImage{
+    width: 80%;
+    background-color: #00bfff;
+    border-color: #097969;
+}
+
+.btn-info{
+    width: 80%;
+}
+
+#createEvent-button:hover, #addImage:hover{
+    background-color: #097969;
+    border-color: #00bfff;
+}
+
+p {
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+.uploadArea{
+    text-align: center;
 }
 
 .create-event__disclaimer{
