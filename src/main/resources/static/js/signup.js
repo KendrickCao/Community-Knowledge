@@ -1,9 +1,9 @@
 //Define Variables
 
-var userName = null;
-var userEmail = null;
-var userPassword = null;
-var userConfirmPassword = null;
+let userName = null;
+let userEmail = null;
+let userPassword = null;
+let userConfirmPassword = null;
 
 // Method to close the cookie disclaimer model.
 const closeModelDisclaimer = (e) =>{

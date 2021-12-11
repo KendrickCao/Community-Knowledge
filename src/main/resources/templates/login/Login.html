@@ -38,6 +38,32 @@
 
     </div>
 
+    <!-- Disclaimer Section -->
+    <div class="background--drop model__hide">
+
+    </div>
+    <!--    Model which shows the cookie disclaimer before signing up-->
+    <div class="cookie__disclaimer model__hide">
+        <div class="container">
+            <h6 class="display-6"> Cookie Disclaimer </h6>
+            <p class="lead">Please read the following disclaimer before logging in:</p>
+            <p class="lead">This website uses cookies, by logging in do you give your consent to the following:</p>
+            <p class="lead">Cookies are stored in your browser for a maximum of 24 hours and are used to store user information
+                including a user-Id, name and email when you login to your user account. This information is used for the purpose of
+                identifying which users have joined which community and to identify which users have created particular communities,
+                projects, events and user profiles. For example, when a project is created, the user-Id will be stored in a local
+                database alongside the rest of the project information.</p>
+            <p class="lead"> This website uses only first-party cookies and the information contained within the cookie is not shared with
+                any third-party.</p>
+            <h6 class="display-6">Do you consent to the use of cookies?</h6>
+            <div class="modal-footer">
+                <button id= "consent" type="button" class="btn btn-outline-success create_event--CTA" data-dismiss="model">Accept</button>
+                <button type="button" class="btn btn-outline-danger close_model">Reject</button>
+            </div>
+        </div>
+
+    </div>
+
 </div>
 <script th:src="@{/js/login.js}"></script>
 </body>
