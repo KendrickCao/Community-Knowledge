@@ -13,47 +13,47 @@
 </head>
 <body th:replace="fragments/base::common-body(~{::#event-page},~{}, ~{::script})">
 <div id="event-page" class="container" >
-    <h1 class="display-4">Please Enter Information to Create your Event</h1>
     <div class = "master-container">
         <div class = "form-container">
             <form action="/processFormPost" method="Post">
-                <label class = "display-4 text-center fs-2" for="user-community__placeholder" >Event Community:</label>
-                <div id="user-community__placeholder">
+                <section id="eventContent" class="eventCard">
+                    <h1 class="display-4 fs-2">Create Event: </h1><hr>
+                    <label class = "display-4 fs-4" for="user-community__placeholder" >Event Community:</label>
+                    <div id="user-community__placeholder">
 
-                </div>
-
-                <label class = "display-4 text-center fs-2" for="community-project__placeholder" >Event Project:</label>
-                <div id="community-project__placeholder">
-
-                </div>
-                <!--                <input class = "form-control" id="community/project" placeholder="Enter the Project or Community associated with your event here..." type="text" name="community/project"/><br>-->
-                <label class = "display-4 text-center fs-2" for="name">Event Name:</label>
-                <input class = "form-control" id="name" placeholder="Enter your Event Name Here..." type="text" name="name"/><br>
-                <label class = "display-4 text-center fs-2" for="date">Event Date:</label>
-                <input class = "form-control" id="date" placeholder="Enter the Date of the Event Here..." type="date" name="date"/><br>
-                <label class = "display-4 text-center fs-2" for="address">Event Address:</label>
-                <input class = "form-control" id="address" placeholder="Enter the Address of the Event Here..." type="text" name="address"/><br>
-                <label class = "display-4 text-center fs-2" for="contributors">Event Contributors:</label>
-                <input class = "form-control" id="contributors" placeholder="Enter the Names of those who Contributed to the Event Here..." type="text" name="contributors"/><br>
-                <label class = "display-4 text-center fs-2" for="aboutSection">About Section:</label>
-                <textarea class = "form-control" id="aboutSection" rows = "10" cols = "10" name="aboutSection" >Enter Event Details Here... </textarea><br>
-                <div>
-                    <p >Upload Image For Event</p>
-                    <div>
-                        <label for="uploadImage" class="upload-image__label btn btn-success">UPLOAD IMAGE</label>
-                        <input type="file" id="uploadImage" hidden />
                     </div>
-                    <div>
-                        <p id="upload-image__status">Upload status</p>
+
+                    <label class = "display-4 fs-4" for="community-project__placeholder" >Event Project:</label>
+                    <div id="community-project__placeholder">
+
                     </div>
-                </div>
-                <div class = "button-container">
-                    <button id="createEvent-button" class="btn btn-success btn-lg">Create Event</button>
-                </div>
+
+                    <label class = "display-4 fs-4" for="name">Event Name:</label>
+                    <input class = "form-control" id="name" placeholder="Enter your Event Name Here..." type="text" name="name"/><br>
+                    <label class = "display-4 fs-4" for="date">Event Date:</label>
+                    <input class = "form-control" id="date" placeholder="Enter the Date of the Event Here..." type="date" name="date"/><br>
+                    <label class = "display-4 fs-4" for="address">Event Address:</label>
+                    <input class = "form-control" id="address" placeholder="Enter the Address of the Event Here..." type="text" name="address"/><br>
+                    <label class = "display-4 fs-4" for="contributors">Event Contributors:</label>
+                    <input class = "form-control" id="contributors" placeholder="Enter the Names of those who Contributed to the Event Here..." type="text" name="contributors"/><br>
+                    <label class = "display-4 fs-4" for="aboutSection">About Section:</label>
+                    <textarea class = "form-control" id="aboutSection" rows = "10" cols = "10" name="aboutSection" >Enter Event Details Here... </textarea><br>
+                    <section class ="uploadArea">
+                        <p class="display-4 fs-5" >Upload Image For Event:</p>
+                        <div>
+                            <label for="uploadImage" id ="addImage" class="upload-image__label btn btn-success">Upload Image</label>
+                            <input type="file" id="uploadImage" hidden />
+                        </div>
+                            <p class="display-4 fs-5" id="upload-image__status">Upload Status</p>
+                    </section>
+                    <section class = "button-container">
+                        <button id="createEvent-button" class="btn btn-success btn-lg">Create Event</button>
+                    </section>
+                </section>
             </form>
         </div>
     </div>
-    <!--    Custom MODAL-->
+
     <div class="background--drop model__hide">
 
     </div>
