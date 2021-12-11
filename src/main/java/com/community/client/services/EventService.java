@@ -1,5 +1,6 @@
 package com.community.client.services;
 
+import com.community.client.models.Community;
 import com.community.client.models.Event;
 import com.community.client.repositories.EventRepository;
 import org.springframework.stereotype.Service;
@@ -22,6 +23,10 @@ public class EventService {
 
     public Set<Event> getAllEvents(){
         return eventRepository.findAll();
+    }
+
+    public Set<Event> getEventSearchResults(String keyword) {
+        return eventRepository.findByKeyword(keyword);
     }
 
     public Event getEventById(Long id){
