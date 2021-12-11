@@ -146,10 +146,14 @@ main nav icon
  */
 .nav-bar .fa {
     margin-right: 8px;
+    margin-left: 8px;
 }
 
 .nav-bar #fa-user-plus{
     margin-left: 4px;
+}
+#fa-user-logout{
+    display: none;
 }
 /* Social Icons */
 
@@ -202,6 +206,9 @@ Sub menu one
     text-decoration: underline;
 }
 
+#accountName{
+    display: inline-block;
+}
 /******* Footer ********/
 footer{
     z-index: 0;

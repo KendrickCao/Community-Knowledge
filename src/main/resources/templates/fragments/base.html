@@ -55,7 +55,7 @@
                     <nav>
                         <ul>
                             <li>
-                                <a th:href="@{/}"><i class="fa fa-globe"></i>platforms<i class="fa fa-angle-down"></i></a>
+                                <a th:href="@{/}"><i class="fa fa-globe"></i>platforms<i class="fa fa-angle-down ml-1"></i></a>
                                 <div class="sub-menu-one">
                                     <ul>
                                         <li>
@@ -77,14 +77,15 @@
                                 <a th:href="@{#}"><i class="fa fa-address-book"></i>contact</a>
                             </li>
                             <li>
-                                <a th:href="@{#}"><i class="fa fa-user"></i>account<i class="fa fa-angle-down"></i></a>
+                                <a th:href="@{#}"><i class="fa fa-user"></i><div id="accountName">account</div><i class="fa fa-angle-down"></i></a>
                                 <div class="sub-menu-one">
                                     <ul>
                                         <li>
                                             <a th:href="@{/SignUp}"><i id="fa-user-plus" class="fa fa-user-plus"></i>signup</a>
                                         </li>
                                         <li>
-                                            <a th:href="@{/Login}"><i id="fa-user" class="fa fa-user"></i>Login</a>
+                                            <a th:href="@{/Login}" id="fa-user-login"><i class="fa fa-user"></i>Login</a>
+                                            <a th:href="@{/Login}" id="fa-user-logout"><i class="fa fa-user"></i>Logout</a>
                                         </li>
                                     </ul>
                                 </div>
