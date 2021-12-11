@@ -156,7 +156,7 @@ const validateEvent = function (elementName, userInput) {
             window.alert("\nEvent Name should contain a minimum of 2 and a maximum of 255 characters.")
         }
     } else if (elementName === "date"){
-        if (userInput.length > 9) {
+        if (userInput.length > 7) {
             validated = true;
         } else {
             window.alert("\nPlease enter the full Event Date.")
@@ -193,26 +193,36 @@ const captureUserInputEvent = function (e) {
         const validated = validateEvent(elementName, userInput);
         if (validated) {
             eventName = userInput;
+        } else {
+            eventNameInput.focus();
         }
     } else if (elementName === "date") {
         const validated = validateEvent(elementName, userInput);
         if (validated) {
             eventDate = userInput;
+        } else {
+            eventDateInput.focus();
         }
     } else if (elementName === "contributors") {
         const validated = validateEvent(elementName, userInput);
         if (validated) {
             eventContributors = userInput;
+        } else {
+            eventContributorsInput.focus();
         }
     } else if (elementName === "aboutSection") {
         const validated = validateEvent(elementName, userInput);
         if (validated) {
             eventDetails = userInput;
+        } else {
+            eventDetailsInput.focus();
         }
     } else if (elementName === "address") {
         const validated = validateEvent(elementName, userInput);
         if (validated) {
             eventAddress = userInput;
+        } else {
+            eventAddressInput.focus();
         }
     }
 }
