@@ -1,12 +1,14 @@
-function togglePopup() {
-    document.getElementById('popup-1').classList.toggle('active');
-}
 //Fetch user state from cookie
 let cookieArray = document.cookie.split(":")[2];
 let userId = cookieArray ? cookieArray.split(",")[0] : null;
-if (!userId) {
-    window.alert("You need to login first. Redirecting...");
-    window.location.href = "/Login";
+
+function togglePopup() {
+    if (!userId) {
+        window.alert("You need to login first. Redirecting...");
+        window.location.href = "/Login";
+    }else {
+        document.getElementById('popup-1').classList.toggle('active');
+    }
 }
 
 //Define variables for Fetch Payload
