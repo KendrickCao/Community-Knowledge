@@ -27,3 +27,31 @@ h1{
 .loginLinkButton-container .btn {
     width: 100%;
 }
+
+.cookie__disclaimer{
+    position: absolute;
+    min-height: 60vh;
+    width: 40vw;
+    top: 10vh;
+    left: 30vw;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;
+    border: 1px solid rgba(125, 125, 125, 0.5);
+    z-index: 10;
+    background: white;
+}
+
+.background--drop{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh !important;
+    width: 100vw !important;
+    background: black;
+    opacity: 0.3;
+    z-index: 5;
+}
+
+.model__hide{
+    display: none;
+}

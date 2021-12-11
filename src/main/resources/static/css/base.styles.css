@@ -206,7 +206,6 @@ footer{
     background: #252525;
     color: #f3f3f3;
     padding: 30px;
-    margin-top: 10px;
     /** Testing to see if the footer stays below**/
 bottom: 0px;
 }
@@ -287,7 +286,9 @@ footer > p{
 }
 
 /*
-Creating the Header and footer responsive
+
+  Media: Creating the Header and footer responsive
+
  */
 @media(min-width: 800px){
     /* nav */
@@ -300,7 +301,6 @@ Creating the Header and footer responsive
         background: #252525;
         align-items: center;
         flex-wrap: wrap;
-        margin-bottom: 10px;
     }
 
     .top-head{

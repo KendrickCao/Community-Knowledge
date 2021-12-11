@@ -55,10 +55,20 @@
                     <nav>
                         <ul>
                             <li>
-                                <a th:href="@{/communities}"><i class="fa fa-globe"></i>community</a>
-                            </li>
-                            <li>
-                                <a th:href="@{/projects}"><i class="fa fa-folder"></i>projects</a>
+                                <a th:href="@{/}"><i class="fa fa-globe"></i>platforms<i class="fa fa-angle-down"></i></a>
+                                <div class="sub-menu-one">
+                                    <ul>
+                                        <li>
+                                            <a th:href="@{/communities}"><i class="fa fa-project-diagram"></i>community</a>
+                                        </li>
+                                        <li>
+                                            <a th:href="@{/projects}"><i class="fa fa-folder"></i>projects</a>
+                                        </li>
+                                        <li>
+                                            <a th:href="@{/events}"><i class="fa fa-calendar-week"></i>events</a>
+                                        </li>
+                                    </ul>
+                                </div>
                             </li>
                             <li>
                                 <a th:href="@{/AllEventsList}"><i class="fa fa-folder"></i>events</a>
