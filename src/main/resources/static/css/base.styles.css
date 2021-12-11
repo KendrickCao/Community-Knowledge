@@ -125,7 +125,9 @@ main navigation
     padding: 15px 0;
     transition: all 1s ease-in-out;
 }
-
+.nav-bar ul{
+    margin-bottom: 0 !important;
+}
 .nav-bar ul li:hover{
     background: #0e0e0e;
 }
@@ -207,7 +209,6 @@ footer{
     color: #f3f3f3;
     padding: 30px;
     /** Testing to see if the footer stays below**/
-bottom: 0px;
 }
 
 footer h2{
@@ -346,5 +347,8 @@ footer > p{
     }
     .social-icons ul li{
         padding: 20px;
+    }
+    .social-icons ul{
+        margin-bottom: 0 !important;
     }
 }
