@@ -1,3 +1,11 @@
+
+
+
+
+
+
+
+
 // Get the elements by class name.
 let communityNameContainerElement = document.getElementsByClassName(
   "CompanyCurrentNewsHeadlines"
