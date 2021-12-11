@@ -5,6 +5,23 @@ var userEmail = null;
 var userPassword = null;
 var userConfirmPassword = null;
 
+// Method to close the cookie disclaimer model.
+const closeModelDisclaimer = (e) =>{
+    e.preventDefault();
+    document.getElementsByClassName("background--drop")[0].classList.add("model__hide")
+    document.getElementsByClassName("cookie__disclaimer")[0].classList.add("model__hide")
+    document.body.classList.remove("stop_body--scroll")
+}
+
+// Method to display the cookie disclaimer model.
+const showModelDisclaimer = (e) =>{
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    document.getElementsByClassName("background--drop")[0].classList.remove("model__hide")
+    document.getElementsByClassName("cookie__disclaimer")[0].classList.remove("model__hide")
+    document.body.classList.add("stop_body--scroll")
+}
+
 // Function to validate the userInputs
 const validate = function (elementName, userInput) {
     let validated = false;
@@ -113,10 +130,15 @@ const emailInput = document.getElementById("email");
 const passwordInput = document.getElementById("password");
 const confirmPasswordInput = document.getElementById("confirmPassword");
 const createUserButton = document.getElementById("createUser-button");
+const postUserInfo = document.getElementById("consent");
+const closeModelButton = document.getElementsByClassName("close_model")[0];
 
 // Event Listeners
 nameInput.addEventListener("change", captureUserInput);
 emailInput.addEventListener("change", captureUserInput);
 passwordInput.addEventListener("change", captureUserInput);
 confirmPasswordInput.addEventListener("change", captureUserInput);
-createUserButton.addEventListener("click", createUser);
+createUserButton.addEventListener("click", showModelDisclaimer);
+closeModelButton.addEventListener("click", closeModelDisclaimer);
+postUserInfo.addEventListener("click", createUser);
+postUserInfo.addEventListener("click", closeModelDisclaimer);
