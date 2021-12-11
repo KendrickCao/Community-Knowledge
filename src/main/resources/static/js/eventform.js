@@ -145,40 +145,47 @@ const fetchUser = async () =>{
 window.onload =()=>{
     fetchUser();
 }
+// No Special Characters
+const regex = /[\d%@"|#\^\*\[\]+=<>~¬{}`]/;
 
 // Function to validate the userInputs.
 const validateEvent = function (elementName, userInput) {
     let validated = false;
-    if (elementName === "name") {
-        if (1 < userInput.length && 256 > userInput.length) {
-            validated = true;
-        } else {
-            window.alert("\nEvent Name should contain a minimum of 2 and a maximum of 255 characters.")
-        }
-    } else if (elementName === "date"){
+    if (elementName === "date"){
         if (userInput.length > 7) {
             validated = true;
         } else {
             window.alert("\nPlease enter the full Event Date.")
         }
-    } else if (elementName === "address") {
-        if (7 < userInput.length && 256 > userInput.length) {
-            validated = true;
-        } else {
-            window.alert("\nEvent Address should contain a minimum of 8 and a maximum of 255 characters.")
+    } else if (!regex.test(userInput)) {
+        if (elementName === "name") {
+            if (1 < userInput.length && 256 > userInput.length) {
+                validated = true;
+            } else {
+                window.alert("\nEvent Name should contain a minimum of 2 and a maximum of 255 characters.")
+            }
+        } else if (elementName === "address") {
+            if (7 < userInput.length && 256 > userInput.length) {
+                validated = true;
+            } else {
+                window.alert("\nEvent Address should contain a minimum of 8 and a maximum of 255 characters.")
+            }
+        } else if (elementName === "contributors") {
+            if (2 < userInput.length && 256 > userInput.length) {
+                validated = true;
+            } else {
+                window.alert("\nEvent Contributors should contain a minimum of 3 and a maximum of 255 characters.")
+            }
+        } else if (elementName === "aboutSection") {
+            if (99 < userInput.length && 801 > userInput.length) {
+                validated = true;
+            } else {
+                window.alert("\nEvent About Section should contain a minimum of 100 and a maximum of 800 characters.")
+            }
         }
-    } else if (elementName === "contributors") {
-        if (2 < userInput.length && 256 > userInput.length) {
-            validated = true;
-        } else {
-            window.alert("\nEvent Contributors should contain a minimum of 3 and a maximum of 255 characters.")
-        }
-    } else if (elementName === "aboutSection") {
-        if (99 < userInput.length && 801 > userInput.length) {
-            validated = true;
-        } else {
-            window.alert("\nEvent About Section should contain a minimum of 100 and a maximum of 800 characters.")
-        }
+
+    } else {
+        window.alert("Please don't use special characters.");
     }
     return validated;
 }
