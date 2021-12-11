@@ -6,6 +6,12 @@ const btnHam = document.querySelector('.ham-btn');
 const btnTimes = document.querySelector('.times-btn');
 const navBar = document.getElementById('nav-bar');
 
+// Code for show username when user login
+let cookieArrayForLog =document.cookie.split(":")[3]
+let userName = cookieArrayForLog ? cookieArrayForLog.split("\"")[1]:null;
+if (userName!=null) {
+ window.alert(userName)
+}
 // Creating the EventListener for the btnHam
 btnHam.addEventListener('click', function (){
     if (btnHam.className !== "") {
@@ -22,3 +28,5 @@ btnTimes.addEventListener('click', function (){
         navBar.classList.remove("show-nav");
     }
 })
+
+
