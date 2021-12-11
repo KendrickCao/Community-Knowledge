@@ -150,34 +150,34 @@ window.onload =()=>{
 const validateEvent = function (elementName, userInput) {
     let validated = false;
     if (elementName === "name") {
-        if (1 < userInput.length < 256) {
+        if (1 < userInput.length && 256 > userInput.length) {
             validated = true;
         } else {
-            window.alert("\n Event name should contain a minimum of 2 and a maximum of 255 characters.")
+            window.alert("\nEvent Name should contain a minimum of 2 and a maximum of 255 characters.")
         }
     } else if (elementName === "date"){
         if (userInput.length > 9) {
             validated = true;
         } else {
-            window.alert("\n Please enter the full event date.")
+            window.alert("\nPlease enter the full Event Date.")
         }
     } else if (elementName === "address") {
-        if (7 < userInput.length < 256) {
+        if (7 < userInput.length && 256 > userInput.length) {
             validated = true;
         } else {
-            window.alert("\n Event address should contain a minimum of 8 and a maximum of 255 characters.")
+            window.alert("\nEvent Address should contain a minimum of 8 and a maximum of 255 characters.")
         }
     } else if (elementName === "contributors") {
-        if (2 < userInput.length < 256) {
+        if (2 < userInput.length && 256 > userInput.length) {
             validated = true;
         } else {
-            window.alert("\n Event contributors should contain a minimum of 3 and a maximum of 255 characters.")
+            window.alert("\nEvent Contributors should contain a minimum of 3 and a maximum of 255 characters.")
         }
     } else if (elementName === "aboutSection") {
-        if (99 < userInput.length < 801) {
+        if (99 < userInput.length && 801 > userInput.length) {
             validated = true;
         } else {
-            window.alert("\n The Event About Section should contain a minimum of 100 and a maximum of 800 characters.")
+            window.alert("\nEvent About Section should contain a minimum of 100 and a maximum of 800 characters.")
         }
     }
     return validated;
@@ -248,7 +248,7 @@ const postEvent = async function (e) {
             window.alert("A problem has occurred. Please try again later.")
         }
     } else {
-        window.alert("Please Ensure that you Have Completed all Required Fields Correctly.")
+        window.alert("Please ensure that you have completed all required fields correctly.")
     }
 }
 
