@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js" xmlns:th="http://www.thymeleaf.com">
+<html lang="en" class="no-js" xmlns:th="http://www.thymeleaf.org">
 <head th:fragment="common-header(title, link)">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -55,7 +55,7 @@
                     <nav>
                         <ul>
                             <li>
-                                <a th:href="@{/}"><i class="fa fa-globe"></i>platforms<i class="fa fa-angle-down"></i></a>
+                                <a th:href="@{/}"><i class="fa fa-globe"></i>platforms<i class="fa fa-angle-down ml-1"></i></a>
                                 <div class="sub-menu-one">
                                     <ul>
                                         <li>
@@ -65,13 +65,10 @@
                                             <a th:href="@{/projects}"><i class="fa fa-folder"></i>projects</a>
                                         </li>
                                         <li>
-                                            <a th:href="@{/events}"><i class="fa fa-calendar-week"></i>events</a>
+                                            <a th:href="@{/AllEventsList}"><i class="fa fa-calendar-week"></i>events</a>
                                         </li>
                                     </ul>
                                 </div>
-                            </li>
-                            <li>
-                                <a th:href="@{/AllEventsList}"><i class="fa fa-folder"></i>events</a>
                             </li>
                             <li>
                                 <a th:href="@{#}"><i class="fa fa-building"></i>about</a>
@@ -80,14 +77,15 @@
                                 <a th:href="@{#}"><i class="fa fa-address-book"></i>contact</a>
                             </li>
                             <li>
-                                <a th:href="@{#}"><i class="fa fa-user"></i>account<i class="fa fa-angle-down"></i></a>
+                                <a th:href="@{/UserProfile }"><i class="fa fa-user"></i><div id="accountName">account</div><i class="fa fa-angle-down"></i></a>
                                 <div class="sub-menu-one">
                                     <ul>
-                                        <li>
+                                        <li id="fa-user-signup">
                                             <a th:href="@{/SignUp}"><i id="fa-user-plus" class="fa fa-user-plus"></i>signup</a>
                                         </li>
                                         <li>
-                                            <a th:href="@{/Login}"><i id="fa-user" class="fa fa-user"></i>Login</a>
+                                            <a th:href="@{/Login}" id="fa-user-login"><i class="fa fa-user"></i>Login</a>
+                                            <a href="#" id="fa-user-logout"><i class="fa fa-user"></i>Logout</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -105,16 +103,9 @@
                             </a>
                         </li>
                         <li>
-<<<<<<< src/main/resources/templates/fragments/base.html
-                            <a th:href="@{/AllEventsList}">Events</a>
-                        </li>
-                        <li>
-                            <a href="#">About</a>
-=======
                             <a href="#">
                                 <i class="fab fa-twitter"></i>
                             </a>
->>>>>>> src/main/resources/templates/fragments/base.html
                         </li>
                         <li>
                             <a href="#">

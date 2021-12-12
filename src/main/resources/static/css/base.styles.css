@@ -125,7 +125,9 @@ main navigation
     padding: 15px 0;
     transition: all 1s ease-in-out;
 }
-
+.nav-bar ul{
+    margin-bottom: 0 !important;
+}
 .nav-bar ul li:hover{
     background: #0e0e0e;
 }
@@ -144,10 +146,14 @@ main nav icon
  */
 .nav-bar .fa {
     margin-right: 8px;
+    margin-left: 8px;
 }
 
 .nav-bar #fa-user-plus{
     margin-left: 4px;
+}
+#fa-user-logout{
+    display: none;
 }
 /* Social Icons */
 
@@ -200,6 +206,9 @@ Sub menu one
     text-decoration: underline;
 }
 
+#accountName{
+    display: inline-block;
+}
 /******* Footer ********/
 footer{
     z-index: 0;
@@ -207,7 +216,6 @@ footer{
     color: #f3f3f3;
     padding: 30px;
     /** Testing to see if the footer stays below**/
-bottom: 0px;
 }
 
 footer h2{
@@ -346,5 +354,8 @@ footer > p{
     }
     .social-icons ul li{
         padding: 20px;
+    }
+    .social-icons ul{
+        margin-bottom: 0 !important;
     }
 }
