@@ -1,8 +1,11 @@
 package com.community.client.controllers;
 
 import com.community.client.models.DonationTransaction;
+import com.community.client.models.Project;
 import com.community.client.services.DonationTransactionService;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Set;
 
 @RestController
 public class DonationTransactionController {
@@ -21,6 +24,10 @@ public class DonationTransactionController {
         return donationTransactionService.saveTransaction(donationTransaction);
     }
 
-
+    //end point to get one project by id
+    @GetMapping("/api/get-project-transaction/{id}")
+    private Set<DonationTransaction> getProjectById(@PathVariable String id){
+        return donationTransactionService.getProjectById(id);
+    }
 
 }
