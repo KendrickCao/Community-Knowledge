@@ -1,28 +1,28 @@
-function togglePopup() {
-    document.getElementById('popup-1').classList.toggle('active');
-}
 //Fetch user state from cookie
 let cookieArray = document.cookie.split(":")[2];
 let userId = cookieArray ? cookieArray.split(",")[0] : null;
-if (!userId) {
-    window.alert("You need to login first. Redirecting...");
-    window.location.href = "/Login";
+//Method to show transaction form
+function togglePopup() {
+    if (!userId) {
+        window.alert("You need to login first. Redirecting...");
+        window.location.href = "/Login";
+    }else {
+        document.getElementById('popup-1').classList.toggle('active');
+    }
 }
-
 //Define variables for Fetch Payload
 let donorName;
 let donorEmail;
 let amount;
 let dateVariable;
-let projectId;
 let creditCard;
 let cardCvc;
 let cardYear;
 let cardMonth;
-
-
-
-
+//get project id
+let url = window.location.href;
+let index = url.lastIndexOf("\/");
+projectId = url.substring(index + 1,url.length);
 //Define functions
 //Function to capture user input - NAME
 const captureDonorNameInput = (event) =>{
@@ -147,7 +147,7 @@ const cardCvcInput = document.getElementById("cardCvc")
 const cardMonthInput = document.getElementById("cardMonth")
 const cardYearInput = document.getElementById("cardYear")
 const saveTransactionButton = document.getElementById("createDonateButton")
-
+projectIdInput.value = projectId;
 
 //Attach event listeners
 donorNameInput.addEventListener("change", captureDonorNameInput);
