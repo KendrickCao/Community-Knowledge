@@ -11,16 +11,19 @@ let accountNameElement = document.getElementById("accountName");
 let cookieArrayForLog =document.cookie.split(":")[3]
 let userName = cookieArrayForLog ? cookieArrayForLog.split("\"")[1]:null;
 let loginElement = document.getElementById("fa-user-login");
-let logoutElement = document.getElementById("fa-user-logout")
+let logoutElement = document.getElementById("fa-user-logout");
+let signupElement = document.getElementById("fa-user-signup");
 if (userName!=null) {
     accountNameElement.innerText = userName;
     loginElement.style.display = "none";
     logoutElement.style.display = "inline";
+    signupElement.style.display = "none";
 }
 //logout function
 logoutElement.onclick = function (){
     //clear all cookie
-    let keys = document.cookie.match(/[^ =;]+(?=\=)/g);
+    let keys = document.cookie.match(/[^=;]+(?=\=)/g);
+    console.log(keys);
     if(keys) {
         for(let i = keys.length; i--;){
             document.cookie = keys[i] + '=0;expires=' + new Date(0).toUTCString()
