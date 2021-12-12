@@ -10,17 +10,22 @@ const navBar = document.getElementById('nav-bar');
 let accountNameElement = document.getElementById("accountName");
 let cookieArrayForLog =document.cookie.split(":")[3]
 let userName = cookieArrayForLog ? cookieArrayForLog.split("\"")[1]:null;
-let loginElement = document.getElementById("fa-user-login");
-let logoutElement = document.getElementById("fa-user-logout");
-let signupElement = document.getElementById("fa-user-signup");
+//let loginElement = document.getElementById("fa-user-login");
+//let logoutElement = document.getElementById("fa-user-logout");
+//let signupElement = document.getElementById("fa-user-signup");
+let loginElement = document.getElementById("notLoggedIn");
+let logoutElement = document.getElementById("loggedIn");
+let logoutBtnElement = document.getElementById("logoutBtn");
 if (userName!=null) {
     accountNameElement.innerText = userName;
     loginElement.style.display = "none";
     logoutElement.style.display = "inline";
-    signupElement.style.display = "none";
+    //loginElement.style.display = "none";
+    //logoutElement.style.display = "inline";
+    //signupElement.style.display = "none";
 }
 //logout function
-logoutElement.onclick = function (){
+logoutBtnElement.onclick = function (){
     //clear all cookie
     let keys = document.cookie.match(/[^=;]+(?=\=)/g);
     console.log(keys);
@@ -32,6 +37,8 @@ logoutElement.onclick = function (){
     //refresh this page
     location.reload();
 }
+
+
 // Creating the EventListener for the btnHam
 btnHam.addEventListener('click', function (){
     if (btnHam.className !== "") {

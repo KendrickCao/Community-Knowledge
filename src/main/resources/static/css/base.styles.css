@@ -152,7 +152,7 @@ main nav icon
 .nav-bar #fa-user-plus{
     margin-left: 4px;
 }
-#fa-user-logout{
+#loggedIn{
     display: none;
 }
 /* Social Icons */
