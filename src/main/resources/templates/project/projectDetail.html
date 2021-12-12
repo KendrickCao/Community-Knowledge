@@ -26,6 +26,7 @@
             </div>
         </article>
         <div class="rightContent" style="flex-basis: 33.33%;">
+<!--            community information-->
             <article class="projectCard-container">
                 <a class="project-cover" th:href="@{${'/community/'+projectCommunity.id}}">
                     <img th:src="@{${'/uploads/'+projectCommunity.getCommunityImage()}}">
@@ -37,6 +38,7 @@
                     <div class="btn-wrapper"><a th:href="@{${'/community/'+projectCommunity.id}}" class="btn btn-secondary project-button">READ MORE</a></div>
                 </div>
             </article>
+<!--            funds information-->
             <article class="projectCard-container" id="fundsContent">
                 <div class="project-content">
                     <h4>Project Schedule</h4>
@@ -48,6 +50,33 @@
                     <div class="btn-wrapper"><a id="donateButton" class="btn btn-secondary project-button" onclick="togglePopup()">DONATE</a></div>
                 </div>
             </article>
+            <!--            events information-->
+            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img th:src="@{${'/uploads/Abcaws.jpg'}}" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img th:src="@{${'/uploads/save-dog.jpeg'}}" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="..." class="d-block w-100" alt="...">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
         </div>
     </div>
 <!--    Donation form-->

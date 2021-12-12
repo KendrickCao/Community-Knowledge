@@ -43,3 +43,11 @@
 .progress-bar{
     background-color: #acacac !important;
 }
+.carousel{
+    width: 90%;
+    margin: 0 auto 1rem auto;
+}
+.carousel-item{
+    background-image: url("https://cdn2.hubspot.net/hubfs/6326501/boilerplate/grayscale-mountain.png");
+    height: 223px;
+}
