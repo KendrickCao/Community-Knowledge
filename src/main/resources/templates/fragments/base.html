@@ -11,8 +11,9 @@
 
 
     <!-- Creating Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Raleway:wght@300;400;500;700;900&display=swap"
-          rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Montserrat&family=Oswald&display=swap" rel="stylesheet">
     <!-- link for Fontawesome -->
     <script src="https://kit.fontawesome.com/dbed6b6114.js" crossorigin="anonymous"></script>
 
@@ -28,7 +29,7 @@
 </head>
 <body th:fragment="common-body(body,footer,script)">
 
-<div class="container-fluid">
+<div >
         <!-- Creating the header -->
         <header>
             <div class="base-navigation-container">
@@ -90,7 +91,7 @@
                                         </div>
                                         <div id="loggedIn">
                                         <li>
-                                            <a th:href="@{/userprofile}"><i class="fa fa-user"></i>profile</a>
+                                            <a th:href="@{/UserProfile}"><i class="fa fa-user"></i>profile</a>
                                         </li>
                                          <li>
                                              <a th:href="@{/}" id="logoutBtn" ><i class="fa fa-user-minus"></i>logout</a>
@@ -188,7 +189,7 @@
     </footer>
 
 </div>
-<script src="js/base.js" async defer></script>
+<script th:src="@{/js/base.js}" async defer></script>
 <th:block th:replace="${script}"/>
 
 <!--Common JS added here-->

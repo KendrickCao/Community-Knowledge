@@ -13,56 +13,59 @@
 </head>
 <body th:replace="fragments/base::common-body(~{::#login-page},~{}, ~{::script})">
 <div id="login-page">
-    <div class="container">
-        <div class="row">
-            <h1>Login to User Account</h1>
-            <div class="col-4">
+    <div class="login-container">
+        <div class="login__header-container">
+            <h4>L O G I N</h4>
+        </div>
+            <div class="login__form-container">
                 <form action="/processFormPost" method="Post">
-                    <label class="display-4 text-center fs-2" for="email">Email:</label>
-                    <input class="form-control" id="email" placeholder="Enter Your Email Address Here..." type="email"
-                           name="email"/><br>
-                    <label class="display-4 text-center fs-2" for="password">Password:</label>
-                    <input class="form-control" id="password" placeholder="Enter a Password Here..." type="password"
-                           name="password"/><br>
-                    <div class="button-container">
-                        <button id="loginUser-button" class="btn btn-primary btn-lg">Login</button>
+
+                    <div>
+                        <input  id="email" placeholder="E M A I L" type="email"
+                               name="email"/>
                     </div>
+
+                    <div>
+                        <input  id="password" placeholder="P A S S W O R D" type="password"
+                               name="password"/>
+                    </div>
+                   
+                    <div class="button-container">
+                        <button id="loginUser-button" class="btn btn-sm btn-dark" >LOGIN</button>
+                    </div>
+
                     <div class="signUpLinkButton-container">
-                        <p class="display-4 fs-4"> Haven't created an account? Click below to go to the Sign Up page. </p>
-                        <a href="http://localhost:8081/SignUp" class="btn btn-primary btn-lg">Sign Up</a>
+                        <span> Need an Account?</span>
+                        <a href="http://localhost:8081/SignUp" >Sign Up</a>
                     </div>
 
                 </form>
             </div>
+   
+
+    </div>
+
+    <div class="disclaimer-section hide_disclaimer">
+<!--    Model which shows the cookie disclaimer before signing up-->
+    <div class="disclaimer-content-section">
+        <p class="title-disclaimer" > Cookie Disclaimer </p>
+        <p >Please read the following disclaimer before logging in:</p>
+        <p >This website uses cookies, by logging in do you give your consent to the following:</p>
+        <p >Cookies are stored in your browser for a maximum of 24 hours and are used to store user information
+            including a user-Id, name and email when you login to your user account. This information is used for the purpose of
+            identifying which users have joined which community and to identify which users have created particular communities,
+            projects, events and user profiles. For example, when a project is created, the user-Id will be stored in a local
+            database alongside the rest of the project information.</p>
+        <p > This website uses only first-party cookies and the information contained within the cookie is not shared with
+            any third-party.</p>
+        <p >Do you consent to the use of cookies?</p>
+        <div class="modal-footer">
+            <button id= "consent" type="button" class="btn btn-sm btn-outline-dark create_event--CTA" data-dismiss="model">Accept</button>
+            <button type="button" class="btn btn-sm btn-outline-danger close_model">Reject</button>
         </div>
-
     </div>
-
-    <!-- Disclaimer Section -->
-    <div class="background--drop model__hide">
-
     </div>
-    <!--    Model which shows the cookie disclaimer before signing up-->
-    <div class="cookie__disclaimer model__hide">
-        <div class="container">
-            <h6 class="display-6"> Cookie Disclaimer </h6>
-            <p class="lead">Please read the following disclaimer before logging in:</p>
-            <p class="lead">This website uses cookies, by logging in do you give your consent to the following:</p>
-            <p class="lead">Cookies are stored in your browser for a maximum of 24 hours and are used to store user information
-                including a user-Id, name and email when you login to your user account. This information is used for the purpose of
-                identifying which users have joined which community and to identify which users have created particular communities,
-                projects, events and user profiles. For example, when a project is created, the user-Id will be stored in a local
-                database alongside the rest of the project information.</p>
-            <p class="lead"> This website uses only first-party cookies and the information contained within the cookie is not shared with
-                any third-party.</p>
-            <h6 class="display-6">Do you consent to the use of cookies?</h6>
-            <div class="modal-footer">
-                <button id= "consent" type="button" class="btn btn-outline-success create_event--CTA" data-dismiss="model">Accept</button>
-                <button type="button" class="btn btn-outline-danger close_model">Reject</button>
-            </div>
-        </div>
-
-    </div>
+  
 
 </div>
 <script th:src="@{/js/login.js}"></script>

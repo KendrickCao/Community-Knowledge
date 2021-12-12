@@ -1,74 +1,113 @@
 #login-page{
-    height: 60vh;
-    padding: 10px;
+    background-color: #667f8f;
+    position: relative;
+    height: 100vh;
+    margin: auto;
+}
+
+.login-container{
+    width: 50vw;
+    height: 50vh;
+    position: absolute;
+    left: 25vw;
+    top: 10vh;
+    box-shadow: 8px 16px 12px rgba(8, 8, 8, 0.7);
+    background-color: whitesmoke;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+}
+.login__header-container{
+    width: 200px;
+    height: 100%;
     display: flex;
     justify-content: center;
+    align-items: center;
+    background-color: #2b3337;
 }
-#login-page .container{
-    margin: 20px 0px;
+.login__header-container h4{
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    color: white;
+    font-size: 1.3rem;
 }
-h1{
-    background-color: #abc6be;
-    border: 1px solid teal;
-    padding: 5px;
-    text-align:center;
+.login__form-container{
+    width: calc(100% - 200px);
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;;
+}
+.login__form-container form{
+    width: 80%;
+    height: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: space-evenly;
+    gap: 30px;
+}
+.login__form-container input{
     width: 100%;
+    height: 50px;
+    background-color: #cccccc;
+    border: none;
     border-radius: 5px;
-}
-.login-container, row{
-    min-height: 80vh !important;
-}
-.master-container{
-    position:relative;
-    background-color: #abc6be;
+    padding: 0 5px ;
 }
 
-.form-container{
-    position:absolute;
-    padding: 10px;
-    background-color:whitesmoke;
-    border: 5px solid teal;
-    width: 600px;
-    height: 200px;
-    top: calc(40vh - 200px);
-    left: calc(50vw - 350px);
+input::placeholder{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    color: #282828;
 }
-
-.button-container, .signUpLinkButton-container{
-    text-align:center;
-    padding: 10px 0px;
+.login__form-container span{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
 }
-.button-container .btn {
-    width: 50%;
+.login__form-container a{
+    font-family: 'Architects Daughter', cursive;
+    text-decoration: none;
+    color:#50C878 ;
+    font-size: 16px;
 }
-.signUpLinkButton-container .btn {
-    width: 100%;
+.login__form-container a:hover{
+    text-decoration: none;
 }
-
-.cookie__disclaimer{
+.disclaimer-section{
     position: absolute;
-    min-height: 60vh;
-    width: 40vw;
-    top: 10vh;
-    left: 30vw;
-    border-radius: 5px;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;
-    border: 1px solid rgba(125, 125, 125, 0.5);
-    z-index: 10;
-    background: white;
-}
-
-.background--drop{
-    position: absolute;
-    top: 0;
+    bottom: 10%;
     left: 0;
-    height: 100vh !important;
-    width: 100vw !important;
-    background: black;
-    opacity: 0.3;
-    z-index: 5;
+    width: 100%;
+    min-height: 200px;
+    border: 1px solid black;
+    
 }
 
-.model__hide{
+.hide_disclaimer{
     display: none;
 }
+.disclaimer-content-section{
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    background-color: white;
+    color: #282828;
+    font-size: 12px;
+    font-family: 'Montserrat', sans-serif;
+}
+.title-disclaimer{
+    color: #282828;
+    font-size: 14px;
+    font-weight:bold ;
+    text-decoration: underline;
+    font-family: 'Montserrat', sans-serif;
+}
+.disclaimer-content-section p{
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+    font-family: 'Montserrat', sans-serif;
+}
+

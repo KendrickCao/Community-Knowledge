@@ -1,18 +1,4 @@
-#landing.style.css
-/*
-
-font-family: 'Montserrat',
-sans-serif;
-font-family: 'Raleway', sans-serif;
-
-
- */
-
-
-
-
-
-
+/* 
 *{
     box-sizing: border-box;
     padding: 0;
@@ -32,8 +18,92 @@ font-family: 'Raleway', sans-serif;
 
 html, body{
     height: 100%;
+} */
+
+/* CSS Related to the community */
+.section--container{
+    background: #fff;
+    padding: 20px;
+    font-size: 12px;
+    margin: 20px auto;
+    display: flex;
+    gap: 35px;
+    justify-content: center;
+    align-items: center;
+    width: 80vw;
+}
+.section--information{
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+}
+.section-sub-header{
+    color: #01b6ff;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+}
+.section-header{
+    font-size: 20px;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+}
+.section-content{
+    font-family: 'Oswald', sans-serif;
+    font-size: 16px;
+    color: #8e9299;
+}
+.section--information a{
+    background-color: #bd69f3;
+    padding: 5px 10px;
+    color: white;
+    font-size: 14px;
+    border-radius: 5px;
+    font-family: 'Oswald', sans-serif;
+    cursor: pointer;
+    width: fit-content;
+}
+.section--information a:hover{
+    text-decoration: none;
+}
+.section-card__container{
+    display: flex;
+    width: 80%;
+    gap:20px;
+    
 }
 
+.community_card{
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    border: 1px solid black;
+    box-shadow: 8px 16px 12px rgba(32, 32, 32, 0.4);
+    border-radius: 5px;
+}
+
+.section-card__container img{
+    width: 100%;
+    height: 90%;
+    object-fit: cover;
+}
+.section-card__container a{
+    width: 100%;
+    background-color:#01b6ff;
+    color: #000;
+    cursor: pointer;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    font-family: 'Architects Daughter', cursive;
+    font-size: 14px;
+    font-weight: bold;
+}
+.section-card__container a:hover{
+    background-color: black;
+    color: white;
+}
 /* global Styling */
 
 /*
@@ -59,7 +129,7 @@ hr{
 
 /* CSS for the Banner Section */
 
-.companyBanner{
+/* .companyBanner{
     min-height: auto;
     display: grid;
     grid-template-columns: 1fr;
@@ -104,16 +174,13 @@ hr{
     color: black;
 }
 
-.community-info__container-news-head{
-    background: #fff;
-    padding: 20px;
-    font-size: 12px;
-    margin: 20px 0;
-}
+
 .CompanyCurrentNewsHeadlines{
     padding: 6px;
     cursor: pointer;
     position: relative;
+    display: flex;
+    border: 1px solid black;
 }
 .CompanyCurrentNewsHeadlines:hover::before{
     content: ">> ";
@@ -139,10 +206,10 @@ hr{
 @keyframes shake {
     0% { transform: translate(1px, 1px) rotate(0deg); }
 
-}
+} */
 
 /** Main Section **/
-main a{
+/* main a{
     padding: 15px 0;
     display: block;
     transition: all 0.5s;
@@ -158,10 +225,10 @@ main a:hover span{
 
 main a:hover{
     color: #7ac64d;
-}
+} */
 
 /* main container left */
-
+/* 
 .MainContainerLeft{
     padding: 30px 0 15px;
 }
@@ -192,7 +259,7 @@ main a:hover{
 .containerBottomLeft{
     background: #f3f3f3;
     margin: 15px 30px;
-}
+} */
 
 
 /*
@@ -201,11 +268,11 @@ main a:hover{
 
  */
 
-.MainContainerRight{
+/* .MainContainerRight{
     padding: 30px 10px;
-}
+} */
 
-.MainContainerRight > h2{
+/* .MainContainerRight > h2{
     padding: 15px 0 15px 30px;
 }
 
@@ -247,14 +314,14 @@ main a:hover{
 
 .MainContainerRight #div{
     margin-right: 10px;
-}
+} */
 
 /*
 
     Slider
 
  */
-
+/* 
 .dotsBox{
     text-align: center;
 }
@@ -303,10 +370,10 @@ main a:hover{
     border-radius: 50%;
     margin: 0 10px;
     cursor: pointer;
-}
+} */
 
 /* JS dot effect*/
-.active, .dot:hover{
+/* .active, .dot:hover{
     border-color: #00aa37;
 }
 
@@ -380,7 +447,7 @@ slider img{
 @keyframes zoomin {
     from{transform: scale(1, 1);}
     to{transform: scale(1.5, 1.5);}
-}
+} */
 
 /*
 
@@ -388,7 +455,7 @@ slider img{
 
  */
 
-
+/* 
 @media (max-width: 460px) {
 .MainContainerRight article{
     display: block;
@@ -448,14 +515,14 @@ slider img{
     .companyBanner{
         grid-template-columns: 1fr 2fr;
     }
-}
+} */
 
 /*
 
     slider
 
  */
-
+/* 
 
 @media screen and (max-width: 800px) {
     .my-slider{
@@ -494,5 +561,5 @@ slider img{
     .sign a{
         font-size: 12px;
     }
-}
+} */
 

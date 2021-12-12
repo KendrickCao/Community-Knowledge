@@ -1,101 +1,49 @@
-// Creating the slideShow effect
-const myslide = document.querySelectorAll('.mySlider'),
-    dot = document.querySelectorAll('.dot');
-let counter = 1;
-slidefun(counter);
-
-let timer = setInterval(autoslide, 8000);
-function autoslide() {
-  counter += 1;
-  slidefun(counter);
-}
-function plusSlides(n) {
-  counter += n;
-  slidefun(counter);
-  resetTimer();
-}
-function currentSlide(n) {
-  counter = n;
-  slidefun(counter);
-  resetTimer();
-}
-function resetTimer() {
-  clearInterval(timer);
-  timer = setInterval(autoslide, 8000);
-}
-
-function slidefun(n) {
-  let i;
-  for (i = 0;i<myslide.length;i++){
-    myslide[i].style.display = "none"
-  }
-  for (i = 0;i<dot.length;i++){
-    dot[i].classList.remove('active');
-  }
-  if (n > myslide.length){
-    counter = 1;
-  }
-  if (n < 1){
-    counter = myslide.length;
-  }
-  myslide[counter - 1].style.display = "black";
-  dot[counter - 1].classList.add('active');
-}
-
-
-
-
-// Get the elements by class name.
-let communityNameContainerElement = document.getElementsByClassName(
-  "CompanyCurrentNewsHeadlines"
-)[0];
-let communityImageContainerElement = document.getElementsByClassName(
-  "companyBannerSubContent"
-)[0];
-let projectNameContainerElement = document.getElementsByClassName(
-  "projectNameContainer"
-)[0];
-let projectImageContainerElement = document.getElementsByClassName(
-  "projectImageContainer"
-)[0];
-let eventNameContainerElement =
-  document.getElementsByClassName("eventNameContainer")[0];
-let eventImageContainerElement = document.getElementsByClassName(
-  "eventImageContainer"
-)[0];
-let logoElement = document.getElementById("logo");
-logoElement.onclick = function () {
-  window.location.href = "/";
-};
 // On load fetch the communities and projects.
-async function fetchAll() {
+const fetchAll = async () => {
+  //Fetch the community Data
   const responseCommunity = await fetch(
     "http://localhost:8081/api/communities"
   );
+
   const dataCommunity = await responseCommunity.json();
+
+  //Restrict to four numbers only
   const maxLengthCommunity =
     dataCommunity.length < 4 ? dataCommunity.length : 4;
+
+  //Fetch the Projects data
   const responseProject = await fetch("http://localhost:8081/api/projects");
   const dataProject = await responseProject.json();
+
+  //Restrict Project to 4
   const maxLengthProject = dataProject.length < 4 ? dataProject.length : 4;
+
+  //Fetch events data
   const responseEvent = await fetch("http://localhost:8081/api/events");
   const dataEvent = await responseEvent.json();
+
+  //Restrict events to 4
   const maxLengthEvent = dataEvent.length < 4 ? dataEvent.length : 4;
 
-  //   if (dataCommunity) {
-  //     for (let i = 0; i < maxLengthCommunity; i++) {
-  //       const a = document.createElement("a");
-  //       a.innerText = dataCommunity[i].name;
-  //       a.setAttribute("href", `http://localhost:8081/community/${dataCommunity[i].id}`);
-  //       communityNameContainerElement.append(a);
-  //       // Upload images
-  //       const div = document.createElement("div");
-  //       div.classList.add("importantTopic");
-  //       const sourceString = `http://localhost:8081/uploads/${dataCommunity[i].communityImage}`;
-  //       div.innerHTML = `<img style="{{object-fit: contain}}"   src=${sourceString} alt="Community image">`;
-  //       communityImageContainerElement.append(div);
-  //     }
-  //   }
+  if (dataCommunity) {
+    //Create a section which
+    for (let i = 0; i < maxLengthCommunity; i++) {
+      const a = document.createElement("a");
+      a.innerText = dataCommunity[i].name;
+      a.setAttribute(
+        "href",
+        `http://localhost:8081/community/${dataCommunity[i].id}`
+      );
+
+      // Upload images
+      const div = document.createElement("div");
+      div.classList.add("community_card");
+      const sourceString = `http://localhost:8081/uploads/${dataCommunity[i].communityImage}`;
+      div.innerHTML = `<img src=${sourceString} alt="Community image">`;
+      div.append(a);
+      document.getElementById("community_card--container").append(div);
+    }
+  }
 
   if (dataProject) {
     for (let i = 0; i < maxLengthProject; i++) {
@@ -105,13 +53,13 @@ async function fetchAll() {
         "href",
         `http://localhost:8081/project/${dataProject[i].id}`
       );
-      projectNameContainerElement.append(a);
       // Upload images
       const div = document.createElement("div");
-      div.classList.add("importantTopicProject");
+      div.classList.add("community_card");
       const sourceString = `http://localhost:8081/uploads/${dataProject[i].projectCoverImage}`;
-      div.innerHTML = `<img style="{{object-fit: contain}}"   src=${sourceString} alt="Project image">`;
-      projectImageContainerElement.append(div);
+      div.innerHTML = `<img src=${sourceString} alt="Project image">`;
+      div.append(a);
+      document.getElementById("project_card--container").append(div);
     }
   }
 
@@ -120,14 +68,15 @@ async function fetchAll() {
       const a = document.createElement("a");
       a.innerText = dataEvent[i].name;
       a.setAttribute("href", `http://localhost:8081/event/${dataEvent[i].id}`);
-      eventNameContainerElement.append(a);
       // Upload images
       const div = document.createElement("div");
-      div.classList.add("importantTopicEvent");
+      div.classList.add("community_card");
       const sourceString = `http://localhost:8081/uploads/${dataEvent[i].eventImage}`;
-      div.innerHTML = `<img style="{{object-fit: contain}}"   src=${sourceString} alt="Event image">`;
-      eventImageContainerElement.append(div);
+      div.innerHTML = `<img  src=${sourceString} alt="Event image">`;
+      div.append(a);
+      document.getElementById("event_card--container").append(div);
     }
   }
-}
-fetchAll().then();
+};
+//Call Functions To fetch Communities
+fetchAll();
