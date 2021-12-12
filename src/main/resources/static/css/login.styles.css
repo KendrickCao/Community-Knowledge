@@ -111,9 +111,3 @@ input::placeholder{
     font-family: 'Montserrat', sans-serif;
 }
 
-@media(min-width: 992px){
-    .login-container{
-        width: 35vw;
-      
-    }
-}
