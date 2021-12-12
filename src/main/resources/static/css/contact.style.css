@@ -37,7 +37,7 @@ body, input, textarea{
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
+    z-index: 500;
     overflow: hidden;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -136,7 +136,7 @@ textarea.input{
     font-size: 0.9rem;
     font-weight: 400;
     pointer-events: none;
-    z-index: 1000;
+    z-index: 500;
     transition: 0.5s;
 }
 
@@ -173,7 +173,7 @@ textarea.input{
     padding: 0 0.4rem;
     color: transparent;
     pointer-events: none;
-    z-index: 500; /* This enables you to hide the 'span' texts */
+    z-index: 250; /* This enables you to hide the 'span' texts */
 }
 
 .input-container span:before, .input-container span:after{
