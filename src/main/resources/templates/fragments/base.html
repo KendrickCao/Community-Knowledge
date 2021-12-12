@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js" xmlns:th="http://www.thymeleaf.com">
+<html lang="en" class="no-js" xmlns:th="http://www.thymeleaf.org">
 <head th:fragment="common-header(title, link)">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -65,7 +65,7 @@
                                             <a th:href="@{/projects}"><i class="fa fa-folder"></i>projects</a>
                                         </li>
                                         <li>
-                                            <a th:href="@{/events}"><i class="fa fa-calendar-week"></i>events</a>
+                                            <a th:href="@{/AllEventsList}"><i class="fa fa-calendar-week"></i>events</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -85,7 +85,7 @@
                                         </li>
                                         <li>
                                             <a th:href="@{/Login}" id="fa-user-login"><i class="fa fa-user"></i>Login</a>
-                                            <a th:href="@{/Login}" id="fa-user-logout"><i class="fa fa-user"></i>Logout</a>
+                                            <a href="#" id="fa-user-logout"><i class="fa fa-user"></i>Logout</a>
                                         </li>
                                     </ul>
                                 </div>
