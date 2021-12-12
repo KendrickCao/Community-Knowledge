@@ -19,9 +19,7 @@
 
 <div id="landing">
     <!--Section for the creation for the slider-->
-    <slider id="Slide-show">
 
-    </slider>
 
     <!--Section for the company banner-->
     <section class="companyBanner">
@@ -53,51 +51,56 @@
     <hr>
 
     <!--PROJECTS HERE-->
-    <section class="MainContainerLeft">
-
-
-
-        //DISPLAYING PROJECTS BELOW
-        <button type="button" name="buttonProject">
-            <a th:href="@{/projects}">More Info</a>
-        </button>
-        <div class="project-info__container">
-
-            <div class="projectNameContainer">
-
+    <main>
+        <section class="MainContainerLeft">
+            <h2>Our Platforms</h2>
+            <div class="containerTopLeft">
+                <article>
+                    <iframe id="video" width="560" height="315" src="https://www.youtube.com/embed/uaLAY6mTFHI?rel=0" title="About our organisation" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </article>
+                <div>
+                    <h3>About Our Platform</h3>
+                    <p>This platform encourages our people to embark on a journey as a community, as we encourage involved with any changes that may occur with our beloved city.</p>
+                    <a th:href="@{#}">Read More <span>>></span></a>
+                </div>
             </div>
 
-            <div class="projectImageContainer">
-
+            <div class="ContainerBottomLeft">
+                <!--DISPLAYING PROJECTS BELOW-->
+                <article>
+                    <div class="projectImageContainer">
+                        <!--This div will show project images-->
+                    </div>
+                    <div>
+                        <div class="projectNameContainer">
+                            <!--This div will show project names-->
+                        </div>
+                        <a th:href="@{#}">View More Projects <span>>></span></a>
+                    </div>
+                </article>
             </div>
+        </section>
 
-        </div>
-
-
-    </section>
-
-    <hr>
-
-    <!--EVENTS HERE-->
-    <section class="displayEvents">
-        <h3>Upcoming Events</h3>
-        <button type="button" name="buttonEvent">
-            <a th:href="@{/events}">More Info</a>
-        </button>
-        <div class="event-info__container">
-
-            <div class="eventNameContainer">
-
-            </div>
-
-            <div class="eventImageContainer">
-
-            </div>
-
-        </div>
+        <section class="MainContainerRight">
+            <h2>Latest Stories</h2> <!--Presenting the latest events in the community-->
+            <!--EVENTS HERE-->
+            <article>
+                <div id="h4" class="eventNameContainer">
+                    <!--This div will show Event names-->
+                </div>
+                <div id="div">
+                    <div id="img" class="eventImageContainer">
+                        <!--This div will show event images-->
+                    </div>
+                    <a th:href="@{#}">View More Events <span>>></span></a>
+                </div>
+            </article>
+        </section>
+    </main>
 
 
-    </section>
+
+
 
     <!-- link for Fontawesome -->
     <script src="https://kit.fontawesome.com/dbed6b6114.js" crossorigin="anonymous"></script>

@@ -65,7 +65,7 @@
                                             <a th:href="@{/projects}"><i class="fa fa-folder"></i>projects</a>
                                         </li>
                                         <li>
-                                            <a th:href="@{/AllEventsList}"><i class="fa fa-calendar-week"></i>events</a>
+                                            <a th:href="@{/EventForm}"><i class="fa fa-calendar-week"></i>events</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -77,7 +77,32 @@
                                 <a th:href="@{#}"><i class="fa fa-address-book"></i>contact</a>
                             </li>
                             <li>
-                                <a th:href="@{/UserProfile }"><i class="fa fa-user"></i><div id="accountName">account</div><i class="fa fa-angle-down"></i></a>
+                                <a th:href="@{/}"><i class="fa fa-user"></i><div id="accountName">account</div><i class="fa fa-angle-down ml-1"></i></a>
+                                <div class="sub-menu-one">
+                                    <ul>
+                                        <div id="notLoggedIn">
+                                            <li>
+                                                <a th:href="@{/SignUp}"><i class="fa fa-user-plus"></i>signup</a>
+                                            </li>
+                                            <li>
+                                                <a th:href="@{/Login}"><i class="fa fa-user"></i>login</a>
+                                            </li>
+                                        </div>
+                                        <div id="loggedIn">
+                                        <li>
+                                            <a th:href="@{/userprofile}"><i class="fa fa-user"></i>profile</a>
+                                        </li>
+                                         <li>
+                                             <a th:href="@{/}" id="logoutBtn" ><i class="fa fa-user-minus"></i>logout</a>
+                                         </li>
+                                        </div>
+                                    </ul>
+                                </div>
+                            </li>
+
+                            <!--
+                            <li>
+                                <a th:href="@{/}"><i class="fa fa-user"></i><div id="accountName">account</div><i class="fa fa-angle-down"></i></a>
                                 <div class="sub-menu-one">
                                     <ul>
                                         <li id="fa-user-signup">
@@ -85,11 +110,13 @@
                                         </li>
                                         <li>
                                             <a th:href="@{/Login}" id="fa-user-login"><i class="fa fa-user"></i>Login</a>
+                                        </li>
+                                        <li>
                                             <a href="#" id="fa-user-logout"><i class="fa fa-user"></i>Logout</a>
                                         </li>
                                     </ul>
                                 </div>
-                            </li>
+                            </li> -->
                         </ul>
                     </nav>
                 </div>
