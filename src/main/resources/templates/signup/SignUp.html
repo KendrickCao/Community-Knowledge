@@ -12,62 +12,74 @@
           crossorigin="anonymous"/>
 </head>
 <body th:replace="fragments/base::common-body(~{::#signup-page},~{}, ~{::script})">
-<div id="signup-page" class="container">
-    <div class="container">
-        <div class="row">
+<div id="signup-page" >
+    <div class="signup__container">
+        <div class="signup-image__container">
+
+        </div>
+
+        <div class="signup-form__container">
             <h1 class="display-4">Create a User Account</h1>
-            <div class="col-4">
                 <form action="/processFormPost" method="Post">
-                    <label class="display-4 text-center fs-2" for="name">Name:</label>
-                    <input class="form-control" id="name" placeholder="Enter Your Full Name Here..." type="text"
-                           name="name"/><br>
-                    <label class="display-4 text-center fs-2" for="email">Email:</label>
-                    <input class="form-control" id="email" placeholder="Enter Your Email Address Here..." type="email"
-                           name="email"/><br>
-                    <label class="display-4 text-center fs-2" for="password">Password:</label>
-                    <input class="form-control" id="password" placeholder="Enter a Password Here..." type="password"
-                           name="password"/><br>
-                    <label class="display-4 text-center fs-2" for="confirmPassword">Confirm Password:</label>
-                    <input class="form-control" id="confirmPassword" placeholder="Confirm Password Here..."
-                           type="password" name="confirmPassword"/><br>
+                    <div class="input-group__container">
+                        <label for="name">N A M E</label>
+                        <input class="form-control" id="name" placeholder="Full Name" type="text"
+                               name="name"/>
+                    </div>
+                   
+                    <div class="input-group__container">
+                        <label for="email">E M A I L</label>
+                        <input class="form-control" id="email" placeholder="Email Address" type="email"
+                               name="email"/>
+                    </div>
+                   
+                    <div class="input-group__container">
+                        <label for="password">P A S S W O R D</label>
+                        <input class="form-control" id="password" placeholder="Enter a Password" type="password"
+                               name="password"/>
+                    </div>
+
+                    <div class="input-group__container">
+                        <label for="confirmPassword">C O N F I R M   P A S S W O R D </label>
+                        <input class="form-control" id="confirmPassword" placeholder="Confirm Password"
+                               type="password" name="confirmPassword"/>
+                    </div>
+                   
+                   
                     <div class="button-container">
-                        <button id="createUser-button" class="btn btn-primary btn-lg">Create Account</button>
+                        <button id="createUser-button">Sign Up</button>
                     </div>
                 </form>
                 <div class="loginLinkButton-container">
-                    <p class="display-4 fs-4"> Already created an account? Click below to go to the Login page. </p>
-                    <a href="http://localhost:8081/Login" class="btn btn-primary btn-lg">Login</a>
+                    <span > Have an Account? </span>
+                    <a href="http://localhost:8081/Login">Login</a>
                 </div>
-            </div>
-
         </div>
     </div>
-
+    
     <!-- Disclaimer Section -->
-    <div class="background--drop model__hide">
-
-    </div>
-    <!--    Model which shows the cookie disclaimer before signing up-->
-    <div class="cookie__disclaimer model__hide">
-        <div class="container">
-            <h6 class="display-6"> Cookie Disclaimer </h6>
-            <p class="lead">Please read the following disclaimer before signing up:</p>
-            <p class="lead">This website uses cookies, by signing up do you give your consent to the following:</p>
-            <p class="lead">Cookies are stored in your browser for a maximum of 24 hours and are used to store user information
+    <div class="disclaimer-section hide_disclaimer">
+    <div class="disclaimer-content-section">
+      
+            <p class="title-disclaimer" > Cookie Disclaimer </p>
+            <p >Please read the following disclaimer before signing up:</p>
+            <p >This website uses cookies, by signing up do you give your consent to the following:</p>
+            <p >Cookies are stored in your browser for a maximum of 24 hours and are used to store user information
                 including a user-Id, name and email when you login to your user account. This information is used for the purpose of
                 identifying which users have joined which community and to identify which users have created particular communities,
                 projects, events and user profiles. For example, when a project is created, the user-Id will be stored in a local
                 database alongside the rest of the project information.</p>
-            <p class="lead"> This website uses only first-party cookies and the information contained within the cookie is not shared with
+            <p > This website uses only first-party cookies and the information contained within the cookie is not shared with
                 any third-party.</p>
-            <h6 class="display-6">Do you consent to the use of cookies?</h6>
+            <p >Do you consent to the use of cookies?</p>
             <div class="modal-footer">
-                <button id= "consent" type="button" class="btn btn-outline-success create_event--CTA" data-dismiss="model">Accept</button>
-                <button type="button" class="btn btn-outline-danger close_model">Reject</button>
+                <button id= "consent" type="button" class="btn btn-sm btn-outline-dark" data-dismiss="model">Accept</button>
+                <button type="button" class="btn btn-sm btn-outline-danger close_model">Reject</button>
             </div>
-        </div>
+      
 
     </div>
+</div>
 
 </div>
 <script th:src="@{/js/signup.js}"></script>
