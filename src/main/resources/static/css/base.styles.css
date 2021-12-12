@@ -262,6 +262,7 @@ footer > p{
 }
 .footer-container{
     display: flex;
+    max-height: 348px;
 }
 
 .footer-right, .footer-left{
@@ -309,6 +310,7 @@ footer > p{
         background: #252525;
         align-items: center;
         flex-wrap: wrap;
+        max-height: 96px;
     }
 
     .top-head{

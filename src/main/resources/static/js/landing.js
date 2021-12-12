@@ -1,11 +1,3 @@
-
-
-
-
-
-
-
-
 // Get the elements by class name.
 let communityNameContainerElement = document.getElementsByClassName(
   "CompanyCurrentNewsHeadlines"
@@ -43,20 +35,23 @@ async function fetchAll() {
   const dataEvent = await responseEvent.json();
   const maxLengthEvent = dataEvent.length < 4 ? dataEvent.length : 4;
 
-  //   if (dataCommunity) {
-  //     for (let i = 0; i < maxLengthCommunity; i++) {
-  //       const a = document.createElement("a");
-  //       a.innerText = dataCommunity[i].name;
-  //       a.setAttribute("href", `http://localhost:8081/community/${dataCommunity[i].id}`);
-  //       communityNameContainerElement.append(a);
-  //       // Upload images
-  //       const div = document.createElement("div");
-  //       div.classList.add("importantTopic");
-  //       const sourceString = `http://localhost:8081/uploads/${dataCommunity[i].communityImage}`;
-  //       div.innerHTML = `<img style="{{object-fit: contain}}"   src=${sourceString} alt="Community image">`;
-  //       communityImageContainerElement.append(div);
-  //     }
-  //   }
+  if (dataCommunity) {
+    for (let i = 0; i < maxLengthCommunity; i++) {
+      const a = document.createElement("a");
+      a.innerText = dataCommunity[i].name;
+      a.setAttribute(
+        "href",
+        `http://localhost:8081/community/${dataCommunity[i].id}`
+      );
+      communityNameContainerElement.append(a);
+      // Upload images
+      const div = document.createElement("div");
+      div.classList.add("importantTopic");
+      const sourceString = `http://localhost:8081/uploads/${dataCommunity[i].communityImage}`;
+      div.innerHTML = `<img style="{{object-fit: contain}}"   src=${sourceString} alt="Community image">`;
+      communityImageContainerElement.append(div);
+    }
+  }
 
   if (dataProject) {
     for (let i = 0; i < maxLengthProject; i++) {
