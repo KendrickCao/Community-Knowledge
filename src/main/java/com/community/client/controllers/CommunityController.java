@@ -58,7 +58,8 @@ public class CommunityController {
     @GetMapping("/api/communities")
     private ResponseEntity<Set<Community>> getAllCommunities() {
         try {
-            return new ResponseEntity<>(communityService.getAllCommunities(), HttpStatus.OK);
+            Set<Community> communities = communityService.getAllCommunities();
+            return new ResponseEntity<>(communities, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }

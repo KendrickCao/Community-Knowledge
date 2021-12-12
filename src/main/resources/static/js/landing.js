@@ -1,6 +1,6 @@
 // Get the elements by class name.
 let communityNameContainerElement = document.getElementsByClassName(
-  "CompanyCurrentNewsHeadlines"
+  "communities-card__container"
 )[0];
 let communityImageContainerElement = document.getElementsByClassName(
   "companyBannerSubContent"
@@ -16,26 +16,34 @@ let eventNameContainerElement =
 let eventImageContainerElement = document.getElementsByClassName(
   "eventImageContainer"
 )[0];
-let logoElement = document.getElementById("logo");
-logoElement.onclick = function () {
-  window.location.href = "/";
-};
+
 // On load fetch the communities and projects.
-async function fetchAll() {
+const fetchAll = async () => {
+  //Fetch the community Data
   const responseCommunity = await fetch(
     "http://localhost:8081/api/communities"
   );
+
   const dataCommunity = await responseCommunity.json();
+
+  //Restrict to four numbers only
   const maxLengthCommunity =
     dataCommunity.length < 4 ? dataCommunity.length : 4;
+
+  //Fetch the Projects data
   const responseProject = await fetch("http://localhost:8081/api/projects");
   const dataProject = await responseProject.json();
+  //Restrict Project to 4
   const maxLengthProject = dataProject.length < 4 ? dataProject.length : 4;
+
+  //Fetch events data
   const responseEvent = await fetch("http://localhost:8081/api/events");
   const dataEvent = await responseEvent.json();
+  //Restrict events to 4
   const maxLengthEvent = dataEvent.length < 4 ? dataEvent.length : 4;
 
   if (dataCommunity) {
+    //Create a section which
     for (let i = 0; i < maxLengthCommunity; i++) {
       const a = document.createElement("a");
       a.innerText = dataCommunity[i].name;
@@ -43,13 +51,14 @@ async function fetchAll() {
         "href",
         `http://localhost:8081/community/${dataCommunity[i].id}`
       );
-      communityNameContainerElement.append(a);
+
       // Upload images
       const div = document.createElement("div");
-      div.classList.add("importantTopic");
+      div.classList.add("community_card");
       const sourceString = `http://localhost:8081/uploads/${dataCommunity[i].communityImage}`;
       div.innerHTML = `<img style="{{object-fit: contain}}"   src=${sourceString} alt="Community image">`;
-      communityImageContainerElement.append(div);
+      div.append(a);
+      document.getElementById("community_card--container").append(div);
     }
   }
 
@@ -67,7 +76,8 @@ async function fetchAll() {
       div.classList.add("importantTopicProject");
       const sourceString = `http://localhost:8081/uploads/${dataProject[i].projectCoverImage}`;
       div.innerHTML = `<img style="{{object-fit: contain}}"   src=${sourceString} alt="Project image">`;
-      projectImageContainerElement.append(div);
+      div.append(a);
+      document.getElementById("project_card--container").append(div);
     }
   }
 
@@ -82,8 +92,9 @@ async function fetchAll() {
       div.classList.add("importantTopicEvent");
       const sourceString = `http://localhost:8081/uploads/${dataEvent[i].eventImage}`;
       div.innerHTML = `<img style="{{object-fit: contain}}"   src=${sourceString} alt="Event image">`;
-      eventImageContainerElement.append(div);
+      div.append(a);
+      document.getElementById("event_card--container").append(div);
     }
   }
-}
-fetchAll().then();
+};
+fetchAll();

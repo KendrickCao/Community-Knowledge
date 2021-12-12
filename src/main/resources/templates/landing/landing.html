@@ -20,38 +20,84 @@
 <div id="landing">
     <!--Section for the creation for the slider-->
 
+<main>
+
 
     <!--Section for the company banner-->
-    <section class="companyBanner">
-        <div class="companyBannerMainContent">
+    <section>
+        <!-- <div class="companyBannerMainContent"> -->
             <!-- this is another button that will redirect users to the project page -->
-            <h2>LATEST PROJECTS IN YOUR COMMUNITY</h2>
+            <!-- <h2>LATEST PROJECTS IN YOUR COMMUNITY</h2>
             <h3>View all the project in your community</h3>
 
             <button type="button" name="buttonProject">
                 <a th:href="@{/projects}">More Info</a>
-            </button>
+            </button> -->
 
-            <div class="community-info__container-news-head">
-                <div class="CompanyCurrentNewsHeadlines">
+            <div class="section--container">
+                <!-- Left Section which is static and shows some information about communitites in general -->
+                <div class="section--information">
+                    <p class="section-sub-header">Communities</p>
+                    <h4 class="section-header">Our Communities Makes Difference</h4>
+                    <p class="section-content">We take pride in the communities we have bla bla. We take pride in the communities we have bla bla. We take pride in the communities we have bla bla</p>
+                    <a th:href="@{/communities}">View All</a>
+                </div>
+                <div class="section-card__container" id="community_card--container"  >
             <!-- This div will show the community name.-->
+            <!-- This gets dynamically generated from JS and gets appended here -->
                 </div>
             </div>
-        </div>
+        <!-- </div> -->
 
-        <div class="bannerSubContent">
+        <!-- <div class="bannerSubContent">
             <div class="importantTopics">
-                <div class="companyBannerSubContent">
+                <div class="companyBannerSubContent"> -->
                     <!--This div will show community images-->
-                </div>
+                <!-- </div>
             </div>
-        </div>
+        </div> -->
 
     </section>
     <hr>
 
+    <!-- Projects Section -->
+    <section>
+        <div class="section--container">
+            <!-- Here we swap the positions -->
+            <div class="section-card__container" id="project_card--container" >
+
+            </div>
+
+            <div class="section--information">
+                <p class="section-sub-header">Projects</p>
+                <h4 class="section-header">Our Projects Make Impact</h4>
+                <p class="section-content">We take pride in the communities we have bla bla. We take pride in the communities we have bla bla. We take pride in the communities we have bla bla</p>
+                <a th:href="@{/projects}">View All</a>
+            </div>
+        </div>
+    </section>
+    <hr>
+    <!-- Events Section -->
+    <section>
+        <div class="section--container">
+            <!-- Here we swap the positions -->
+            <div class="section--information">
+                <p class="section-sub-header">Events</p>
+                <h4 class="section-header">Join in Any of the Events and EXPLORE</h4>
+                <p class="section-content">We take pride in the communities we have bla bla. We take pride in the communities we have bla bla. We take pride in the communities we have bla bla</p>
+                <a th:href="@{/AllEventsList}">View All</a>
+            </div>
+            <div class="section-card__container" id="event_card--container" >
+
+            </div>
+
+           
+        </div>
+    </section>
+</main>
+
     <!--PROJECTS HERE-->
-    <main>
+    <!-- <main>
         <section class="MainContainerLeft">
             <h2>Our Platforms</h2>
             <div class="containerTopLeft">
@@ -65,38 +111,38 @@
                 </div>
             </div>
 
-            <div class="ContainerBottomLeft">
+            <div class="ContainerBottomLeft"> -->
                 <!--DISPLAYING PROJECTS BELOW-->
-                <article>
-                    <div class="projectImageContainer">
+                <!-- <article>
+                    <div class="projectImageContainer"> -->
                         <!--This div will show project images-->
-                    </div>
+                    <!-- </div>
                     <div>
-                        <div class="projectNameContainer">
+                        <div class="projectNameContainer"> -->
                             <!--This div will show project names-->
-                        </div>
+                        <!-- </div>
                         <a th:href="@{#}">View More Projects <span>>></span></a>
                     </div>
                 </article>
             </div>
         </section>
 
-        <section class="MainContainerRight">
-            <h2>Latest Stories</h2> <!--Presenting the latest events in the community-->
+        <section class="MainContainerRight"> -->
+            <!-- <h2>Latest Stories</h2> Presenting the latest events in the community -->
             <!--EVENTS HERE-->
-            <article>
-                <div id="h4" class="eventNameContainer">
+            <!-- <article>
+                <div id="h4" class="eventNameContainer"> -->
                     <!--This div will show Event names-->
-                </div>
+                <!-- </div>
                 <div id="div">
-                    <div id="img" class="eventImageContainer">
+                    <div id="img" class="eventImageContainer"> -->
                         <!--This div will show event images-->
-                    </div>
+                    <!-- </div>
                     <a th:href="@{#}">View More Events <span>>></span></a>
                 </div>
             </article>
         </section>
-    </main>
+    </main> -->
 
 
 
