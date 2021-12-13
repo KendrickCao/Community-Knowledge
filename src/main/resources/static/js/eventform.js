@@ -145,20 +145,21 @@ const fetchUser = async () =>{
 window.onload =()=>{
     fetchUser();
 }
+
 // No Special Characters
-const regex = /[\d%@"|#\^\*\[\]+=<>~¬{}`]/;
+const regex = /[%@"|#\^\*\[\]+=<>~¬{}`]/;
 
 // Function to validate the userInputs.
 const validateEvent = function (elementName, userInput) {
     let validated = false;
-    if (elementName === "date"){
-        if (userInput.length > 7) {
-            validated = true;
-        } else {
-            window.alert("\nPlease enter the full Event Date.")
-        }
-    } else if (!regex.test(userInput)) {
-        if (elementName === "name") {
+    if (!regex.test(userInput)) {
+        if (elementName === "date"){
+            if (userInput.length > 7) {
+                validated = true;
+            } else {
+                window.alert("\nPlease enter the full Event Date.")
+            }
+        } else if (elementName === "name") {
             if (1 < userInput.length && 256 > userInput.length) {
                 validated = true;
             } else {
