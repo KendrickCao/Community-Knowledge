@@ -45,7 +45,7 @@
 }
 .carousel{
     width: 72%;
-    margin: 0 auto;
+    margin: 2rem auto 0 auto;
 }
 .carousel-item{
     background-image: url("https://cdn2.hubspot.net/hubfs/6326501/boilerplate/grayscale-mountain.png");
@@ -61,4 +61,14 @@
 }
 .events-container h3{
     font-weight: 600!important;
+    display: inline;
+}
+.events-header{
+    display: inline;
+    position: absolute;
+    right: 14%;
+    padding-top: 0.5rem;
+}
+#view-all-events:hover{
+    color: grey;
 }
