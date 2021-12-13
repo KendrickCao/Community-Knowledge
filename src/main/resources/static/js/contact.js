@@ -22,4 +22,7 @@ inputs.forEach(input =>{
 
 //Define variables for fetching user's enquiry details
 let contactName;
-let contact;
+let contactEmail;
+let contactPhone;
+let contactMessage;
+let contactUpload;
