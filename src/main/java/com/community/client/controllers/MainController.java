@@ -75,7 +75,7 @@ public class MainController {
         return modelAndView;
     }
 
-    @GetMapping("/project/create")
+    @GetMapping("/project-create")
     public ModelAndView showCreateProjectPage(ModelAndView modelAndView) {
         modelAndView = new ModelAndView("project/createProject");
         return modelAndView;
