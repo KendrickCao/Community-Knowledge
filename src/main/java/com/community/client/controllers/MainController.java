@@ -154,10 +154,11 @@ public class MainController {
         return modelAndView;
     }
 
-    // Controller which allows the user to view a list of all events of events with a name containing a keyword
+    // Controller which allows the user to view a list of all events of events with
+    // a name containing a keyword
     @RequestMapping("/AllEventsList")
     public ModelAndView viewEvents(ModelAndView modelAndView,
-                                   @RequestParam(name = "keyword", required = false) String keyword) {
+            @RequestParam(name = "keyword", required = false) String keyword) {
         Set<Event> events = new HashSet<>();
         if (keyword != null) {
             events = eventService.getEventSearchResults(keyword);
@@ -188,24 +189,24 @@ public class MainController {
     public ModelAndView viewProjects(ModelAndView modelAndView,
             @RequestParam(name = "keyword", required = false) String keyword) {
         Set<Project> projects = new HashSet<>();
-        if (keyword != null){
-            //parseLong() may throw a NumberFormatException
+        if (keyword != null) {
+            // parseLong() may throw a NumberFormatException
             try {
-                //parse user input to Long type
+                // parse user input to Long type
                 Long idKeyword = Long.parseLong(keyword);
                 Project searchedProject = projectService.getProjectById(idKeyword);
-                //check if the id is existed
-                if (searchedProject != null){
+                // check if the id is existed
+                if (searchedProject != null) {
                     projects.add(searchedProject);
                 }
             } catch (NumberFormatException e) {
                 // cannot parse then search it as name
                 projects = projectService.getProjectByName(keyword);
             }
-        }else {
+        } else {
             projects = projectService.getAllProjects();
         }
-        System.out.println(projects.size()+"projects found");
+        System.out.println(projects.size() + "projects found");
         modelAndView.setViewName("project/projects");
         modelAndView.addObject("projects", projects);
         return modelAndView;
