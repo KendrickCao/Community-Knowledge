@@ -68,26 +68,35 @@
                 <form autocomplete="off">
                     <h3 class="title">Contact Us</h3>
                     <div class="input-container">
-                        <input type="text" name="name" class="input">
-                        <label for="">Fullname</label>
+                        <input id="name" type="text" name="name" class="input">
+                        <label for="name">Fullname</label>
                         <span>Fullname</span>
                     </div>
                     <div class="input-container">
-                        <input type="email" name="email" class="input">
-                        <label for="">Email</label>
+                        <input id="email" type="email" name="email" class="input">
+                        <label for="email">Email</label>
                         <span>Email</span>
                     </div>
                     <div class="input-container">
-                        <input type="tel" name="phone" class="input">
-                        <label for="">Phone</label>
+                        <input id="phone" type="tel" name="phone" class="input">
+                        <label for="phone">Phone</label>
                         <span>Phone</span>
                     </div>
                     <div class="input-container textarea">
-                        <textarea name="message" id="" class="input"></textarea>
-                        <label for="">Message</label>
+                        <textarea name="message" id="message" class="input"></textarea>
+                        <label for="message">Message</label>
                         <span>Messages</span>
                     </div>
+                    <!-- creating a send and download button -->
+                    <div id="bottom-btn">
+                        <div id="float-left">
                     <input id="contactBtn" type="submit" value="Send" class="btn"/>
+                        </div>
+                    <div id="upload-btn">
+                        <i id="upload-icon" name="upload-icon" class="fa fa-upload"></i>
+                        <input id="upload-input" name="upload-input" type="file"  hidden/>
+                    </div>
+                    </div>
                 </form>
             </div>
         </div>

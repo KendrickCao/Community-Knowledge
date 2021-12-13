@@ -1,3 +1,5 @@
+/* JS for the input effect when texting */
+
 const inputs = document.querySelectorAll(".input");
 
 function focusFunc(){
@@ -17,3 +19,7 @@ inputs.forEach(input =>{
     input.addEventListener("focus", focusFunc);
     input.addEventListener("blur", blurFunc);
 })
+
+//Define variables for fetching user's enquiry details
+let contactName;
+let contact;
