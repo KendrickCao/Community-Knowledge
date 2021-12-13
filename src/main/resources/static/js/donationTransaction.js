@@ -126,15 +126,26 @@ const saveTransaction = async (event) =>{
            },
            body: JSON.stringify(transactionObject)
        })
-    console.log("response--->", response)
+        console.log("response--->", response)
         if(response.status ==200){
             const data = await response.json();
-            window.alert("Transaction completed. Redirecting...")
-            window.location.href = "/"
+            // let addAmount = data.amount;
+            const addFundsUrl = `http://localhost:8081/api/update-funds/projectId/${projectId}/amount/${amount}`
+            const responseAddFunds = await fetch(addFundsUrl, {
+                method:"PUT",
+                headers:{
+                    "Content-type":"Application/json"
+                }
+            })
+            if (responseAddFunds.status == "200") {
+                window.alert("Transaction completed. Redirecting...")
+                window.location.reload();
+            } else {
+                throw new Error("Failed to donate,please try again");
+            }
         }else{
             window.alert("Something wrong. Try again later")
         }
-
 }
 //Lets get all the elements from HTML based on ID
 const donorNameInput = document.getElementById("donerName");
