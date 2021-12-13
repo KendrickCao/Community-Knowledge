@@ -1,6 +1,6 @@
-#DonationTransactionPage{
-min-height: 35vh!important;
-}
+/*#DonationTransactionPage{*/
+/*min-height: 35vh!important;*/
+/*}*/
 
 #wrapper {
     background-color: #fff;
@@ -195,7 +195,7 @@ button{
     transition: all 0.35s ease;
 }
 
-button:hover{
+#DonationTransactionPage>button:hover{
     cursor: pointer;
     background: #5eb105;
 }
