@@ -10,7 +10,7 @@
     --heading: "Poppins", sans-serif;
 }
 #ContactPage {
-
+z-index: 0;
 }
 
 html, body{
@@ -37,7 +37,7 @@ body, input, textarea{
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.1);
-    z-index: 500;
+    z-index: 1000;
     overflow: hidden;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -136,7 +136,7 @@ textarea.input{
     font-size: 0.9rem;
     font-weight: 400;
     pointer-events: none;
-    z-index: 500;
+    z-index: 1000;
     transition: 0.5s;
 }
 
@@ -173,7 +173,7 @@ textarea.input{
     padding: 0 0.4rem;
     color: transparent;
     pointer-events: none;
-    z-index: 250; /* This enables you to hide the 'span' texts */
+    z-index: 500; /* This enables you to hide the 'span' texts */
 }
 
 .input-container span:before, .input-container span:after{
@@ -235,4 +235,149 @@ textarea.input{
     color: #7ac64d;
     font-size: 2rem;
     margin-right: 0.7rem;
+}
+
+.social-media{
+    padding: 2rem 0 0 0;
+}
+
+.social-media p{
+    color: #333;
+}
+
+#social-icons{
+    display: flex;
+    margin-top: 0.5rem;
+}
+
+#social-icons a{
+    width: 35px;
+    height: 35px;
+    border-radius: 5px;
+    background: linear-gradient(45deg, #7ac64d, #00aa37);
+    color: #fff;
+    text-align: center;
+    line-height: 35px;
+    margin-right: 0.5rem;
+    transition: 0.3s;
+}
+
+#social-icons a:hover{
+    transform: scale(1.05);
+}
+
+.contact-info:before{
+    content: "";
+    position: absolute;
+    width: 140px;
+    height: 130px;
+    border: 22px solid #7ac64d;
+    border-radius: 50%;
+    bottom: -69px;
+    right: 50px;
+    opacity: 0.3;
+}
+
+.top-big-circle{
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: linear-gradient(to bottom, #7ac64d, #00aa37);
+    bottom: 50%;
+    right: 50%;
+    transform: translate(-40%, 38%);
+    opacity: 0.4;
+}
+
+.top-big-circle:after{
+    content: "";
+    position: absolute;
+    width: 360px;
+    height: 360px;
+    background-color: #fafafa;
+    border-radius: 50%;
+    top: calc(50% - 180px);
+    left: calc(50% - 180px);
+}
+
+
+/* Making the form responsive */
+@media (max-width: 850px) {
+    .form{
+        grid-template-columns: 1fr;
+    }
+
+    .contact-info:before{
+        bottom: initial;
+        top: -75px;
+        right: 65px;
+        transform: scale(0.95);
+    }
+
+    .contact-form:before{
+        top: -13px;
+        left: initial;
+        right: 70px;
+    }
+
+    .square{
+        transform: translate(140%, 43%);
+        height: 350px;
+    }
+
+    .top-big-circle{
+        bottom: 75%;
+        transform: scale(0.9) translate(-40%, 30%);
+        right: 50%;
+    }
+
+    .text{
+        margin: 1rem 0 1.5rem 0;
+    }
+
+    #social-media{
+        padding: 1.5rem 0 0 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .container{
+        padding: 1.5rem;
+    }
+    .contact-info:before{
+        display: none;
+    }
+    .square, .top-big-circle{
+        display: none;
+    }
+    form, .contact-info{
+        padding: 1.7rem 1.6rem;
+    }
+
+    .text, .information, .social-media p{
+        font-size: 0.8rem;
+    }
+
+    .title{
+        font-size: 1.15rem;
+    }
+
+    #social-icons a{
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+    }
+
+    .information .fa{
+        width: 23px;
+    }
+
+    .input{
+        padding: 0.45rem 1.2rem;
+    }
+
+    .btn{
+        padding: 0.45rem 1.2rem;
+    }
 }
