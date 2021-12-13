@@ -67,4 +67,21 @@ public class EventController {
     private Event getEventById(@PathVariable Long id){
         return eventService.getEventById(id);
     }
+
+//    @GetMapping("/api/event/parent/{parentId}")
+//    private Set<Event> getEventForCommunityOrProject(
+//            @RequestParam("parent") String parent,
+//            @PathVariable Long parentId){
+//        Set<Event> eventsFromParent = null;
+//        if (parent.equals("community")) {
+//            Community community = communityService.getCommunityById(parentId);
+//            eventsFromParent = community.getEvent();
+//            return eventsFromParent;
+//        } else if (parent.equals("project")) {
+//            Project project = projectService.getProjectById(parentId);
+//            eventsFromParent = project.getEvent();
+//            return eventsFromParent;
+//        }
+//        return null;
+//    }
 }

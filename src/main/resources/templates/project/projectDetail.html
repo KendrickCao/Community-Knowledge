@@ -26,6 +26,7 @@
             </div>
         </article>
         <div class="rightContent" style="flex-basis: 33.33%;">
+<!--            community information-->
             <article class="projectCard-container">
                 <a class="project-cover" th:href="@{${'/community/'+projectCommunity.id}}">
                     <img th:src="@{${'/uploads/'+projectCommunity.getCommunityImage()}}">
@@ -37,6 +38,7 @@
                     <div class="btn-wrapper"><a th:href="@{${'/community/'+projectCommunity.id}}" class="btn btn-secondary project-button">READ MORE</a></div>
                 </div>
             </article>
+<!--            funds information-->
             <article class="projectCard-container" id="fundsContent">
                 <div class="project-content">
                     <h4>Project Schedule</h4>
@@ -48,8 +50,33 @@
                     <div class="btn-wrapper"><a id="donateButton" class="btn btn-secondary project-button" onclick="togglePopup()">DONATE</a></div>
                 </div>
             </article>
+
         </div>
     </div>
+    <!--            events information-->
+    <div class="events-container">
+        <h3 class="mb-3">Upcoming Events</h3>
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item" th:each="event : ${projectEvents}">
+                   <a th:href="@{${'/event/'+event.id}}"><img th:src="@{${'/uploads/'+ event.eventImage}}" class="d-block w-100" alt="..."></a>
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5 th:text="${event.name}">Slide label</h5>
+                        <p th:text="${event.aboutSection}">Some representative placeholder content for the slide.</p>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+
 <!--    Donation form-->
     <div id="DonationTransactionPage">
         <div class="popup" id="popup-1">
