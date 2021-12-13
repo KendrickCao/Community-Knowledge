@@ -37,7 +37,7 @@ Making Header main priority
 
  */
 header{
-    z-index: 5;
+    z-index: 1020;
 }
 /*
 

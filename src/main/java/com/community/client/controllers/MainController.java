@@ -57,6 +57,12 @@ public class MainController {
         return modelAndView;
     }
 
+    @RequestMapping("/contact")
+    public ModelAndView showContactPage(ModelAndView modelAndView) {
+        modelAndView = new ModelAndView("/contact/contact");
+        return modelAndView;
+    }
+
     @GetMapping("/Login")
     public ModelAndView showLoginPage(ModelAndView modelAndView) {
         modelAndView = new ModelAndView("/login/Login");
