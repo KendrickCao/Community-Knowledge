@@ -30,11 +30,15 @@
                 <p class="lead" th:text="${community.description}"></p>
                 <div style="display: flex">
                     <p class="lead" style="width:40%" th:text="'Total Members:'+ ${communityUsersCount}"></p>
-                    <button style="width: 40%" class="btn btn-outline-info community_members-modal--show" type="button" >VIEW ALL</button>
+                    <button style="width: 40%" class="btn btn-sm btn-outline-info community_members-modal--show" type="button" >VIEW ALL</button>
                 </div>
                 <p class="lead" th:text="'Total Projects: '+ ${communityProjectsCount} " ></p>
                 <p class="lead" th:text="'Total Events: '+ ${communityEventsCount} " ></p>
-                <button class="btn btn-success" type="button" id="join_community-modal-show">JOIN US HERE</button>
+                <div class="button__group">
+                    <button class="btn btn-success" type="button" id="join_community-modal-show">JOIN US HERE</button>
+                    <a class="btn btn-dark" th:href="@{'/event/parent/'+${community.id} +'/?parent=community'}">View All Events</a>
+                    
+                </div>
             </div>
         </div>
     </div>
