@@ -3,8 +3,6 @@ package com.community.client.services;
 import com.community.client.models.DonationTransaction;
 import com.community.client.repositories.DonationTransactionRepository;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
 import java.util.Set;
 
 
@@ -23,14 +21,8 @@ public class DonationTransactionService {
         return savedTransaction;
 
     }
-    // This will enable the user to identify if the user is present
+    // This will enable the user to identify if the user is present by ID
     public Set<DonationTransaction> getProjectById(String id){
-//        Optional<DonationTransaction> donationTransactionOptional = Optional.ofNullable(donationTransactionRepository.getDonationTransactionByProjectId(id));
-//        if (donationTransactionOptional.isPresent()){
-//            return donationTransactionOptional.get();
-//        }else {
-//            return null;
-//        }
 
     return donationTransactionRepository.getDonationTransactionByProjectId(id);
     }

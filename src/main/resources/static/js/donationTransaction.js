@@ -36,7 +36,7 @@ const captureDonorNameInput = (event) =>{
 //Function to capture user input - EMAIL
 const captureUserEmailInput = (event) =>{
     if(!event.target.value.includes("@gmail", "@yahoo")){
-        window.alert("Invlid email")
+        window.alert("Invalid email")
         donorEmailInput.focus();
     }
     donorEmail = event.target.value;
@@ -153,11 +153,11 @@ const donorEmailInput = document.getElementById("donerEmail");
 const projectIdInput = document.getElementById("projectId");
 const amountInput = document.getElementById("amount");
 const dateInput = document.getElementById("date");
-const cardNumberInput = document.getElementById("creditCard")
-const cardCvcInput = document.getElementById("cardCvc")
-const cardMonthInput = document.getElementById("cardMonth")
-const cardYearInput = document.getElementById("cardYear")
-const saveTransactionButton = document.getElementById("createDonateButton")
+const cardNumberInput = document.getElementById("creditCard");
+const cardCvcInput = document.getElementById("cardCvc");
+const cardMonthInput = document.getElementById("cardMonth");
+const cardYearInput = document.getElementById("cardYear");
+const saveTransactionButton = document.getElementById("createDonateButton");
 projectIdInput.value = projectId;
 
 //Attach event listeners

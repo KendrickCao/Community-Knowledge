@@ -1,6 +1,6 @@
 package com.community.client.models;
-
 import javax.persistence.*;
+//creating the columns for the 'tansaction_table'
 
 @Entity
 @Table(name="transaction_table")
