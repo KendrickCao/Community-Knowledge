@@ -1,10 +1,7 @@
 package com.community.client.controllers;
-
 import com.community.client.models.DonationTransaction;
-import com.community.client.models.Project;
 import com.community.client.services.DonationTransactionService;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.Set;
 
 @RestController
@@ -16,7 +13,7 @@ public class DonationTransactionController {
         this.donationTransactionService = donationTransactionService;
     }
 
-    //API endpoints we define here
+    //API endpoints will be defined here
     //1. End point is to save the transaction
     @PostMapping("/api/new-transaction")
     public DonationTransaction saveNewTransaction(@RequestBody DonationTransaction donationTransaction){
