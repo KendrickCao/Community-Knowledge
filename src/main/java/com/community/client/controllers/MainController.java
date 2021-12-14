@@ -63,6 +63,12 @@ public class MainController {
         return modelAndView;
     }
 
+    @RequestMapping("/adminViewContact")
+    public ModelAndView showAdminViewContactPage(ModelAndView modelAndView) {
+        modelAndView = new ModelAndView("/administrator/adminViewContact");
+        return modelAndView;
+    }
+
     @GetMapping("/Login")
     public ModelAndView showLoginPage(ModelAndView modelAndView) {
         modelAndView = new ModelAndView("/login/Login");
