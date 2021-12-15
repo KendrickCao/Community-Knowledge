@@ -1,13 +1,7 @@
 package com.community.client.controllers;
 
-import com.community.client.models.Community;
-import com.community.client.models.Event;
-import com.community.client.models.Project;
-import com.community.client.models.UserObject;
-import com.community.client.services.CommunityService;
-import com.community.client.services.ProjectService;
-import com.community.client.services.EventService;
-import com.community.client.services.UserObjectService;
+import com.community.client.models.*;
+import com.community.client.services.*;
 
 import org.hibernate.annotations.SourceType;
 import org.springframework.web.bind.annotation.*;
@@ -31,12 +25,15 @@ public class MainController {
     // DI project service
     private ProjectService projectService;
 
-    public MainController(CommunityService communityService, EventService eventService,
-            UserObjectService userObjectService, ProjectService projectService) {
+    //DI the contact service
+    private ContactService contactService;
+
+    public MainController(CommunityService communityService, EventService eventService, UserObjectService userObjectService, ProjectService projectService, ContactService contactService) {
         this.communityService = communityService;
         this.eventService = eventService;
         this.userObjectService = userObjectService;
         this.projectService = projectService;
+        this.contactService = contactService;
     }
 
     @GetMapping("/SignUp")
@@ -65,6 +62,9 @@ public class MainController {
 
     @RequestMapping("/adminViewContact")
     public ModelAndView showAdminViewContactPage(ModelAndView modelAndView) {
+        //
+        Set<Contact> contacts = contactService.getAllContacts();
+        modelAndView.addObject("contacts", contacts);
         modelAndView = new ModelAndView("/administrator/adminViewContact");
         return modelAndView;
     }
