@@ -44,7 +44,7 @@ const captureContactNameInput = (event) =>{
 
 //Function to capture user input - EMAIL
 const captureContactEmailInput = (event) =>{
-    if (event.target.value.includes("@gmail", "@yahoo")){
+    if (!event.target.value.includes("@gmail", "@yahoo")){
         window.alert("Invalid email")
         contactEmailInput.focus();
     }
@@ -72,9 +72,10 @@ const captureContactMessageInput = (event) =>{
 //Function to save the transaction to the backend
 const saveContact = async (event) => {
     event.preventDefault();
-    const contactTransaction = {
+    if (contactName !=null && contactEmail !=null && contactPhone !=null && contactMessage !=null) {
+    const contactObject = {
         name: contactName,
-        email: contactName,
+        email: contactEmail,
         phone: contactPhone,
         message: contactMessage,
         uploadInput: contactUpload
@@ -88,19 +89,28 @@ const saveContact = async (event) => {
         },
         body: JSON.stringify(contactObject)
     })
-    if(response.status == "200"){
-        console.log("Your enquiry has been sent to the administration team.")
-        window.location.href ="/contact"; //open the project list when create successfully
-    }else{
-        window.alert("There is an issue in the form. Please try again later")
+    if (response.status == "200") {
+        const data = await response.json()
+        window.alert("Your enquiry has been sent to the administration team.")
+        window.location.reload(); //open the project list when create successfully
+    } else {
+        throw new Error("There is an issue in the form. Please try again later");
+    }
+} else{
+    window.alert("Something wrong. Try again later")
     }
 }
 
 
 // Method to capture the filename of img
-const captureContactUploadInput = async (e) =>{
+const captureContactUploadInput = async (event) =>{
     const uploadPdfBackEndUri = "http://localhost:8081/api/upload-pdf";
-    const pdfFile = e.target.files[0];
+    const pdfFile = event.target.files[0];
+    //Updating the message of the status as uploading
+    const loadingText = document.createTextNode("Uploading....")
+    contactUploadDisplay.innerHTML="";
+    contactUploadDisplay.append(loadingText);
+
     //make a fetch POST call to the api/upload-image
     const formObject = new FormData();
     formObject.append("pdf", pdfFile);
@@ -113,8 +123,14 @@ const captureContactUploadInput = async (e) =>{
     })
     if(response.status == "200") {
         //get filename and alert user
-        projectCoverPdf = pdfFile.name;
-        alert("Upload "+projectCoverPdf+" successfully")
+        const uploadSuccess = document.createTextNode(`${pdfFile.name} has been uploaded successfully!`)
+        contactUploadDisplay.innerHTML="";
+        contactUploadDisplay.append(uploadSuccess);
+        contactUpload = pdfFile.name;
+    }else{
+        const uploadError = document.createTextNode("Something went wrong. Please try again later")
+        contactUploadDisplay.innerHTML="";
+        contactUploadDisplay.append(uploadError);
     }
 }
 
@@ -125,6 +141,7 @@ const contactEmailInput = document.getElementById("email");
 const contactPhoneInput = document.getElementById("phone");
 const contactMessageInput = document.getElementById("message");
 const contactUploadInput = document.getElementById("uploadInput");
+const contactUploadDisplay = document.getElementById("print-file-upload");
 const saveContactButton = document.getElementById("contactBtn");
 
 

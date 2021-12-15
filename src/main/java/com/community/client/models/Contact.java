@@ -15,6 +15,9 @@ public class Contact {
     @Column(name = "contact_email", nullable = false)
     private String email;
 
+    @Column(name = "contact_phone", nullable = false)
+    private String phone;
+
     @Column(name = "contact_message", nullable = false)
     private String message;
 
@@ -24,6 +27,7 @@ public class Contact {
 
 
     //Creating Getters and setter for each columns within the table
+
 
     public Long getId() {
         return id;
@@ -47,6 +51,14 @@ public class Contact {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public String getMessage() {

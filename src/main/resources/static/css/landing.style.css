@@ -20,6 +20,10 @@ html, body{
     height: 100%;
 } */
 
+#landing {
+    z-index: 0;
+    min-height: 100vh;
+}
 /* CSS Related to the community */
 .section--container{
     background: #fff;
