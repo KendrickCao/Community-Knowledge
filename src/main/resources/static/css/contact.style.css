@@ -324,6 +324,12 @@ textarea.input{
 #upload-btn{
     float: right;
 }
+.uploadStatus{
+    margin-top: 2rem;
+}
+ .uploadStatus #print-file-upload{
+    color: #fafafa;
+}
 /* Making the form responsive */
 @media (max-width: 850px) {
     .form{
