@@ -66,20 +66,21 @@ const captureContactMessageInput = (event) =>{
         window.alert("The message box cannot be left empty or you have reached the maximum character amount.")
         contactMessageInput.focus();
     }
-    contactEmail = event.target.value;
+    contactMessage = event.target.value;
 }
 
 //Function to save the transaction to the backend
 const saveContact = async (event) => {
     event.preventDefault();
-    if (contactName !=null && contactEmail !=null && contactPhone !=null && contactMessage !=null) {
+    if (contactName !=null && contactEmail !=null && contactPhone !=null && contactMessage !=null ) {
     const contactObject = {
         name: contactName,
         email: contactEmail,
         phone: contactPhone,
         message: contactMessage,
-        uploadInput: contactUpload
-
+    }
+    if(contactUpload){
+        contactObject["uploadInput"] = contactUpload
     }
 
     const response = await fetch("http://localhost:8081/api/new-contact", {
@@ -104,7 +105,7 @@ const saveContact = async (event) => {
 
 // Method to capture the filename of img
 const captureContactUploadInput = async (event) =>{
-    const uploadPdfBackEndUri = "http://localhost:8081/api/upload-pdf";
+    const uploadPdfBackEndUri = "http://localhost:8081/api/upload-image";
     const pdfFile = event.target.files[0];
     //Updating the message of the status as uploading
     const loadingText = document.createTextNode("Uploading....")
@@ -113,12 +114,10 @@ const captureContactUploadInput = async (event) =>{
 
     //make a fetch POST call to the api/upload-image
     const formObject = new FormData();
-    formObject.append("pdf", pdfFile);
+    formObject.append("image", pdfFile);
+
     const response = await fetch(uploadPdfBackEndUri, {
         method:"POST",
-        headers:{
-            'Accept': 'application/json'
-        },
         body: formObject
     })
     if(response.status == "200") {
