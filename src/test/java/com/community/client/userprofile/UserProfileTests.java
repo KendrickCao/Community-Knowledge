@@ -31,7 +31,13 @@ public class UserProfileTests {
 
         Address dummyAddress = new Address(1L,"test lineoneaddress","test linetwoaddress","test city","test postcode",
                 "test country");
+        AddressRepository mockAddressRepository = mock(AddressRepository.class);
+        when(mockAddressRepository.save(dummyAddress)).thenReturn(dummyAddress);
+
         UserObject dummyUserObject = new UserObject(1L, "testuser", "test@test.com", "testpassword");
+        UserObjectRepository mockUserObjectRepository = mock(UserObjectRepository.class);
+        when(mockUserObjectRepository.save(dummyUserObject)).thenReturn((dummyUserObject));
+
         UserProfile dummyUserProfile = new UserProfile();
 
         dummyUserProfile.setId(1L);
