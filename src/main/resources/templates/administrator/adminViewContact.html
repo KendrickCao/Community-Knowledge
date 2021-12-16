@@ -26,7 +26,7 @@
         <div class="left-sidebar">
             <ul>
                 <li><a th:href="@{/adminViewContact}">Manage Contact Page</a></li>
-                <li><a th:href="@{#}">Manage About Page</a></li>
+                <li><a th:href="@{/adminViewAbout}">Manage About Page</a></li>
             </ul>
 
         </div>
@@ -36,50 +36,36 @@
         <!-- Start Admin Content -->
         <div class="admin-content">
             <div class="container">
-                <span class="top-big-circle"></span>
-                <div class="form">
-                    <div class="contact-info">
-                        <h3 class="title">View Contact Queries</h3>
+                <div class="content">
+                    <h2 class="page-title">View Contact Queries</h2>
 
-                        <div class="query-input-container query-textarea">
-                            <textarea name="Queries" id="Queries" class="query-input" placeholder="Queries"></textarea>
-                        </div>
-
-                    </div>
-
-                    <div class="contact-form">
-                        <span class="circle one"></span>
-                        <span class="circle two"></span>
-
-                        <form autocomplete="off">
-                            <h3 class="title">User's Details</h3>
-                            <div class="input-container">
-                                <input id="name" type="text" name="name" class="input" placeholder="Fullname">
-                            </div>
-                            <div class="input-container">
-                                <input id="email" type="email" name="email" class="input"placeholder="Email">
-                            </div>
-                            <div class="input-container">
-                                <input id="phone" type="tel" name="phone" class="input" placeholder="phone">
-                            </div>
-                            <div class="input-container textarea">
-                                <textarea name="message" id="message" class="input" placeholder="message"></textarea>
-                            </div>
-                            <!-- creating a select and download button -->
-                            <div id="bottom-btn">
-                                <div id="float-left">
-                                    <input id="selectBtn" type="submit" value="Select" class="btn"/>
-                                </div>
-                                <div id="download-btn">
+                    <table>
+                        <thead>
+                            <th>Fullname</th>
+                            <th>Email</th>
+                            <th>Phone No.</th>
+                            <th>Query</th>
+                            <th>Documentation</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>No Data Stored</td>
+                                <td>No Data Stored</td>
+                                <td>No Data Stored</td>
+                                <td>No Data Stored</td>
+                                <td>
                                     <!-- updated upload button -->
-                                    <label  id ="upload-container" for="uploadInput"><i id="download-icon" name="upload-icon" class="fa fa-download"></i></label>
-                                    <input id="uploadInput" name="uploadInput" type="file"  hidden/>
-                                    <p id="print-file-upload"></p>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
+                                    <label  id ="download-container" for="downloadInput"><i id="download-icon" name="upload-icon" class="fa fa-download"></i></label>
+                                    <input id="downloadInput" name="downloadInput" type="file"  hidden/>
+                                    <p id="print-file-download"></p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
+
+
+
             </div>
 
         </div>
