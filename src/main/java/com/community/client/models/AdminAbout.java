@@ -40,7 +40,7 @@ public class AdminAbout {
 
     public void setAboutBody(String aboutBody) {
         this.aboutBody = aboutBody;
-    }
+    } // this section is completed
 }
 
 
