@@ -23,23 +23,28 @@ import static org.mockito.Mockito.when;
 
 public class UserProfileTests {
 
+    //test to update the user profile
     @Test
     public void createUserProfileTest() {
-
+        //mock a userProfileRepository
         UserProfileRepository mockUserProfileRepository = mock(UserProfileRepository.class);
         UserProfileRequest mockUserProfileRequest = mock(UserProfileRequest.class);
 
+        //create a dummy address
         Address dummyAddress = new Address(1L,"test lineoneaddress","test linetwoaddress","test city","test postcode",
                 "test country");
         AddressRepository mockAddressRepository = mock(AddressRepository.class);
         when(mockAddressRepository.save(dummyAddress)).thenReturn(dummyAddress);
 
+        //create a dummy UserObject
         UserObject dummyUserObject = new UserObject(1L, "testuser", "test@test.com", "testpassword");
         UserObjectRepository mockUserObjectRepository = mock(UserObjectRepository.class);
         when(mockUserObjectRepository.save(dummyUserObject)).thenReturn((dummyUserObject));
 
+        //create a dummy UserProfile
         UserProfile dummyUserProfile = new UserProfile();
 
+        //set the attributes of the dummy userprofile
         dummyUserProfile.setId(1L);
         dummyUserProfile.setAboutYourSelf("test aboutyourself");
         dummyUserProfile.setQualifications("test qualifications");
@@ -49,13 +54,16 @@ public class UserProfileTests {
         dummyUserProfile.setAddress(dummyAddress);
         dummyUserProfile.setUserObject(dummyUserObject);
 
+        // Setting the when and return mockito functions to the repository
         when(mockUserProfileRepository.save(dummyUserProfile)).thenReturn(dummyUserProfile);
 
+        // create a mock userprofile service using the mock userprofile repository
         UserProfileService mockUserProfileService = new UserProfileService(mockUserProfileRepository);
 
+        // Doing the save userprofile using the service layer which in turn will use the mocked repo layer
         UserProfile savedUserProfile = mockUserProfileService.saveProfile(dummyUserProfile);
 
-
+        // Making the assertions
         assertEquals(1L, savedUserProfile.getId());
         assertEquals("test aboutyourself", savedUserProfile.getAboutYourSelf());
         assertEquals("test qualifications", savedUserProfile.getQualifications());
