@@ -80,6 +80,7 @@ public class UserProfileController {
         }
     }
 
+    //get an address by id
     @GetMapping("/api/get-address/{id}")
     private Address getAddressById(@PathVariable Long id){
         return addressService.getAddressById(id);
