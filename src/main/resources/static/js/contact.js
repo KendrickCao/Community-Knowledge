@@ -39,7 +39,7 @@ const captureContactNameInput = (event) =>{
         window.alert("Name cannot be more than 20 characters or less than 1.")
         contactNameInput.focus();
     }
-    contactName = event.target.value
+    contactName = event.target.value;
 }
 
 //Function to capture user input - EMAIL
@@ -48,7 +48,7 @@ const captureContactEmailInput = (event) =>{
         window.alert("Invalid email")
         contactEmailInput.focus();
     }
-    contactEmail = event.target.value
+    contactEmail = event.target.value;
 }
 
 //Function to capture user input - phone
@@ -98,7 +98,7 @@ const saveContact = async (event) => {
         throw new Error("There is an issue in the form. Please try again later");
     }
 } else{
-    window.alert("Something wrong. Try again later")
+    window.alert("Something is wrong. Try again later.")
     }
 }
 
@@ -111,11 +111,9 @@ const captureContactUploadInput = async (event) =>{
     const loadingText = document.createTextNode("Uploading....")
     contactUploadDisplay.innerHTML="";
     contactUploadDisplay.append(loadingText);
-
     //make a fetch POST call to the api/upload-image
     const formObject = new FormData();
     formObject.append("image", pdfFile);
-
     const response = await fetch(uploadPdfBackEndUri, {
         method:"POST",
         body: formObject

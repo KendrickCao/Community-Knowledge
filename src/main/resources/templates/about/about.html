@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.com">
+<html lang="en" xmlns:th="http://www.thymeleaf.com" xmlns="http://www.w3.org/1999/html">
 <head th:replace="fragments/base::common-header(~{::title}, ~{::link})">
     <meta charset="UTF-8">
     <meta name="viewport" content="width-device-width, initial-scale=1.0">
@@ -22,10 +22,15 @@
             <h1 id="title">About Platform</h1>
             <div class="wrapper">
                 <div class="content">
-                    <h3 id="contentTitle">What do you need to know about our service?</h3>
-                    <p id="contentParagraph">
-                        This platform provides a service that enables users to join and participate in events, project and communities in their area. We are national organisation that that promotes unity and diversity to better our community for the future, as we are one family.
-                    </p>
+                        <h3 id="contentTitle">What do you need to know about our service?</h3>
+                        <p id="contentParagraph">
+                            This platform provides a service that enables users to join and participate in events, project and communities in their area. We are national organisation that that promotes unity and diversity to better our community for the future, as we are one family.
+                        </p>
+                    </br>
+                    <div th:each="adminViewAbout: ${adminViewAbouts}">
+                        <h3 th:text="${adminViewAbout.aboutTitle}"></h3>
+                        <p th:text="${adminViewAbout.aboutBody}"></p>
+                    </div>
                     <div class="social">
                         <a href=""><i class="fa fa-facebook"></i></a>
                         <a href=""><i class="fa fa-twitter"></i></a>
@@ -36,7 +41,7 @@
                 <div class="image-selection">
                     <img id="aboutImg" th:src="@{images/about/cityCentre.jfif}">
                 </div>
-
+                <br>
             </div>
         </div>
     </section>

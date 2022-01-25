@@ -21,8 +21,8 @@ public class ContactService {
         return saveContact;
     }
 
-    public Set<Contact> getAllContacts(){
+    //create a method which gets you a set of contacts
+    public Set<Contact> getAllContact(){
         return contactRepository.findAll();
     }
-
 }

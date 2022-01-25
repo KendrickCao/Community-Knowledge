@@ -10,34 +10,61 @@ const navBar = document.getElementById('nav-bar');
 let accountNameElement = document.getElementById("accountName");
 let cookieArrayForLog =document.cookie.split(":")[3]
 let userName = cookieArrayForLog ? cookieArrayForLog.split("\"")[1]:null;
-//let loginElement = document.getElementById("fa-user-login");
-//let logoutElement = document.getElementById("fa-user-logout");
-//let signupElement = document.getElementById("fa-user-signup");
 let loginElement = document.getElementById("notLoggedIn");
 let logoutElement = document.getElementById("loggedIn");
+ let adminLogoutElement = document.getElementById("adminLoggedIn");
 let logoutBtnElement = document.getElementById("logoutBtn");
-if (userName!=null) {
+let adminLogoutBtnElement = document.getElementById("adminLogoutBtn");
+
+console.log(userName);
+if (userName!== "admin") {
     accountNameElement.innerText = userName;
     loginElement.style.display = "none";
     logoutElement.style.display = "inline";
-    //loginElement.style.display = "none";
-    //logoutElement.style.display = "inline";
-    //signupElement.style.display = "none";
+    adminLogoutElement.style.display = "none";
+    if (userName === null){
+        accountNameElement.innerText = "Account";
+        loginElement.style.display = "inline";
+        logoutElement.style.display = "none";
+        adminLogoutElement.style.display = "none";
+    }
 }
+else if(userName === "admin"){
+    accountNameElement.innerText = userName;
+    loginElement.style.display = "none";
+    logoutElement.style.display = "none";
+    adminLogoutElement.style.display = "inline";
+}
+
+
+
 //logout function
 logoutBtnElement.onclick = function (){
     //clear all cookie
-    let keys = document.cookie.match(/[^=;]+(?=\=)/g);
+    let keys = document.cookie.match(/[^;]+/g);
     console.log(keys);
     if(keys) {
         for(let i = keys.length; i--;){
             document.cookie = keys[i] + '=0;expires=' + new Date(0).toUTCString()
         }
     }
-    //refresh this page
+    // refresh this page
     location.reload();
 }
 
+//logout function
+adminLogoutBtnElement.onclick = function (){
+    //clear all cookie
+    let keys = document.cookie.match(/[^;]+/g);
+    console.log(keys);
+    if(keys) {
+        for(let i = keys.length; i--;){
+            document.cookie = keys[i] + '=0;expires=' + new Date(0).toUTCString()
+        }
+    }
+    // refresh this page
+    location.reload();
+}
 
 // Creating the EventListener for the btnHam
 btnHam.addEventListener('click', function (){

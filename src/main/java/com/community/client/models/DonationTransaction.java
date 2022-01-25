@@ -40,9 +40,26 @@ public class DonationTransaction {
     @Column(name="card_month", nullable = false)
     private String cardMonth;
 
+
+    //Setting up the Constructor
+    public DonationTransaction() {
+    }
+    public DonationTransaction(Long id, String donorName, String donorEmail, String amount, String creditCard, String date, String projectId, String userId, String cardCvc, String cardYear, String cardMonth) {
+        this.id = id;
+        this.donorName = donorName;
+        this.donorEmail = donorEmail;
+        this.amount = amount;
+        this.creditCard = creditCard;
+        this.date = date;
+        this.projectId = projectId;
+        this.userId = userId;
+        this.cardCvc = cardCvc;
+        this.cardYear = cardYear;
+        this.cardMonth = cardMonth;
+    }
+
+
     //Setting up the getters and setters
-
-
     public Long getId() {
         return id;
     }

@@ -24,9 +24,11 @@ public class Contact {
     @Column(name = "contact_upload")
     private String uploadInput;
 
+    // Creating constructor for each column within the table
 
 
-    //Creating Getters and setter for each columns within the table
+
+    //Creating Getters and setter for each column within the table
 
 
     public Long getId() {

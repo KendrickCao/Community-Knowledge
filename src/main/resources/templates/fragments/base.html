@@ -84,6 +84,7 @@
                                 <a href="#"><i class="fa fa-user"></i><div id="accountName">account</div><i class="fa fa-angle-down ml-1"></i></a>
                                 <div class="sub-menu-one">
                                     <ul>
+                                        <!-- Menu Regular logged Out -->
                                         <div id="notLoggedIn">
                                             <li>
                                                 <a th:href="@{/SignUp}"><i class="fa fa-user-plus"></i>signup</a>
@@ -92,6 +93,7 @@
                                                 <a th:href="@{/Login}"><i class="fa fa-user"></i>login</a>
                                             </li>
                                         </div>
+                                        <!-- Menu Regular logged In -->
                                         <div id="loggedIn">
                                         <li>
                                             <a th:href="@{/UserProfile}"><i class="fa fa-user"></i>profile</a>
@@ -99,6 +101,15 @@
                                          <li>
                                              <a th:href="@{/}" id="logoutBtn" ><i class="fa fa-user-minus"></i>logout</a>
                                          </li>
+                                        </div>
+                                        <!-- Admin menu logged In -->
+                                        <div id="adminLoggedIn">
+                                            <li>
+                                                <a th:href="@{/adminViewContact}"><i class="fa fa-user"></i>admin platform</a>
+                                            </li>
+                                            <li>
+                                                <a th:href="@{/}" id="adminLogoutBtn" ><i class="fa fa-user-minus"></i>logout</a>
+                                            </li>
                                         </div>
                                     </ul>
                                 </div>

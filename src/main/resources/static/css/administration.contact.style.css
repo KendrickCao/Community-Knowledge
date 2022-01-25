@@ -27,7 +27,7 @@ body, input, textarea{
     min-height: 100vh;
     flex: 2;
     height: 100%;
-    background-color: #7ac64d;
+    background-color: #088F8F;
 }
 
 .admin-wrapper .left-sidebar ul{
@@ -45,6 +45,9 @@ body, input, textarea{
 }
 
 .admin-wrapper .left-sidebar ul li a:hover{
+    background-color: #004044;
+}
+.selected{
     background-color: #004044;
 }
 
@@ -71,230 +74,37 @@ body, input, textarea{
     justify-content: center;
 }
 
-.form{
+.admin-content .page-title{
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+table{
     width: 100%;
-    max-width: 820px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-    overflow: hidden;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-}
-.contact-form{
-    background-color: #7ac64d;
-    position: relative;
+    border-collapse: collapse;
+    font-size: 1.1rem;
 }
 
-.circle{
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, transparent 30%, #00aa37);
-    position: absolute;
-}
-
-.circle.one{
-    width: 130px;
-    height: 130px;
-    top: 130px;
-    right: -40px;
+th, td{
+    padding: 15px;
+    text-align: left;
+    border-bottom: 2px solid #d3d3d3;
+    border-top: 2px solid #d3d3d3;
+    border-right: 2px solid #d3d3d3;
+    border-left: 2px solid #d3d3d3;
 
 }
 
-circle.two{
-    width: 80px;
-    height: 800px;
-    top: 10px;
-    right: 30px;
-
+th{
+    background-color: #0e0e0e;
+    color: #f3f3f3;
+}
+td{
+    background-color: #606266;
+    color: #f3f3f3;
 }
 
-.contact-form:before{
-    content: "";
-    position: absolute;
-    width: 26px;
-    height: 26px;
-    background-color: #7ac64d;
-    transform: rotate(45deg);
-    top: 50px;
-    left: -13px;
-}
-
-form{
-    padding: 2.3rem 2.2rem;
-    z-index: 4;
-    overflow: hidden;
-    position: relative;
-}
-
-.title{
-    color: #fff;
-    font-weight: 500;
-    font-size: 1.5rem;
-    line-height: 1;
-    margin-bottom: 0.7rem;
-}
-
-.input-container{
-    position: relative;
-    margin: 1rem 0;
-}
-
-
-
-.input{
-    width:100%;
-    outline: none;
-    border: 2px solid #fafafa;
-    background: none;
-    padding: 0.6rem 1.2rem;
-    color: #fff;
-    font-weight: 500;
-    font-size: 0.95rem;
-    letter-spacing: 0.5rem;
-    border-radius: 25px;
-    transition: 0.3s;
-}.input::placeholder{
-    color: white;
-}
-
-textarea.input{
-    padding: 0.8rem 1.2rem;
-    min-height: 150px;
-    border-radius: 22px;
-    resize: none; /* Preventing the 'textarea from resizing*/
-    overflow-y: auto;
-}
-
-.input-container label{
-    position: absolute;
-    top: 50%;
-    left: 15px;
-    transform: translateY(-50%);
-    padding: 0 0.4rem;
-    color:#fafafa;
-    font-size: 0.9rem;
-    font-weight: 400;
-    pointer-events: none;
-    z-index: 1000;
-    transition: 0.5s;
-}
-
-.input-container.textarea lebel{
-    top: 1rem;
-    transform: translateY(0);
-}
-
-/* Start Query message box */
-.query-input-container{
-    position: relative;
-    margin: 1rem 0;
-}
-
-.query-input::placeholder{
-    color: #00aa37;
-}
-
-.query-input{
-    width:100%;
-    outline: none;
-    border: 2px solid #00aa37;
-    background: none;
-    padding: 0.6rem 1.2rem;
-    color: #00aa37;
-    font-weight: 500;
-    font-size: 0.95rem;
-    letter-spacing: 0.5rem;
-    border-radius: 25px;
-    transition: 0.3s;
-}
-
-textarea.query-input{
-    padding: 0.8rem 1.2rem;
-    min-height: 500px;
-    min-width: 400px;
-    border-radius: 22px;
-    resize: none; /* Preventing the 'textarea from resizing*/
-    overflow-y: auto;
-}
-
-.query-input-container label{
-    position: absolute;
-    top: 50%;
-    left: 15px;
-    transform: translateY(-50%);
-    padding: 0 0.4rem;
-    color:#00aa37;
-    font-size: 0.9rem;
-    font-weight: 400;
-    pointer-events: none;
-    z-index: 1000;
-    transition: 0.5s;
-}
-
-.query-input-container.query-textarea lebel{
-    top: 1rem;
-    transform: translateY(0);
-}
-
-
-.query-input-container.focus label{
-    top: 0;
-    transform: translateY(-50%);
-    left: 25px;
-    font-size: 0.8rem;
-}
-
-/* End Query Box */
-
-
-
-
-.btn{
-    padding: 0.6rem 1.3rem;
-    background-color: #fff;
-    border: 2px solid #fafafa;
-    font-size: 0.95rem;
-    color: #7ac64d;
-    line-height: 1;
-    border-radius: 25px;
-    outline: none;
-    cursor: pointer;
-    transition: 0.3s;
-    margin: 0;
-}
-
-.btn:hover{
-    background-color: transparent;
-    color: #fff;
-}
-
-
-.contact-info{
-    padding: 2.3rem 2.2rem;
-    position: relative;
-}
-
-.contact-info .title{
-    color: #7ac64d;
-}
-
-.text{
-    color: #333;
-    margin: 1.5rem 0 2rem 0;
-}
-
-.information{
-    display: flex;
-    color: #555;
-    margin: 0.7rem 0;
-    align-items: center;
-    font-size: 0.95rem;
-}
-
-
+/* End of Admin Content */
 
 .social-media{
     padding: 2rem 0 0 0;
@@ -337,28 +147,6 @@ textarea.query-input{
     opacity: 0.3;
 }
 
-.top-big-circle{
-    position: absolute;
-    width: 500px;
-    height: 500px;
-    border-radius: 50%;
-    background: linear-gradient(to bottom, #7ac64d, #00aa37);
-    bottom: 50%;
-    right: 50%;
-    transform: translate(-40%, 38%);
-    opacity: 0.4;
-}
-
-.top-big-circle:after{
-    content: "";
-    position: absolute;
-    width: 360px;
-    height: 360px;
-    background-color: #fafafa;
-    border-radius: 50%;
-    top: calc(50% - 180px);
-    left: calc(50% - 180px);
-}
 #download-icon {
     width: 50px;
     height: 50px;
@@ -385,45 +173,6 @@ textarea.query-input{
 }
 /* Making the form responsive */
 @media (max-width: 850px) {
-    textarea.query-input{
-        padding: 0.8rem 1.2rem;
-        min-height: 500px;
-        min-width: 400px;
-        border-radius: 22px;
-        resize: none; /* Preventing the 'textarea from resizing*/
-        overflow-y: auto;
-    }
-    .form{
-        grid-template-columns: 1fr;
-    }
-
-    .contact-info:before{
-        bottom: initial;
-        top: -75px;
-        right: 65px;
-        transform: scale(0.95);
-    }
-
-    .contact-form:before{
-        top: -13px;
-        left: initial;
-        right: 70px;
-    }
-
-    .square{
-        transform: translate(140%, 43%);
-        height: 350px;
-    }
-
-    .top-big-circle{
-        bottom: 75%;
-        transform: scale(0.9) translate(-40%, 30%);
-        right: 50%;
-    }
-
-    .text{
-        margin: 1rem 0 1.5rem 0;
-    }
 
     #social-media{
         padding: 1.5rem 0 0 0;
@@ -431,34 +180,11 @@ textarea.query-input{
 }
 
 @media (max-width: 480px) {
-    textarea.query-input{
-        padding: 0.8rem 1.2rem;
-        min-height: 400px;
-        min-width: 300px;
-        border-radius: 22px;
-        resize: none; /* Preventing the 'textarea from resizing*/
-        overflow-y: auto;
-    }
+
     .container{
         padding: 1.5rem;
     }
-    .contact-info:before{
-        display: none;
-    }
-    .square, .top-big-circle{
-        display: none;
-    }
-    form, .contact-info{
-        padding: 1.7rem 1.6rem;
-    }
 
-    .text, .information, .social-media p{
-        font-size: 0.8rem;
-    }
-
-    .title{
-        font-size: 1.15rem;
-    }
 
     #social-icons a{
         width: 30px;
@@ -473,8 +199,4 @@ textarea.query-input{
     }
 
 
-    .btn{
-        padding: 0.45rem 1.2rem;
-    }
 }
-/* End of Admin Content */
