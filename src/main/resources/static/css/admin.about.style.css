@@ -27,7 +27,7 @@ body, input, textarea{
     min-height: 100vh;
     flex: 2;
     height: 100%;
-    background-color: #7ac64d;
+    background-color: #088F8F;
 }
 
 .admin-wrapper .left-sidebar ul{
@@ -45,6 +45,9 @@ body, input, textarea{
 }
 
 .admin-wrapper .left-sidebar ul li a:hover{
+    background-color: #004044;
+}
+.selected{
     background-color: #004044;
 }
 
@@ -100,7 +103,11 @@ body, input, textarea{
     border: 3px solid #00aa37;
     box-shadow: 0 0 8px 0 #00aa37;
 }
-.viewAbout-form textarea{
+.textarea:focus{
+    border: 3px solid #00aa37;
+    box-shadow: 0 0 8px 0 #00aa37;
+}
+.viewAbout-form textarea{ /* textarea is included*/
     background-color: #000;
     color:#fff;
     border: none;

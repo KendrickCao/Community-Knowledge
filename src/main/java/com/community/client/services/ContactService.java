@@ -3,6 +3,8 @@ import com.community.client.models.Contact;
 import com.community.client.repositories.ContactRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.Set;
+
 
 @Service
 public class ContactService {
@@ -19,4 +21,8 @@ public class ContactService {
         return saveContact;
     }
 
+    //create a method which gets you a set of contacts
+    public Set<Contact> getAllContact(){
+        return contactRepository.findAll();
+    }
 }

@@ -2,6 +2,9 @@ package com.community.client.controllers;
 import com.community.client.models.Contact;
 import com.community.client.services.ContactService;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Set;
+
 @RestController
 public class ContactController {
     //DI for the Service layer
@@ -17,6 +20,12 @@ public class ContactController {
     public Contact saveNewContact(@RequestBody Contact contact){
         System.out.println("I am being hit");
         return contactService.saveContact(contact);
+    }
+
+    // End Point to get all the Contact details/queries
+    @GetMapping("api/contact")
+    private Set<Contact> getAllContact(){
+        return contactService.getAllContact();
     }
 
 }

@@ -2,8 +2,8 @@ package com.community.client.models;
 import javax.persistence.*;
 //creating the columns for the 'adminAbout_table'
 @Entity
-@Table(name = "adminAbout_table")
-public class AdminAbout {
+@Table(name = "admin_View_About_table")
+public class AdminViewAbout {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "clientQuery_id")
@@ -15,9 +15,7 @@ public class AdminAbout {
     @Column(name = "about_Body")
     private String aboutBody;
 
-    //Creating Getters and setter for each columns within the table
-
-
+    //Creating Getters and setter for each column within the table
     public Long getId() {
         return id;
     }

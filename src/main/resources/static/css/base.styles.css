@@ -155,6 +155,9 @@ main nav icon
 #loggedIn{
     display: none;
 }
+#adminLoggedIn{
+    display: none;
+}
 /* Social Icons */
 
 .social-icons{

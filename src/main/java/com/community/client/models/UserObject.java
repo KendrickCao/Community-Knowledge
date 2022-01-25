@@ -33,6 +33,8 @@ public class UserObject {
     @OneToOne(mappedBy = "userObject", cascade = CascadeType.ALL)
     private UserProfile userProfile;
 
+
+
     //create a join table to implement the ManyToMany relations between user and community
     @JsonIgnoreProperties("userObjectSet")
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)

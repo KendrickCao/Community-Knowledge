@@ -1,25 +1,31 @@
-//As you can see, configurations are set by a simple JS object passed to the create() method.
-ClassicEditor
-    .create( document.querySelector( '#aboutBody' ), {
-        toolbar: [ 'heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote' ],
-        heading: {
-            options: [
-                { model: 'paragraph', title: 'Paragraph', class: 'ck-heading_paragraph' },
-                { model: 'heading1', view: 'h1', title: 'Heading 1', class: 'ck-heading_heading1' },
-                { model: 'heading2', view: 'h2', title: 'Heading 2', class: 'ck-heading_heading2' }
-            ]
-        }
-    } )
-    .catch( error => {
-        console.log( error );
-    } );
-
-
+// //As you can see, configurations are set by a simple JS object passed to the create() method.
+// ClassicEditor
+//     .create( document.querySelector( '#aboutBody' ), {
+//         toolbar: [ 'heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote' ],
+//         heading: {
+//             options: [
+//                 { model: 'paragraph', title: 'Paragraph', class: 'ck-heading_paragraph' },
+//                 { model: 'heading1', view: 'h1', title: 'Heading 1', class: 'ck-heading_heading1' },
+//                 { model: 'heading2', view: 'h2', title: 'Heading 2', class: 'ck-heading_heading2' }
+//             ]
+//         }
+//     } )
+//     .catch( error => {
+//         console.log( error );
+//     } );
 
 //Define variables for each fetch user's enquiry details
 let adminAboutTitle;
 let adminAboutBody;
 
+//Fetch user state from cookie
+let cookieArray = document.cookie.split(":")[2];
+let userId = cookieArray ? cookieArray.split(":")[0] : null;
+//Method to check if the user is an admin
+if(!userId.includes("admin") && !userId){
+    window.alert("You need to be a logged in admin. Redirecting...");
+    window.location.href = "/Login";
+}
 
 /*
 
@@ -29,7 +35,7 @@ let adminAboutBody;
 
 //Function to capture user input - title input
 const captureAdminAboutTitleInput = (event) =>{
-    if (event.target == null) {
+    if (event.target.value == null) {
         window.alert("You can't Submit an empty Title")
         adminAboutTitleInput.focus();
     }
@@ -48,13 +54,15 @@ const captureAdminAboutBodyInput = (event) =>{
 //Function to save the editing in the backend
 const saveSend = async (event) => {
     event.preventDefault();
+    console.log('aboutTitle', adminAboutTitle);
+    console.log('aboutBody', adminAboutBody);
     if (adminAboutTitle !=null && adminAboutBody !=null) {
         const adminObject = {
             aboutTitle: adminAboutTitle,
             aboutBody: adminAboutBody
         }
 
-        const response = await fetch ("http://localhost:8081/api/new-AdminAbout", {
+        const response = await fetch ("http://localhost:8081/api/new-adminViewAbout", {
             method: "POST",
             headers: {
                 "Content-type" : "Application/json"

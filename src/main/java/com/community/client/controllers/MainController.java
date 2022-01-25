@@ -1,13 +1,7 @@
 package com.community.client.controllers;
 
-import com.community.client.models.Community;
-import com.community.client.models.Event;
-import com.community.client.models.Project;
-import com.community.client.models.UserObject;
-import com.community.client.services.CommunityService;
-import com.community.client.services.ProjectService;
-import com.community.client.services.EventService;
-import com.community.client.services.UserObjectService;
+import com.community.client.models.*;
+import com.community.client.services.*;
 
 import org.hibernate.annotations.SourceType;
 import org.springframework.web.bind.annotation.*;
@@ -31,12 +25,19 @@ public class MainController {
     // DI project service
     private ProjectService projectService;
 
-    public MainController(CommunityService communityService, EventService eventService,
-            UserObjectService userObjectService, ProjectService projectService) {
+    //DI contact service
+    private ContactService contactService;
+
+    //DI adminViewAbout service
+    private AdminViewAboutService adminViewAboutService;
+
+    public MainController(CommunityService communityService, EventService eventService, UserObjectService userObjectService, ProjectService projectService, ContactService contactService, AdminViewAboutService adminViewAboutService) {
         this.communityService = communityService;
         this.eventService = eventService;
         this.userObjectService = userObjectService;
         this.projectService = projectService;
+        this.contactService = contactService;
+        this.adminViewAboutService = adminViewAboutService;
     }
 
     @GetMapping("/SignUp")
@@ -70,14 +71,22 @@ public class MainController {
     }
 
     @RequestMapping("/adminViewContact")
-    public ModelAndView showAdminViewContactPage(ModelAndView modelAndView) {
-        modelAndView = new ModelAndView("/administrator/adminViewContact");
+    public ModelAndView showAdminViewContactPage(ModelAndView modelAndView) {// creating an instance for model and view
+        //Being able to view the all the customers queries and information through the 'contact us' form
+        Set<Contact> contact = contactService.getAllContact();
+        System.out.println(contact.size());
+        modelAndView = new ModelAndView("/administrator/adminViewContact");//
+        modelAndView.addObject("contacts",contact);
         return modelAndView;
     }
 
     @RequestMapping("/about")
     public ModelAndView showAboutPage(ModelAndView modelAndView) {
+        //Being able to view the edit made to the about page through the 'Admin View About' page
+        Set<AdminViewAbout>adminViewAbout = adminViewAboutService.getAllAdminViewAbout();
+        System.out.println("Admin View About= " + adminViewAbout.size());
         modelAndView = new ModelAndView("/about/about");
+        modelAndView.addObject("adminViewAbouts",adminViewAbout);
         return modelAndView;
     }
 

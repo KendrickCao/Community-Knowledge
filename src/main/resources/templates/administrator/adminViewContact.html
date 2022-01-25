@@ -25,7 +25,7 @@
         <!-- Start left sidebar -->
         <div class="left-sidebar">
             <ul>
-                <li><a th:href="@{/adminViewContact}">Manage Contact Page</a></li>
+                <li><a th:href="@{/adminViewContact}" class="selected">Manage Contact Page</a></li>
                 <li><a th:href="@{/adminViewAbout}">Manage About Page</a></li>
             </ul>
 
@@ -48,16 +48,16 @@
                             <th>Documentation</th>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>No Data Stored</td>
-                                <td>No Data Stored</td>
-                                <td>No Data Stored</td>
-                                <td>No Data Stored</td>
+                            <tr th:each="contact: ${contacts}">
+                                <td th:text="${contact.name}">No Data Stored</td>
+                                <td th:text="${contact.email}">No Data Stored</td>
+                                <td th:text="${contact.phone}">No Data Stored</td>
+                                <td th:text="${contact.message}">No Data Stored</td>
                                 <td>
                                     <!-- updated upload button -->
                                     <label  id ="download-container" for="downloadInput"><i id="download-icon" name="upload-icon" class="fa fa-download"></i></label>
-                                    <input id="downloadInput" name="downloadInput" type="file"  hidden/>
-                                    <p id="print-file-download"></p>
+                                    <a th:text="${contact.uploadInput}" id="downloadInput" download ></a>
+                                    <p id="downloadStatus"></p>
                                 </td>
                             </tr>
                         </tbody>
