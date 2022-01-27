@@ -7,81 +7,58 @@ import com.community.client.services.CommunityService;
 import com.community.client.services.EventService;
 import com.community.client.services.ProjectService;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.Set;
 
+/**
+ * Represents the REST Controller for handling requests related to creating events and
+ * adding an event to a community or project.
+ */
 @RestController
 public class EventController {
 
-    //DI the event service
+
+    // Dependency injections. Use of dependency injection reduces coupling.
     private final EventService eventService;
     private final CommunityService communityService;
     private final ProjectService projectService;
 
-    public EventController(EventService eventService, CommunityService communityService, ProjectService projectService) {
+    private EventController(EventService eventService, CommunityService communityService, ProjectService projectService) {
         this.eventService = eventService;
         this.communityService = communityService;
         this.projectService = projectService;
     }
 
-    //Controller to create an event for the community
-    @PostMapping("/api/add-event/community/{communityId}")
-    public Event addEventToCommunity(@RequestBody Event event,@PathVariable Long communityId){
-        //Get the community object based on the ID
-        Community community = communityService.getCommunityById(communityId);
+    /**
+     * Handles HTTP POST requests. Maps event information contained in the @RequestBody
+     * and @PathVariables onto the Event model and saves the new event to the event database.
+     * @param event JSON containing event name, date, address, aboutSection, contributors,
+     *              creatorUserId, and eventImage(optional).
+     * @param parent String from request which determines if the event is related to a
+     *               "community" or "project".
+     * @param id Community or project id from request.
+     * @return savedEvent Contains event information for the individual event.
+     */
+    @PostMapping("/api/add-event/{parent}/{id}")
+    private Event addEvent(@RequestBody Event event, @PathVariable String parent, @PathVariable Long id){
 
-        //Create a new instance of Event by saving the Request Body
         Event savedEvent = eventService.saveEvent(event);
-        //Updating the saved event with the community fetched based on ID
-        savedEvent.setCommunity(community);
-        //Get a Set of existing events of the community
-        Set<Event> eventsInCommunity = community.getEvent();
-        //Add newly saved event to that set
-        eventsInCommunity.add(savedEvent);
-        //Using setters update the community with the updated set of events
-        community.setEvent(eventsInCommunity);
-        //Use community service save method to persist the community in DB
-        communityService.saveCommunity(community);
+
+        if (parent.equals("community")) {
+            Community community = communityService.getCommunityById(id);
+            savedEvent.setCommunity(community);
+            Set<Event> eventsInCommunity = community.getEvent();
+            eventsInCommunity.add(savedEvent);
+            community.setEvent(eventsInCommunity);
+            communityService.saveCommunity(community);
+
+        } else if (parent.equals("project")) {
+            Project project = projectService.getProjectById(id);
+            savedEvent.setProject(project);
+            Set<Event> eventsInProject = project.getEvent();
+            eventsInProject.add(savedEvent);
+            project.setEvent(eventsInProject);
+            projectService.saveProject(project);
+        }
         return savedEvent;
     }
-
-    //Contoller to create an event for the project
-    @PostMapping("/api/add-event/project/{projectId}")
-    public Event addEventToProject(@RequestBody Event event,@PathVariable Long projectId){
-        Project project = projectService.getProjectById(projectId);
-        Event savedEvent = eventService.saveEvent(event);
-        savedEvent.setProject(project);
-        Set<Event> eventsInProject = project.getEvent();
-        eventsInProject.add(savedEvent);
-        project.setEvent(eventsInProject);
-        projectService.saveProject(project);
-        return savedEvent;
-    }
-
-    @GetMapping("/api/events")
-    private Set<Event> getAllEvents(){
-        return eventService.getAllEvents();
-    }
-
-    @GetMapping("/api/get-event/{id}")
-    private Event getEventById(@PathVariable Long id){
-        return eventService.getEventById(id);
-    }
-
-//    @GetMapping("/api/event/parent/{parentId}")
-//    private Set<Event> getEventForCommunityOrProject(
-//            @RequestParam("parent") String parent,
-//            @PathVariable Long parentId){
-//        Set<Event> eventsFromParent = null;
-//        if (parent.equals("community")) {
-//            Community community = communityService.getCommunityById(parentId);
-//            eventsFromParent = community.getEvent();
-//            return eventsFromParent;
-//        } else if (parent.equals("project")) {
-//            Project project = projectService.getProjectById(parentId);
-//            eventsFromParent = project.getEvent();
-//            return eventsFromParent;
-//        }
-//        return null;
-//    }
 }

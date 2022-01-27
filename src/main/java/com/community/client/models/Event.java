@@ -1,8 +1,8 @@
 package com.community.client.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import javax.persistence.*;
+
 
 @Entity
 @Table(name = "event_table")
@@ -134,9 +134,6 @@ public class Event {
         this.creatorUserId = creatorUserId;
         this.eventImage = eventImage;
     }
-
-
-
 
     @Override
     public String toString() {

@@ -151,8 +151,7 @@ public class MainController {
     // Controller to view the events of a community/project
     @RequestMapping("/event/parent/{parentId}")
     public ModelAndView viewEventForCommunityOrProject(ModelAndView modelAndView,
-            @RequestParam("parent") String parent,
-            @PathVariable Long parentId) {
+            @RequestParam("parent") String parent, @PathVariable Long parentId) {
         if (parent.equals("community")) {
             Community community = communityService.getCommunityById(parentId);
             Set<Event> eventsFromParent = community.getEvent();
