@@ -1,10 +1,8 @@
 package com.community.client.services;
 
-import com.community.client.models.Community;
 import com.community.client.models.Event;
 import com.community.client.repositories.EventRepository;
 import org.springframework.stereotype.Service;
-
 import java.util.Optional;
 import java.util.Set;
 
@@ -17,7 +15,6 @@ public class EventService {
     }
 
     public Event saveEvent(Event event){
-
         return eventRepository.save(event);
     }
 

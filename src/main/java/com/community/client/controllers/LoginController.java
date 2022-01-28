@@ -8,28 +8,34 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * Acts as a request handler to handle POST requests from users who are attempting
- * to login by comparing input with user account information stored within a database.
+ * Represents the REST controller for handling login requests by comparing user input
+ * with user account information stored in the user_table database.
  */
 @RestController
 public class LoginController {
 
-    //Dependency Injection of the User Object Service
+
+    // Dependency Injection. Use of dependency injection reduces coupling.
     private UserObjectService userObjectService;
 
-    public LoginController(UserObjectService userObjectService) {
+    private LoginController(UserObjectService userObjectService) {
+
         this.userObjectService = userObjectService;
     }
 
     /**
-     * Compares the email and password from a user login attempt to emails and passwords
-     * stored within the user_table database. If the email and password match an existing user,
-     * login is successful and a cookie can be set using the information returned by this method.
+     * Handles HTTP POST requests. Compares the email and password from a user login attempt
+     * to emails and passwords stored within the user_table database. If both the email and
+     * password match an existing user, login is successful and a cookie can be set using
+     * the information returned by this method. A try-catch block was included to provide
+     * an exception handing mechanism for bad requests so that a 400 error could be sent
+     * from the backend to the frontend when a login request was incorrectly formatted
+     * or corrupt.
      * @param loginRequest JSON containing email and password submitted from the frontend.
-     * @return loggedInUser Object containing user information from user_table database.
+     * @return loggedInUser JSON containing user information from user_table database.
      */
     @PostMapping("/api/login-user")
-    public Object loginUser(@RequestBody LoginRequest loginRequest){
+    private Object loginUser(@RequestBody LoginRequest loginRequest){
 
         String emailFromLoginRequest = loginRequest.getEmail();
         String passwordFromLoginRequest = loginRequest.getPassword();
@@ -38,7 +44,6 @@ public class LoginController {
 
         try {
             UserObject userObjectFound = userObjectService.getUserByEmail(emailFromLoginRequest);
-
             if (userObjectFound != null) {
                 String passwordFromDB = userObjectFound.getPassword();
                 if (passwordFromDB.equals(passwordFromLoginRequest)) {

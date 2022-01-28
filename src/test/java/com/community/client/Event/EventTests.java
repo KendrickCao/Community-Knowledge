@@ -10,48 +10,54 @@ import com.community.client.services.CommunityService;
 import com.community.client.services.EventService;
 import com.community.client.services.ProjectService;
 import org.junit.jupiter.api.Test;
-
 import java.util.HashSet;
 import java.util.Set;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+/**
+ * Represents the tests for assessing functionality associated with the Event object
+ * including: saving an event, retrieving a specific event, and retrieving an event
+ * set by community or project id. Each test is split up into a step-by-step method to
+ * aid understanding of why a test is failing and at which point it is doing so. Mockito
+ * is used to mock the external dependencies used to achieve the event, community,
+ * and project database functionality.
+ */
 public class EventTests {
 
-    //Test to mock the save event functionality using a mock event repository, service and model.
+    /*
+     * To reduce code duplication and to create more concise test cases some
+     * local variables used by more than one test were converted into private fields.
+     */
+    private final EventRepository mockEventRepository = mock(EventRepository.class);
+    private final EventService mockEventService = new EventService(mockEventRepository);
+    private final Community dummyCommunity = new Community (1L);
+    private final Project dummyProject = new Project (2L);
+    private final Event dummyEvent = new Event(3L, dummyCommunity, dummyProject,"20/12/2021",
+            "Winter Reads","CF14 4TY", "Borrow winter themed books",
+            "Sandra Hail, John Smith","1", "image.jpg");
+    private final Set<Event> event = new HashSet<>();
+    private final Event dummyEvent1 = new Event();
+    private final Event dummyEvent2 = new Event();
+
+
+    /**
+     * Test to mock the save event functionality using a mock event repository and service.
+     */
     @Test
-    public void testToCheckSaveEventFunctionality() {
-        // Create mock event,community and project repositories
-        CommunityRepository mockCommunityRepository = mock(CommunityRepository.class);
-        ProjectRepository mockProjectRepository = mock(ProjectRepository.class);
-        EventRepository mockEventRepository = mock(EventRepository.class);
+    void whenEventIsCreatedSaveEvent() {
 
-        // Create Mock event, community and project services
-        CommunityService mockCommunityService = new CommunityService(mockCommunityRepository);
-        ProjectService mockProjectService = new ProjectService(mockProjectRepository);
-        EventService mockEventService = new EventService(mockEventRepository);
+        // Mock the event repository save method
+        when(mockEventRepository.save(dummyEvent)).thenReturn(dummyEvent);
 
-        // Create community, project and event objects
-        Community mockCommunity = new Community (1L);
-        Project mockProject = new Project (1L);
-        Event mockEvent = new Event(1L,mockCommunity,mockProject,"20/12/2021",
-                "Winter Reads","CF14 4TY", "Borrow winter themed books",
-                "Sandra Hail, John Smith","1", "image.jpg");
-
-
-        // Mock the repository save method
-        when(mockEventRepository.save(mockEvent)).thenReturn(mockEvent);
-
-
-        // Save that event to the mockEventRepository
-        Event savedEvent = mockEventService.saveEvent(mockEvent);
+        // Save the event using the mock event service
+        Event savedEvent = mockEventService.saveEvent(dummyEvent);
 
         // Make assertions
-        assertEquals(1, savedEvent.getId());
+        assertEquals(3, savedEvent.getId());
         assertEquals(1, savedEvent.getCommunity().getId());
-        assertEquals(1, savedEvent.getProject().getId());
+        assertEquals(2, savedEvent.getProject().getId());
         assertEquals("20/12/2021", savedEvent.getDate());
         assertEquals("Winter Reads", savedEvent.getName());
         assertEquals("CF14 4TY", savedEvent.getAddress());
@@ -61,39 +67,21 @@ public class EventTests {
         assertEquals("image.jpg", savedEvent.getEventImage());
     }
 
-    // Test to get event by its Id.
+    /**
+     * Test to mock the get event by id functionality using a mock event repository and service.
+     */
     @Test
-    public void testToGetEventById(){
+    void whenRetrievingEventByIdReturnEvent(){
 
-        // Create mock event,community and project repositories
-        CommunityRepository mockCommunityRepository = mock(CommunityRepository.class);
-        ProjectRepository mockProjectRepository = mock(ProjectRepository.class);
-        EventRepository mockEventRepository = mock(EventRepository.class);
+        // Mock the event repository findEventById method
+        when(mockEventRepository.findEventById(3L)).thenReturn(java.util.Optional.of(dummyEvent));
 
-        // Create Mock event, community and project services
-        CommunityService mockCommunityService = new CommunityService(mockCommunityRepository);
-        ProjectService mockProjectService = new ProjectService(mockProjectRepository);
-        EventService mockEventService = new EventService(mockEventRepository);
-
-        // Create community, project and event objects
-        Community mockCommunity = new Community (1L);
-        Project mockProject = new Project (1L);
-        Event mockEvent = new Event(1L, mockCommunity,mockProject,"20/12/2021",
-                "Winter Reads","CF14 4TY", "Borrow winter themed books",
-                "Sandra Hail, John Smith","1", "image.jpg");
-
-        // Mock the repository save method
-        when(mockEventRepository.findEventById(1L)).thenReturn(java.util.Optional.of(mockEvent));
-
-        // Save that event to the mockEventRepository
-        mockEventService.saveEvent(mockEvent);
-
-        // Get the event by Id
-        Event fetchedEvent = mockEventService.getEventById(1L);
+        // Get the event by its id using the mock event service
+        Event fetchedEvent = mockEventService.getEventById(3L);
 
         // Make assertions
         assertEquals(1, fetchedEvent.getCommunity().getId());
-        assertEquals(1, fetchedEvent.getProject().getId());
+        assertEquals(2, fetchedEvent.getProject().getId());
         assertEquals("20/12/2021", fetchedEvent.getDate());
         assertEquals("Winter Reads", fetchedEvent.getName());
         assertEquals("CF14 4TY", fetchedEvent.getAddress());
@@ -103,81 +91,111 @@ public class EventTests {
         assertEquals("image.jpg", fetchedEvent.getEventImage());
     }
 
-    // Test to get events by community
+    /**
+     * Test to mock the get events by community functionality using the mock community
+     * and event repositories and services. Multiple dummy events were created
+     * to verify that more than one event could be associated with one community.
+     */
     @Test
-    public void testToGetEventsByCommunity(){
+    void WhenRetrievingCommunityEventSetReturnEvents(){
 
-        // Create mock event and community repositories
+        // Create mock community repository
         CommunityRepository mockCommunityRepository = mock(CommunityRepository.class);
-        EventRepository mockEventRepository = mock(EventRepository.class);
 
-        // Create mock event and community services
+        // Create mock community service
         CommunityService mockCommunityService = new CommunityService(mockCommunityRepository);
-        EventService mockEventService = new EventService(mockEventRepository);
 
-        Community mockCommunity1 = new Community ();
-        mockCommunity1.setId(1L);
-        Set<Event> event = new HashSet<>();
-        mockCommunity1.setEvent(event);
+        // Assign event set to dummy community
+        dummyCommunity.setEvent(event);
 
-        when(mockCommunityRepository.save(mockCommunity1)).thenReturn(mockCommunity1);
+        // Mock the community repository save method
+        when(mockCommunityRepository.save(dummyCommunity)).thenReturn(dummyCommunity);
 
-        Community savedCommunity = mockCommunityService.saveCommunity(mockCommunity1);
+        // Save the community using the mock community service
+        Community savedCommunity = mockCommunityService.saveCommunity(dummyCommunity);
 
+        // Set event id for event objects
+        dummyEvent1.setId(2L);
+        dummyEvent2.setId(3L);
+
+        // Mock the event repository save method
+        when(mockEventRepository.save(dummyEvent1)).thenReturn(dummyEvent1);
+        when(mockEventRepository.save(dummyEvent2)).thenReturn(dummyEvent2);
+
+        // Save the events using the mock event service
+        Event savedEvent1 = mockEventService.saveEvent(dummyEvent1);
+        Event savedEvent2 = mockEventService.saveEvent(dummyEvent2);
+
+        // Get event set associated with dummy community
         Set<Event> communityEventSet = savedCommunity.getEvent();
 
-        Event mockEvent1 = new Event();
-        mockEvent1.setId(2L);
-        mockEvent1.setName("test-event 1");
-
-        when(mockEventRepository.save(mockEvent1)).thenReturn(mockEvent1);
-        Event savedEvent1 = mockEventService.saveEvent(mockEvent1);
+        // Add events to dummy community event set
         communityEventSet.add(savedEvent1);
+        communityEventSet.add(savedEvent2);
 
+        // Assign community to dummy events
         savedEvent1.setCommunity(savedCommunity);
+        savedEvent2.setCommunity(savedCommunity);
 
-        assertEquals(1, savedCommunity.getEvent().size());
+        // Make assertions
+        assertEquals(2, savedCommunity.getEvent().size());
         assertEquals(1, savedEvent1.getCommunity().getId());
+        assertEquals(1, savedEvent2.getCommunity().getId());
         assertEquals(2, savedEvent1.getId());
-
+        assertEquals(3, savedEvent2.getId());
     }
 
-    // Test to get events by project
+    /**
+     * Test to mock the get events by project functionality using the mock project
+     * and event repositories and services. Multiple dummy events were created
+     * to verify that more than one event could be associated with one project.
+     */
     @Test
-    public void testToGetEventsByProject(){
+    void WhenRetrievingProjectEventSetReturnEvents(){
 
-        // Create mock event and project repositories
+        // Create mock project repository
         ProjectRepository mockProjectRepository = mock(ProjectRepository.class);
-        EventRepository mockEventRepository = mock(EventRepository.class);
 
-        // Create mock event and project services
+        // Create mock project service
         ProjectService mockProjectService = new ProjectService(mockProjectRepository);
-        EventService mockEventService = new EventService(mockEventRepository);
 
-        Project mockProject1 = new Project ();
-        mockProject1.setId(1L);
-        Set<Event> event = new HashSet<>();
-        mockProject1.setEvent(event);
+        // Assign event set to dummy project
+        dummyProject.setEvent(event);
 
-        when(mockProjectRepository.save(mockProject1)).thenReturn(mockProject1);
+        // Mock the project repository save method
+        when(mockProjectRepository.save(dummyProject)).thenReturn(dummyProject);
 
-        Project savedProject = mockProjectService.saveProject(mockProject1);
+        // Save the project using the mock project service
+        Project savedProject = mockProjectService.saveProject(dummyProject);
 
+        // Set event id for event objects
+        dummyEvent1.setId(2L);
+        dummyEvent2.setId(3L);
+
+        // Mock the event repository save method
+        when(mockEventRepository.save(dummyEvent1)).thenReturn(dummyEvent1);
+        when(mockEventRepository.save(dummyEvent2)).thenReturn(dummyEvent2);
+
+        // Save the events using the mock event service
+        Event savedEvent1 = mockEventService.saveEvent(dummyEvent1);
+        Event savedEvent2 = mockEventService.saveEvent(dummyEvent2);
+
+        // Get event set associated with dummy project
         Set<Event> ProjectEventSet = savedProject.getEvent();
 
-        Event mockEvent1 = new Event();
-        mockEvent1.setId(2L);
-        mockEvent1.setName("test-event 1");
-
-        when(mockEventRepository.save(mockEvent1)).thenReturn(mockEvent1);
-        Event savedEvent1 = mockEventService.saveEvent(mockEvent1);
+        // Add events to dummy project event set
         ProjectEventSet.add(savedEvent1);
+        ProjectEventSet.add(savedEvent2);
 
+        // Assign project to dummy events
         savedEvent1.setProject(savedProject);
+        savedEvent2.setProject(savedProject);
 
-        assertEquals(1, savedProject.getEvent().size());
-        assertEquals(1, savedEvent1.getProject().getId());
+        // Make assertions
+        assertEquals(2, savedProject.getEvent().size());
+        assertEquals(2, savedEvent1.getProject().getId());
+        assertEquals(2, savedEvent2.getProject().getId());
         assertEquals(2, savedEvent1.getId());
-
+        assertEquals(3, savedEvent2.getId());
     }
 }

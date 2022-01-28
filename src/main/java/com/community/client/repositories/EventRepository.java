@@ -1,6 +1,5 @@
 package com.community.client.repositories;
 
-import com.community.client.models.Community;
 import com.community.client.models.Event;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
