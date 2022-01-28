@@ -26,6 +26,18 @@ public class Contact {
 
     // Creating constructor for each column within the table
 
+    public Contact(Long id, String name, String email, String phone, String message, String uploadInput) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
+        this.message = message;
+        this.uploadInput = uploadInput;
+    }
+
+    public Contact() {
+
+    }
 
 
     //Creating Getters and setter for each column within the table
