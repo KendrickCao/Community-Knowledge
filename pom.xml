@@ -60,7 +60,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>com.kub.App</mainClass>
+                            <mainClass>com.community.client.ClientApplication</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
