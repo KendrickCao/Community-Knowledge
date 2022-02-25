@@ -42,31 +42,31 @@ public class MainController {
 
     @GetMapping("/SignUp")
     public ModelAndView showSignUpPage(ModelAndView modelAndView) {
-        modelAndView = new ModelAndView("/signup/SignUp");
+        modelAndView = new ModelAndView("signup/SignUp");
         return modelAndView;
     }
 
     @GetMapping("/")
     public ModelAndView showLandingPage(ModelAndView modelAndView) {
-        modelAndView = new ModelAndView("/landing/landing");
+        modelAndView = new ModelAndView("landing/landing");
         return modelAndView;
     }
 
     @RequestMapping("/transaction")
     public ModelAndView showTransactionPage(ModelAndView modelAndView) {
-        modelAndView = new ModelAndView("/transaction/transaction");
+        modelAndView = new ModelAndView("transaction/transaction");
         return modelAndView;
     }
 
     @RequestMapping("/contact")
     public ModelAndView showContactPage(ModelAndView modelAndView) {
-        modelAndView = new ModelAndView("/contact/contact");
+        modelAndView = new ModelAndView("contact/contact");
         return modelAndView;
     }
 
     @RequestMapping("/adminViewAbout")
     public ModelAndView showAdminViewAboutPage(ModelAndView modelAndView) {
-        modelAndView = new ModelAndView("/administrator/adminViewAbout");
+        modelAndView = new ModelAndView("administrator/adminViewAbout");
         return modelAndView;
     }
 
@@ -75,7 +75,7 @@ public class MainController {
         //Being able to view the all the customers queries and information through the 'contact us' form
         Set<Contact> contact = contactService.getAllContact();
         System.out.println(contact.size());
-        modelAndView = new ModelAndView("/administrator/adminViewContact");//
+        modelAndView = new ModelAndView("administrator/adminViewContact");//
         modelAndView.addObject("contacts",contact);
         return modelAndView;
     }
@@ -85,20 +85,20 @@ public class MainController {
         //Being able to view the edit made to the about page through the 'Admin View About' page
         Set<AdminViewAbout>adminViewAbout = adminViewAboutService.getAllAdminViewAbout();
         System.out.println("Admin View About= " + adminViewAbout.size());
-        modelAndView = new ModelAndView("/about/about");
+        modelAndView = new ModelAndView("about/about");
         modelAndView.addObject("adminViewAbouts",adminViewAbout);
         return modelAndView;
     }
 
     @GetMapping("/Login")
     public ModelAndView showLoginPage(ModelAndView modelAndView) {
-        modelAndView = new ModelAndView("/login/Login");
+        modelAndView = new ModelAndView("login/Login");
         return modelAndView;
     }
 
     @GetMapping("/UserProfile")
     public ModelAndView showUserProfilePage(ModelAndView modelAndView) {
-        modelAndView = new ModelAndView("/userprofile/UserProfile");
+        modelAndView = new ModelAndView("userprofile/UserProfile");
         return modelAndView;
     }
 
@@ -111,7 +111,7 @@ public class MainController {
     @GetMapping("/EventForm")
     public ModelAndView showEventPage(ModelAndView modelAndView) {
 
-        modelAndView = new ModelAndView("/event/EventForm");
+        modelAndView = new ModelAndView("event/EventForm");
         return modelAndView;
     }
 
