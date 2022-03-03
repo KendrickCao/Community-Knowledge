@@ -29,7 +29,7 @@ const joinCommunity = async (e) =>{
     const communityId = pathVariables[2];
     //Make an post call to project controller /api/update-community/userid/{userId}/community-id/{communityId}
 
-    const response = await fetch(`http://localhost:8081/api/update-community/userid/${userId}/community-id/${communityId}`,{
+    const response = await fetch(`/api/update-community/userid/${userId}/community-id/${communityId}`,{
         method:"PUT",
     })
     if(response.status == "200"){
