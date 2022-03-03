@@ -105,7 +105,7 @@ const createUser = async function (e) {
       password: userPassword,
     };
 
-    const response = await fetch("http://localhost:8081/api/add-user", {
+    const response = await fetch("/api/add-user", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
