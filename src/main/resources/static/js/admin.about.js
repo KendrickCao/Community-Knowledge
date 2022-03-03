@@ -62,7 +62,7 @@ const saveSend = async (event) => {
             aboutBody: adminAboutBody
         }
 
-        const response = await fetch ("http://localhost:8081/api/new-adminViewAbout", {
+        const response = await fetch ("/api/new-adminViewAbout", {
             method: "POST",
             headers: {
                 "Content-type" : "Application/json"
