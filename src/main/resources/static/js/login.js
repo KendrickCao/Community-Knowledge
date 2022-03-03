@@ -75,7 +75,7 @@ const loginUser = async function (e) {
       email: userEmail,
       password: userPassword,
     };
-    const response = await fetch("http://localhost:8081/api/login-user", {
+    const response = await fetch("/api/login-user", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
