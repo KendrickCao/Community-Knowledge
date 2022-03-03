@@ -120,7 +120,7 @@ const createUser = async function (e) {
     }
 
     // Redirect user to login page
-    window.location.href = "http://localhost:8081/Login";
+    window.location.href = "/Login";
   } else {
     window.alert("Invalid user credentials - Please try again.");
   }
