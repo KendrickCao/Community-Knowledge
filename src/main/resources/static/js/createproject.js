@@ -38,7 +38,7 @@ const captureUserInput = (e) =>{
 }
 //Method to get communityId from user to show in the dropdown list
 async function fetchCommunities (){
-    const url = `http://localhost:8081/api/get-user/${userId}`
+    const url = `/api/get-user/${userId}`
     const response = await fetch(url)
     if (response.status == "200") {
         const data = await response.json();
@@ -58,7 +58,7 @@ fetchCommunities().then();
 //Method to save the project to the backend by requesting api
 const saveProject = async (e) =>{
     e.preventDefault();
-    const url = `http://localhost:8081/api/add-project/userId/${userId}/communityId/${communityIdSelect}`
+    const url = `/api/add-project/userId/${userId}/communityId/${communityIdSelect}`
     const newProjectObject = {
         name,
         description,
@@ -82,7 +82,7 @@ const saveProject = async (e) =>{
 }
 // Method to capture the filename of img
 const captureImageUploaded = async (e) =>{
-    const uploadImageBackEndUri = "http://localhost:8081/api/upload-image";
+    const uploadImageBackEndUri = "/api/upload-image";
     const imageFile = e.target.files[0];
     //make a fetch POST call to the api/upload-image
     const formObject = new FormData();
