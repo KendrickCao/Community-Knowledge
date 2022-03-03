@@ -90,7 +90,7 @@ const validateCommunityDescrMethod = (value) => {
 const saveCommunity = async (e) => {
   e.preventDefault();
   if (validatedCommunityName && validatedCommunityDescription) {
-    const url = `http://localhost:8081/api/add-community/${userId}`;
+    const url = `/api/add-community/${userId}`;
     const newCommunityObject = {
       name,
       description,
@@ -115,7 +115,7 @@ const saveCommunity = async (e) => {
   }
 };
 const captureImageUploaded = async (e) => {
-  const uploadImageBackEndUri = "http://localhost:8081/api/upload-image";
+  const uploadImageBackEndUri = "/api/upload-image";
   const imageFile = e.target.files[0];
   //Step 1 update the message of the STATUS as uploading
   const loadingText = document.createTextNode("Uploading....");
