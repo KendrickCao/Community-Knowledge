@@ -103,8 +103,12 @@ public class MainController {
     }
 
     @GetMapping("/project-create")
-    public ModelAndView showCreateProjectPage(ModelAndView modelAndView) {
+    public ModelAndView showCreateProjectPage(@CookieValue(value = "userEmail",defaultValue = "null") String userEmail, ModelAndView modelAndView) {
         modelAndView = new ModelAndView("project/createProject");
+        if (userEmail.equals("null")){
+            modelAndView.setViewName("/login/Login");
+            modelAndView.addObject("redirectMsg","You need to login first!");
+        }
         return modelAndView;
     }
 

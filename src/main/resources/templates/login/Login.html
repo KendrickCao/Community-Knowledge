@@ -45,6 +45,9 @@
 
     </div>
 
+
+
+    <p id="msg" style="color: red;visibility: hidden" th:text="${redirectMsg}" th:if="${not #strings.isEmpty(redirectMsg)}"></p>
     <div class="disclaimer-section hide_disclaimer">
 <!--    Model which shows the cookie disclaimer before signing up-->
     <div class="disclaimer-content-section">

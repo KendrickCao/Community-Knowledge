@@ -7,6 +7,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
+
 /**
  * Represents the REST controller for handling login requests by comparing user input
  * with user account information stored in the user_table database.
@@ -35,7 +38,7 @@ public class LoginController {
      * @return loggedInUser JSON containing user information from user_table database.
      */
     @PostMapping("/api/login-user")
-    private Object loginUser(@RequestBody LoginRequest loginRequest){
+    public Object loginUser(HttpServletResponse response, @RequestBody LoginRequest loginRequest){
 
         String emailFromLoginRequest = loginRequest.getEmail();
         String passwordFromLoginRequest = loginRequest.getPassword();
@@ -44,10 +47,17 @@ public class LoginController {
 
         try {
             UserObject userObjectFound = userObjectService.getUserByEmail(emailFromLoginRequest);
+
             if (userObjectFound != null) {
                 String passwordFromDB = userObjectFound.getPassword();
                 if (passwordFromDB.equals(passwordFromLoginRequest)) {
                     loggedInUser = userObjectFound;
+                    Cookie userEmail = new Cookie("userEmail", userObjectFound.getEmail());
+                    Cookie userName = new Cookie("userName", userObjectFound.getName());
+                    userName.setPath("/");
+                    userEmail.setPath("/");
+                    response.addCookie(userEmail);
+                    response.addCookie(userName);
                 }
             }
             return new ResponseEntity<>(loggedInUser, HttpStatus.OK);
