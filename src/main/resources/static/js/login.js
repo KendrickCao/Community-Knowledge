@@ -1,10 +1,9 @@
 //Define Variables
 let userEmail = null;
 let userPassword = null;
-let msg = document.getElementById("msg").innerHTML;
-console.log(msg)
-if (msg.length>0){
-  alert(msg)
+let reMsg = document.getElementById("msg");
+if (reMsg!=null){
+  alert(reMsg.innerHTML)
 }
 // Method to close the cookie disclaimer model.
 const closeModelDisclaimer = (e) => {

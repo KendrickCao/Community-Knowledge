@@ -49,24 +49,24 @@
 
     <p id="msg" style="color: red;visibility: hidden" th:text="${redirectMsg}" th:if="${not #strings.isEmpty(redirectMsg)}"></p>
     <div class="disclaimer-section hide_disclaimer">
-<!--    Model which shows the cookie disclaimer before signing up-->
-    <div class="disclaimer-content-section">
-        <p class="title-disclaimer" > Cookie Disclaimer </p>
-        <p >Please read the following disclaimer before logging in:</p>
-        <p >This website uses cookies, by logging in do you give your consent to the following:</p>
-        <p >Cookies are stored in your browser for a maximum of 24 hours and are used to store user information
-            including a user-Id, name and email when you login to your user account. This information is used for the purpose of
-            identifying which users have joined which community and to identify which users have created particular communities,
-            projects, events and user profiles. For example, when a project is created, the user-Id will be stored in a local
-            database alongside the rest of the project information.</p>
-        <p > This website uses only first-party cookies and the information contained within the cookie is not shared with
-            any third-party.</p>
-        <p >Do you consent to the use of cookies?</p>
-        <div class="modal-footer">
-            <button id= "consent" type="button" class="btn btn-sm btn-outline-dark create_event--CTA" data-dismiss="model">Accept</button>
-            <button type="button" class="btn btn-sm btn-outline-danger close_model">Reject</button>
+        <!--    Model which shows the cookie disclaimer before signing up-->
+        <div class="disclaimer-content-section">
+            <p class="title-disclaimer" > Cookie Disclaimer </p>
+            <p >Please read the following disclaimer before logging in:</p>
+            <p >This website uses cookies, by logging in do you give your consent to the following:</p>
+            <p >Cookies are stored in your browser for a maximum of 24 hours and are used to store user information
+                including a user-Id, name and email when you login to your user account. This information is used for the purpose of
+                identifying which users have joined which community and to identify which users have created particular communities,
+                projects, events and user profiles. For example, when a project is created, the user-Id will be stored in a local
+                database alongside the rest of the project information.</p>
+            <p > This website uses only first-party cookies and the information contained within the cookie is not shared with
+                any third-party.</p>
+            <p >Do you consent to the use of cookies?</p>
+            <div class="modal-footer">
+                <button id= "consent" type="button" class="btn btn-sm btn-outline-dark create_event--CTA" data-dismiss="model">Accept</button>
+                <button type="button" class="btn btn-sm btn-outline-danger close_model">Reject</button>
+            </div>
         </div>
-    </div>
     </div>
   
 
