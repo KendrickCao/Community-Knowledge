@@ -2,7 +2,7 @@ variable "flavor" { default = "m1.large" }
 variable "image" { default = "Debian Buster 10.11.1 20211029" }
 #variable "instance" { default = "tf_instance" }
 
-variable "name" { default = "c21106784_Debian_Jenkins" }
+variable "name" { default = "c21106784_Debian_test" }
 
 variable "network" { default = "c21106784_network" }   # you need to change this
 
