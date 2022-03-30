@@ -110,6 +110,8 @@ export MAVEN_HOME=/opt/maven
 export PATH=${M2_HOME}/bin:${PATH}
 echo mvn -version
 mvn -version
+
+cd fork-community-knowledge-website/
 # mvn compile	
 mvn clean package
 java -jar target/client-0.0.1-SNAPSHOT.jar --server.port=8081
