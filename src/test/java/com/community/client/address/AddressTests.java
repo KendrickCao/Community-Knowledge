@@ -48,7 +48,7 @@ public class AddressTests {
         //mock an addressResponsitory
         AddressRepository addressRepository = mock(AddressRepository.class);
         //setting a dummy address
-        Address dummyAddress = new Address(1L, "test lineoneaddress", "test linetwoaddress", "test city", "test     postcode",
+        Address dummyAddress = new Address(1L, "test lineoneaddress", "test linetwoaddress", "test city", "test postcode",
                 "test country");
         
         // Setting the when and return mockito functions to the repository
