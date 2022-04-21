@@ -1,4 +1,4 @@
-package com.community.client;
+package com.community.client.DevOps;
 
 import com.community.client.models.Community;
 import com.community.client.models.Project;
