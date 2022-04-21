@@ -106,7 +106,7 @@ public class MainController {
     public ModelAndView showCreateProjectPage(@CookieValue(value = "userEmail",defaultValue = "null") String userEmail, ModelAndView modelAndView) {
         modelAndView = new ModelAndView("project/createProject");
         if (userEmail.equals("null")){
-            modelAndView.setViewName("/login/Login");
+            modelAndView.setViewName("login/Login");
             modelAndView.addObject("redirectMsg","You need to login first!");
         }
         return modelAndView;
