@@ -115,18 +115,18 @@ public class Community {
         this.communityImage = communityImage;
     }
 
-    @Override
-    public String toString() {
-        return "{" +
-                " id='" + getId() + "'" +
-                ", name='" + getName() + "'" +
-                ", description='" + getDescription() + "'" +
-                ", event='" + getEvent() + "'" +
-                ", userObjectSet='" + getUserObjectSet() + "'" +
-                ", projectSet='" + getProjectSet() + "'" +
-                ", communityImage='" + getCommunityImage() + "'" +
-                "}";
-    }
+//    @Override
+//    public String toString() {
+//        return "{" +
+//                " id='" + getId() + "'" +
+//                ", name='" + getName() + "'" +
+//                ", description='" + getDescription() + "'" +
+//                ", event='" + getEvent() + "'" +
+//                ", userObjectSet='" + getUserObjectSet() + "'" +
+//                ", projectSet='" + getProjectSet() + "'" +
+//                ", communityImage='" + getCommunityImage() + "'" +
+//                "}";
+//    }
 
     public void addUserToCommunity(UserObject userObject) {
         userObjectSet.add(userObject);

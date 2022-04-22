@@ -1,0 +1,2 @@
+insert into user_table(user_id,user_email,user_name,user_password) values (1,'test@gmail.com','c21106784','12345678');
+insert into community_table(community_id,community_image,description,community_name) values (1,'Anna.jpg','c21106784 test','Wales Community');
