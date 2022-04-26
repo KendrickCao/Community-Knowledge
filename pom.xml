@@ -122,3 +122,10 @@
         </plugins>
     </build>
 </project>
+<distributionManagement>
+    <snapshotRepository>
+        <id>snapshots</id>
+        <name>a0rdoelvosxe8-artifactory-primary-0-snapshots</name>
+        <url>https://c21106784.jfrog.io/artifactory/c21106784-libs-snapshot</url>
+    </snapshotRepository>
+</distributionManagement>
