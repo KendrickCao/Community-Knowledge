@@ -105,15 +105,21 @@ wget https://dlcdn.apache.org/maven/maven-3/3.8.5/binaries/apache-maven-3.8.5-bi
 sudo tar xf /tmp/apache-maven-3.8.5-bin.tar.gz -C /opt
 sudo ln -s /opt/apache-maven-3.8.5 /opt/maven
 
+echo "Installing jfrog cli..."
+sudo curl -fL https://install-cli.jfrog.io | sh
+
 export M2_HOME=/opt/maven
 export MAVEN_HOME=/opt/maven
 export PATH=${M2_HOME}/bin:${PATH}
-echo mvn -version
+echo "mvn -version"
 mvn -version
 
-cd fork-community-knowledge-website/
-# mvn compile	
-mvn clean package
-java -jar target/client-0.0.1-SNAPSHOT.jar --server.port=8081
-# cd /var/lib/jenkins/workspace/c21106784_debian_project
+echo n|jf rt dl "maven-challenge-local/com/community/client/0.0.1-SNAPSHOT/*.jar" --sort-by=created --sort-order=desc --limit=1 --url=https://c21106784.jfrog.io/artifactory/ --user=CaoY35@cardiff.ac.uk --password=Loveyou.1997
+cd com/community/client/0.0.1-SNAPSHOT
+java -jar client-0.0.1-SNAPSHOT.jar --server.port=8081
+# cd fork-community-knowledge-website/
+# # mvn compile	
+# mvn clean package
 # java -jar target/client-0.0.1-SNAPSHOT.jar --server.port=8081
+# # cd /var/lib/jenkins/workspace/c21106784_debian_project
+# # java -jar target/client-0.0.1-SNAPSHOT.jar --server.port=8081
