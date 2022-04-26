@@ -116,7 +116,7 @@ mvn -version
 
 echo n|jf rt dl "maven-challenge-local/com/community/client/0.0.1-SNAPSHOT/*.jar" --sort-by=created --sort-order=desc --limit=1 --url=https://c21106784.jfrog.io/artifactory/ --user=CaoY35@cardiff.ac.uk --password=Loveyou.1997
 cd com/community/client/0.0.1-SNAPSHOT
-java -jar client-0.0.1-SNAPSHOT.jar --server.port=8081
+java -jar *.jar --server.port=8081
 # cd fork-community-knowledge-website/
 # # mvn compile	
 # mvn clean package
