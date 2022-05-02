@@ -143,7 +143,7 @@ events {
 http {
     upstream myproject{
         ip_hash;
-        server 10.72.101.75:8081
+        server 10.72.101.75:8081;
         
     }
 
