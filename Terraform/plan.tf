@@ -54,6 +54,6 @@ resource "openstack_compute_instance_v2" "instance" {
 }
 
 resource "openstack_compute_floatingip_associate_v2" "floating_ip" {
-  floating_ip = openstack_networking_floatingip_v2.floating_ip.address
+  floating_ip = "10.72.101.75"	
   instance_id = openstack_compute_instance_v2.instance.id
 }
