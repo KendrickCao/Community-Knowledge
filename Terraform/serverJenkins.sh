@@ -118,6 +118,10 @@ echo n|jf rt dl "maven-challenge-local/com/community/client/0.0.1-SNAPSHOT/*.jar
 cd com/community/client/0.0.1-SNAPSHOT
 java -jar *.jar --server.port=8081
 
+echo "Installing nginx..."
+sudo apt update
+sudo apt install nginx -y
+
 # cd fork-community-knowledge-website/
 # mvn clean package
 # java -jar target/client-0.0.1-SNAPSHOT.jar --server.port=8081
