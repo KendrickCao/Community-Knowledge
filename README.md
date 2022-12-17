@@ -16,7 +16,7 @@ share practices about their projects.
 ![image](https://user-images.githubusercontent.com/93497252/205936233-9a9868ce-7156-4b78-81ae-9a2f3270e55a.png)
 ![image](https://user-images.githubusercontent.com/93497252/205964965-e8fe6b5d-3e61-49f6-97e5-0197151de0e1.png)
 ![image](https://user-images.githubusercontent.com/93497252/205931271-2c36c295-def9-4dbb-aaea-d7f7a9120ce2.png)
-![image](https://user-images.githubusercontent.com/93497252/205967733-53b7e089-c295-4626-914b-0d075ec528d7.png)
+![image](https://user-images.githubusercontent.com/93497252/208225540-a294c521-b04c-4b24-9b64-eac19a1b3466.png)
 ![image](https://user-images.githubusercontent.com/93497252/205971827-7132fe47-e1a3-47f9-a3f4-56f47ebdfc24.png)
 
 ## DevOps Pipeline
