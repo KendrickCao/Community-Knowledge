@@ -1,5 +1,5 @@
 
-/src/main/resources/appplication.properties
+# /src/main/resources/appplication.properties
 HELP.md
 target/
 !.mvn/wrapper/maven-wrapper.jar
