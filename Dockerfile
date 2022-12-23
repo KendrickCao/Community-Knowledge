@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1
-FROM eclipse/ubuntu_jdk8 as base
+FROM maven:3.8-eclipse-temurin-11-alpine as base
 WORKDIR /app
 COPY pom.xml ./
 RUN mvn dependency:resolve
@@ -11,7 +11,7 @@ COPY src ./src
 FROM base as build
 RUN mvn package
 
-FROM eclipse-temurin:11-alpine as production
+FROM maven:3.8-eclipse-temurin-11-alpine as production
 EXPOSE 8081
-COPY --from=build /app/target/client-*.jar /client.jar
-CMD ["java", "-jar", "/client.jar"]
+COPY --from=build /app/target/client-*.jar /communityknowledge.jar
+CMD ["java", "-jar", "/communityknowledge.jar"]
