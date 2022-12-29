@@ -12,6 +12,6 @@ FROM base as build
 RUN mvn package
 
 FROM maven:3.8-eclipse-temurin-11-alpine as production
-EXPOSE 8081
+EXPOSE 8080
 COPY --from=build /app/target/client-*.jar /communityknowledge.jar
 CMD ["java", "-jar", "/communityknowledge.jar"]
